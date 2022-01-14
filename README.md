@@ -1,6 +1,8 @@
 # BEEP base v3 - Firmware
 Firmware files for the BEEP base PCB BLE/LoRaWAN API of the [Beep measurement system v3](https://github.com/beepnl/measurement-system-v3).
 
+The BEEP base v3 firmware is part of the complete [BEEP system](https://github.com/beepnl/BEEP)
+
 # Firmware
 The firmware in this repo is to be installed on the BEEP base v3 PCB
 ![BEEP base - PCB v3](https://github.com/beepnl/measurement-system-v3/blob/master/hardware/pcb/beep-pcb-v3.jpg)
