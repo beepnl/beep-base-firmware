@@ -5,7 +5,8 @@ Firmware files for the BEEP base PCB BLE/LoRaWAN API of the [Beep measurement sy
 The firmware in this repo is to be installed on the BEEP base v3 PCB
 ![BEEP base - PCB v3](https://github.com/beepnl/measurement-system-v3/blob/master/hardware/pcb/beep-pcb-v3.jpg)
 
-In the different 'YYYY_MM_DD_BeepBase_vX.X.X' folders, the (Dutch) changes compared to the previous versions) and the Firmware is provided. Inside it's /Firmware folder, the HEX bootloader and the standard BEEP application are available for upload to the PCB.
+### Firmware versions
+The different 'YYYY_MM_DD_BeepBase_vX.X.X' folders contain the firmware versions. Each folder contains a Readme.md with the (Dutch) changes compared to the previous versions and the /Firmware folder. Inside it's /Firmware folder, the HEX bootloader and the standard BEEP application are available for upload to the PCB.
 
 ### Uploading firmware to the PCB
 You can upload the firmware to the PCB:
