@@ -1,23 +1,32 @@
 # BEEP base v3 - Firmware
-Firmware files for the [Beep measurement system v3](https://github.com/beepnl/measurement-system-v3).
+Firmware files for the BEEP base PCB BLE/LoRaWAN API of the [Beep measurement system v3](https://github.com/beepnl/measurement-system-v3).
 
 ## Firmware
 The firmware in this repo is to be installed on the BEEP base v3 PCB
 ![BEEP base - PCB v3](https://github.com/beepnl/measurement-system-v3/blob/master/hardware/pcb/beep-pcb-v3.jpg)
 
-In the different 'firmware' folders, the HEX bootloader and the standard BEEP application are available for upload to the PCB.
+In the different 'YYYY_MM_DD_BeepBase_vX.X.X' folders, the (Dutch) changes compared to the previous versions) and the Firmware is provided. Inside it's /Firmware folder, the HEX bootloader and the standard BEEP application are available for upload to the PCB.
 
-You can upload the firmware via Bluetooth with the Nordic NRF connect app. After uploading, you will have the full BLE and LoRa API to your possession to configre the PCB as you like. 
+### Uploading firmware to the PCB
+You can upload the firmware to the PCB:
 
-## Firmware BLE/LoRaWAN API
-To use the BEEP base PCB firmware over Bluetooth Low Energy (BLE) or LoRaWAN, read the manuals:
+- via Bluetooth from the [BEEP base iOS](https://apps.apple.com/us/app/beep-base/id1495605010) app. It already includes all stable app versions from this repo.
+- via Bluetooth with the [Nordic nRF connect app](https://www.nordicsemi.com/Products/Development-tools/nRF-Connect-for-mobile).
+- via Serial using a [Nordic nRF52 Development Kit](https://www.nordicsemi.com/Products/Development-hardware/nrf52-dk)
+
+NB: The .zip files (*Beepbase_sd_boot_app.zip* and *Beepbase_app.zip (without bootloader)*) from each /Firmware directory contain the uploadable firmware.
+
+After uploading, you will have the full BLE and LoRa API to your possession to configre the PCB as you like. 
+
+## PCB BLE/LoRaWAN API
+To use the BEEP base PCB API (resulting from the firmware installation) over Bluetooth Low Energy (BLE) or LoRaWAN, read the manuals:
 
 - [Dutch manual](https://github.com/beepnl/beep-base-firmware/blob/master/BEEP%20base%20-%20ID190222-02%20-%20Firmware%20-%20Dutch.pdf)
 - [English manual](https://github.com/beepnl/beep-base-firmware/blob/master/BEEP%20base%20-%20ID190222-02%20-%20Firmware%20-%20English.pdf)
 
 Is shows all firmware and BLE API features. You will be amazed :-) 
 
-### firmware/Source
+### Building new firmware from Source
 
 In the `Source/Code` folder, there is the Nordic nRF code to build your own version of the firmware.
 
