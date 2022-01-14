@@ -12,10 +12,9 @@ The different 'YYYY_MM_DD_BeepBase_vX.X.X' folders contain the firmware versions
 You can upload the firmware to the PCB:
 
 - via Bluetooth from the [BEEP base iOS](https://apps.apple.com/us/app/beep-base/id1495605010) app. It already includes all stable app versions from this repo.
-- via Bluetooth with the [Nordic nRF connect app](https://www.nordicsemi.com/Products/Development-tools/nRF-Connect-for-mobile).
-- via Serial using a [Nordic nRF52 Development Kit](https://www.nordicsemi.com/Products/Development-hardware/nrf52-dk)
+- via Bluetooth with the [Nordic nRF connect app](https://www.nordicsemi.com/Products/Development-tools/nRF-Connect-for-mobile). NB: The .zip files (*Beepbase_sd_boot_app.zip* and *Beepbase_app.zip (without bootloader)*) from each /Firmware directory contain the uploadable firmware.
+- via Serial using a [Nordic nRF52 Development Kit](https://www.nordicsemi.com/Products/Development-hardware/nrf52-dk) using the .hex file inside the /Firmware folder.
 
-NB: The .zip files (*Beepbase_sd_boot_app.zip* and *Beepbase_app.zip (without bootloader)*) from each /Firmware directory contain the uploadable firmware.
 
 After uploading, you will have the full BLE and LoRa API to your possession to configre the PCB as you like. 
 
