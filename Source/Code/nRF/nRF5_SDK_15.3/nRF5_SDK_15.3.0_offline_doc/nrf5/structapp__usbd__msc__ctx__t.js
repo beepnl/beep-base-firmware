@@ -1,0 +1,27 @@
+var structapp__usbd__msc__ctx__t =
+[
+    [ "a_count", "structapp__usbd__msc__ctx__t.html#ad229b79c171959c279ac525251cfe222", null ],
+    [ "abort", "structapp__usbd__msc__ctx__t.html#a327676c8b5a5272e679dc0d6a2d96899", null ],
+    [ "blk_dev_init_mask", "structapp__usbd__msc__ctx__t.html#abf017e2dadbdd55da34130ff8ef4a608", null ],
+    [ "blk_idx", "structapp__usbd__msc__ctx__t.html#a09001446323afa08bab98c200c80b6d9", null ],
+    [ "blk_size", "structapp__usbd__msc__ctx__t.html#a0040f077e1db4062d425fc47784a8282", null ],
+    [ "buff", "structapp__usbd__msc__ctx__t.html#a26dbf20546486c2695f8bbfed930ebf2", null ],
+    [ "cbw", "structapp__usbd__msc__ctx__t.html#afc5d081dbcf5fb72c5abf52860697512", null ],
+    [ "csw", "structapp__usbd__msc__ctx__t.html#a6333be0271c0d6fc2629fd96c3c998ae", null ],
+    [ "current", "structapp__usbd__msc__ctx__t.html#a07be27afd0c9212791beb3edaf1823ea", null ],
+    [ "d_count", "structapp__usbd__msc__ctx__t.html#a5d777459abdbf7f5407649316501ebde", null ],
+    [ "datalen_left", "structapp__usbd__msc__ctx__t.html#a04d6e711febf7c070bdb30e71362da0b", null ],
+    [ "inquiry", "structapp__usbd__msc__ctx__t.html#ad50557f6a11970d7cfc451208c7840c2", null ],
+    [ "lun", "structapp__usbd__msc__ctx__t.html#a2fe282edd33581acfa1c3c4131c78d97", null ],
+    [ "modesense10", "structapp__usbd__msc__ctx__t.html#a646fb8a5058913962c6f8aa60912845f", null ],
+    [ "modesense6", "structapp__usbd__msc__ctx__t.html#a0028fd01e5a17b603b2f249de1e6e816", null ],
+    [ "pending", "structapp__usbd__msc__ctx__t.html#a96e7f8f75b0a96a3cb31c34783270859", null ],
+    [ "process", "structapp__usbd__msc__ctx__t.html#a81849b8d59adbe75d6debf2cf37a3be7", null ],
+    [ "rd_idx", "structapp__usbd__msc__ctx__t.html#a8ef4cd39312c627e88c247d5c018dad6", null ],
+    [ "readcapacity10", "structapp__usbd__msc__ctx__t.html#adf317178fb430c96f8d0980fdc1f3d6d", null ],
+    [ "requestsense", "structapp__usbd__msc__ctx__t.html#a61e5772a24e54fdac65a17a0badc3055", null ],
+    [ "scsi_resp", "structapp__usbd__msc__ctx__t.html#abc6c01bb9bc41d7e5c313cf15d888940", null ],
+    [ "size_left", "structapp__usbd__msc__ctx__t.html#a526a12570e73d9ba5d6d1ac856faaf4f", null ],
+    [ "state", "structapp__usbd__msc__ctx__t.html#aaf857647d7425b8a6b1fd7561c8f76b1", null ],
+    [ "transfer", "structapp__usbd__msc__ctx__t.html#a22ae43a2cb4fd002d5d3c062ba69e983", null ]
+];
