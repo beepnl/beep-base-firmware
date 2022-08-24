@@ -1,3 +1,6 @@
+###
+### Requires NRF Command Line Tools: https://www.nordicsemi.com/Products/Development-tools/nrf-command-line-tools/download
+###
 
 echo "\nGenerating DFU files..."; sleep 2;
 nrfutil settings generate --family NRF52840 --application ../../PRJ/ses/Output/Release/Exe/BeepBase.hex --application-version 1 --bootloader-version 1 --bl-settings-version 1 ../../BTLDR/ses/Output/Release/Exe/BL_settings.hex;
