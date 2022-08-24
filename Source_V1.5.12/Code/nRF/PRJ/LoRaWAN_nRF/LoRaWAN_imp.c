@@ -237,7 +237,7 @@ static uint32_t GetJoinInterval(void)
 	}
 	else
 	{
-		interval_min = 24;	// 1 day interval. 1910 minutes have passed 
+		interval_min = 1440;	// 1 day interval. 1910 minutes have passed 
 	}
 
 	return (interval_min * 60 * 1000); // Multiply by 60 and 1000 in order to calculate the interval in ms.
@@ -977,6 +977,10 @@ static void MlmeConfirm( MlmeConfirm_t *mlmeConfirm )
 				LoRaMacStatus_t status;
                 MibRequestConfirm_t mibGet;
                 NRF_LOG_INFO( "###### ===== OTAA JOINED ==== ######" );
+
+                // reset join counter
+                app_join_counter = 0; 
+                NRF_LOG_INFO( "###### ===== app_join_counter reset ==== ######" );
 
                 mibGet.Type = MIB_DEV_ADDR;
                 status = LoRaMacMibGetRequestConfirm( &mibGet );
