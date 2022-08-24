@@ -1,0 +1,27 @@
+var group__ssi__pal__log =
+[
+    [ "__SASI_PAL_LOG_LEVEL_EVAL", "group__ssi__pal__log.html#gaa49008268475f0663dee58cf44faf7bf", null ],
+    [ "_SASI_PAL_LOG", "group__ssi__pal__log.html#gae08f08ee93d88bb6eb97527d8b7296cf", null ],
+    [ "_SASI_PAL_MAX_LOG_LEVEL", "group__ssi__pal__log.html#ga56a0bd5787f54f8fe031f90e8c924df3", null ],
+    [ "SASI_PAL_LOG_CUR_COMPONENT", "group__ssi__pal__log.html#gaaba2fae6ff903da63fef124b0b916c8c", null ],
+    [ "SASI_PAL_LOG_CUR_COMPONENT_NAME", "group__ssi__pal__log.html#ga6a1382428bf039feba340e6058d372b2", null ],
+    [ "SASI_PAL_LOG_DATA", "group__ssi__pal__log.html#ga09e1077165aa94175019b4a10d2f01ff", null ],
+    [ "SASI_PAL_LOG_DEBUG", "group__ssi__pal__log.html#ga44a308cbf8c83497778a52c8130deb27", null ],
+    [ "SASI_PAL_LOG_DUMP_BUF", "group__ssi__pal__log.html#gaa621636db2b82e9bcd4055f1dd6681e1", null ],
+    [ "SASI_PAL_LOG_ERR", "group__ssi__pal__log.html#gac4c53bad6fb03723ba05c8bbb5c6a664", null ],
+    [ "SASI_PAL_LOG_INFO", "group__ssi__pal__log.html#ga3fcbdcd074d4c4d0908f96e1d2e9d9fe", null ],
+    [ "SASI_PAL_LOG_LEVEL_DATA", "group__ssi__pal__log.html#gadddb27176e9a7d187d3a1f9154cc5f84", null ],
+    [ "SASI_PAL_LOG_LEVEL_DEBUG", "group__ssi__pal__log.html#gacf57b4462ab6fd6a7e237f99baa39202", null ],
+    [ "SASI_PAL_LOG_LEVEL_ERR", "group__ssi__pal__log.html#gae567f9a739f2c1de10d6974f97d30df3", null ],
+    [ "SASI_PAL_LOG_LEVEL_INFO", "group__ssi__pal__log.html#gab196f572f2ea500b86212449b2d15c56", null ],
+    [ "SASI_PAL_LOG_LEVEL_NULL", "group__ssi__pal__log.html#ga31d60d9e4ac8142eb2325a62f12ad3dd", null ],
+    [ "SASI_PAL_LOG_LEVEL_TRACE", "group__ssi__pal__log.html#ga86c8344bb2f2a042afe2b033ab6addf4", null ],
+    [ "SASI_PAL_LOG_LEVEL_WARN", "group__ssi__pal__log.html#gae8ac2891cfdb3d51e418bfce8b0e58c2", null ],
+    [ "SASI_PAL_LOG_TRACE", "group__ssi__pal__log.html#gad9ca6127dafe5ddce2d2ef015b59b7b0", null ],
+    [ "SASI_PAL_LOG_WARN", "group__ssi__pal__log.html#gaeac31721a1bc02e3ad5fdaf5222f2f6e", null ],
+    [ "SASI_PAL_MAX_LOG_LEVEL", "group__ssi__pal__log.html#ga80f86733e63de6cebfce185124c40493", null ],
+    [ "SaSi_PalLogInit", "group__ssi__pal__log.html#gadf8b39e164de689f9eb9857732d6a239", null ],
+    [ "SaSi_PalLogLevelSet", "group__ssi__pal__log.html#ga271b439e36c29fb85ba0ec1b76b33ae9", null ],
+    [ "SaSi_PalLogMaskSet", "group__ssi__pal__log.html#ga188ded691c2509c6f8ff9e785c7be781", null ],
+    [ "SaSi_PalLogPlat", "group__ssi__pal__log.html#ga18c560266145c436327f8da26d212afe", null ]
+];
