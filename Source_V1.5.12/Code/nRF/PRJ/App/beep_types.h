@@ -6,7 +6,7 @@
 
 	#define FIRMWARE_MAJOR              1
     #define FIRMWARE_MINOR              5
-    #define FIRMWARE_SUB                11
+    #define FIRMWARE_SUB                12
 	#define FIRMWARE_TO_UINT32_T(major, minor, sub) ((((uint32_t)major) << 16) | (((uint32_t)minor) << 8) | (((uint32_t)sub) << 0))
 
 	#define PIN_CODE_BLE_LENGHT			6
