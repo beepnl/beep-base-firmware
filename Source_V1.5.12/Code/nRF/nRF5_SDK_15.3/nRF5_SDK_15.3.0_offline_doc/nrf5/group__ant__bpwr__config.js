@@ -1,0 +1,25 @@
+var group__ant__bpwr__config =
+[
+    [ "ANT_BPWR_COMMON_INFO_COLOR", "group__ant__bpwr__config.html#ga32729867af041211741962f309c5efd5", null ],
+    [ "ANT_BPWR_COMMON_LOG_ENABLED", "group__ant__bpwr__config.html#ga3985aab52a21ecb9ccc8d2f2c0a3150e", null ],
+    [ "ANT_BPWR_COMMON_LOG_LEVEL", "group__ant__bpwr__config.html#gaa45f75ae68952728681dc3d252060e86", null ],
+    [ "ANT_BPWR_ENABLED", "group__ant__bpwr__config.html#ga7581eab46c8c273547af9136a56b250b", null ],
+    [ "ANT_BPWR_INFO_COLOR", "group__ant__bpwr__config.html#gac45a5b3d73af2affb4983e78e5208f27", null ],
+    [ "ANT_BPWR_LOG_ENABLED", "group__ant__bpwr__config.html#gaa43b255827ceeb46def5461af328fc26", null ],
+    [ "ANT_BPWR_LOG_LEVEL", "group__ant__bpwr__config.html#gacb87ece8ed912422dca654148eb27065", null ],
+    [ "ANT_BPWR_PAGE_16_INFO_COLOR", "group__ant__bpwr__config.html#ga58d845b2a0ce8ea08b877160d18abdcf", null ],
+    [ "ANT_BPWR_PAGE_16_LOG_ENABLED", "group__ant__bpwr__config.html#ga0fc4df6592aec325235c436559752a06", null ],
+    [ "ANT_BPWR_PAGE_16_LOG_LEVEL", "group__ant__bpwr__config.html#ga55de2715d82a79363fec0b7766b9cae8", null ],
+    [ "ANT_BPWR_PAGE_17_INFO_COLOR", "group__ant__bpwr__config.html#gaf9cecc83273d8052a165a3be80b5e1fa", null ],
+    [ "ANT_BPWR_PAGE_17_LOG_ENABLED", "group__ant__bpwr__config.html#ga0961fab9f23a53f2f0c43b454ae5579e", null ],
+    [ "ANT_BPWR_PAGE_17_LOG_LEVEL", "group__ant__bpwr__config.html#ga4e361cf7d366e56d8a21818e166baef0", null ],
+    [ "ANT_BPWR_PAGE_18_INFO_COLOR", "group__ant__bpwr__config.html#ga052cfb52f3c45d3d9f620b71e6e91175", null ],
+    [ "ANT_BPWR_PAGE_18_LOG_ENABLED", "group__ant__bpwr__config.html#ga8801d6dd0b7dd450c38b27777a57aa1b", null ],
+    [ "ANT_BPWR_PAGE_18_LOG_LEVEL", "group__ant__bpwr__config.html#gac3d2cb64ebd7e510057547a6daebcaf2", null ],
+    [ "ANT_BPWR_PAGE_1_INFO_COLOR", "group__ant__bpwr__config.html#gacf0afa2924b0254cd93127c9f7630984", null ],
+    [ "ANT_BPWR_PAGE_1_LOG_ENABLED", "group__ant__bpwr__config.html#gafc0ccc61955a420188cbc487bd3e7be2", null ],
+    [ "ANT_BPWR_PAGE_1_LOG_LEVEL", "group__ant__bpwr__config.html#gacaaf70f92ef317fab1d988523ce62799", null ],
+    [ "ANT_BPWR_PAGE_TORQUE_INFO_COLOR", "group__ant__bpwr__config.html#gafe40ffb663dcef71892a20be030f7d06", null ],
+    [ "ANT_BPWR_PAGE_TORQUE_LOG_ENABLED", "group__ant__bpwr__config.html#ga146ef3a3d177f1e62e217e94bffc45e0", null ],
+    [ "ANT_BPWR_PAGE_TORQUE_LOG_LEVEL", "group__ant__bpwr__config.html#ga1880a5b4b82c89531f634e50a260cb90", null ]
+];

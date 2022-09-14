@@ -1,0 +1,23 @@
+var searchData=
+[
+  ['optiga_5fcomms_5fclose',['optiga_comms_close',['../group__gr_optiga_comms.html#gacce9ef0e7b80c6502218f866234e8cc3',1,'optiga_comms.h']]],
+  ['optiga_5fcomms_5fopen',['optiga_comms_open',['../group__gr_optiga_comms.html#ga183b71d32dae8fc70ee1bfb2a8ae8f56',1,'optiga_comms.h']]],
+  ['optiga_5fcomms_5freset',['optiga_comms_reset',['../group__gr_optiga_comms.html#gacefcb5427adcb648da4141ec1d582d7c',1,'optiga_comms.h']]],
+  ['optiga_5fcomms_5ftransceive',['optiga_comms_transceive',['../group__gr_optiga_comms.html#ga34dbe4f51b1278ca6385d53751dd0a13',1,'optiga_comms.h']]],
+  ['optiga_5fcrypt_5fecc_5fgenerate_5fkeypair',['optiga_crypt_ecc_generate_keypair',['../group__gr_optiga_crypt.html#gacddcafae3dac5590554b8060297465e3',1,'optiga_crypt.h']]],
+  ['optiga_5fcrypt_5fecdh',['optiga_crypt_ecdh',['../group__gr_optiga_crypt.html#ga49669bcb5040446ad1968e783bceddbc',1,'optiga_crypt.h']]],
+  ['optiga_5fcrypt_5fecdsa_5fsign',['optiga_crypt_ecdsa_sign',['../group__gr_optiga_crypt.html#ga3972e1f64dc6b3ac8e82cf29eed528e1',1,'optiga_crypt.h']]],
+  ['optiga_5fcrypt_5fecdsa_5fverify',['optiga_crypt_ecdsa_verify',['../group__gr_optiga_crypt.html#gac5398d5890d5e8f7824ab556d68a67fc',1,'optiga_crypt.h']]],
+  ['optiga_5fcrypt_5fhash_5ffinalize',['optiga_crypt_hash_finalize',['../group__gr_optiga_crypt.html#gaad5734d899aa84fc6c47b5ca2c784e1b',1,'optiga_crypt.h']]],
+  ['optiga_5fcrypt_5fhash_5fstart',['optiga_crypt_hash_start',['../group__gr_optiga_crypt.html#ga3e099d4d9150347043786fc498e46fbd',1,'optiga_crypt.h']]],
+  ['optiga_5fcrypt_5fhash_5fupdate',['optiga_crypt_hash_update',['../group__gr_optiga_crypt.html#gaed4a6096c1b46237bedd648b98ae8670',1,'optiga_crypt.h']]],
+  ['optiga_5fcrypt_5frandom',['optiga_crypt_random',['../group__gr_optiga_crypt.html#gaf40e507015ca251a08dde85ba9df47f2',1,'optiga_crypt.h']]],
+  ['optiga_5fcrypt_5ftls_5fprf_5fsha256',['optiga_crypt_tls_prf_sha256',['../group__gr_optiga_crypt.html#ga6e59e14b300dc489bec7271223e13cc8',1,'optiga_crypt.h']]],
+  ['optiga_5futil_5fopen_5fapplication',['optiga_util_open_application',['../group__gr_optiga_util.html#ga93120c49b4aabd29e5a0d65919052739',1,'optiga_util.h']]],
+  ['optiga_5futil_5fread_5fdata',['optiga_util_read_data',['../group__gr_optiga_util.html#ga3c19718904410556ac258daba94bbfde',1,'optiga_util.h']]],
+  ['optiga_5futil_5fread_5fmetadata',['optiga_util_read_metadata',['../group__gr_optiga_util.html#gad8255e4d3a55c200d7ad44608f858a33',1,'optiga_util.h']]],
+  ['optiga_5futil_5fwrite_5fdata',['optiga_util_write_data',['../group__gr_optiga_util.html#ga58df04f32f97d650fdb736ff1016f024',1,'optiga_util.h']]],
+  ['optiga_5futil_5fwrite_5fmetadata',['optiga_util_write_metadata',['../group__gr_optiga_util.html#gadd020448e2c83ee1a5860595e83206e3',1,'optiga_util.h']]],
+  ['ots_5fc_5fl2cap_5fon_5fble_5fevt',['ots_c_l2cap_on_ble_evt',['../group__nrf__ble__ots__c__l2cap.html#ga594e8fc06abfceddda41878bd122c324',1,'nrf_ble_ots_c_l2cap.h']]],
+  ['ots_5fc_5foacp_5fon_5fble_5fevt',['ots_c_oacp_on_ble_evt',['../group__nrf__ble__ots__c__oacp.html#gacd23ec4ab974a6830b4bfce88ba4f09c',1,'nrf_ble_ots_c_oacp.h']]]
+];
