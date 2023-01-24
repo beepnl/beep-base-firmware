@@ -5,6 +5,7 @@ NRF_LOG_MODULE_REGISTER();
 #include "nrf.h"
 #include "app_timer.h"
 #include "math.h"
+#include "DS3231.h"
 #include <stdlib.h>
 
 static volatile time_t m_time;
@@ -103,6 +104,27 @@ void logtime_set_time(uint32_t year, uint32_t month, uint32_t day, uint32_t hour
     // Apply the new time.            
     logtime_set_long(newtime);
 }    
+
+// set DS3231 time 
+// but only once 
+// in NVM (todo)
+static void set_DS3231(const time_t timeValue)
+{
+    static char cal_string[80];
+    static struct tm m_tm_return_time;
+
+    m_tm_return_time = *localtime(&timeValue);
+    strftime(cal_string, 80, "%x - %X", &m_tm_return_time);
+
+	DS3231_WriteDate.Day = time_struct.tm_mday;
+	DS3231_WriteDate.Hour = time_struct.tm_hour;
+	DS3231_WriteDate.Minutes = time_struct.tm_min;
+	DS3231_WriteDate.Month = time_struct.tm_mon;
+	DS3231_WriteDate.Seconds = time_struct.tm_sec;
+	DS3231_WriteDate.Year = time_struct.tm_year;
+
+    DS3231_SetDateTime(I2C1, &DS3231_WriteDate);
+}
 
 
 
