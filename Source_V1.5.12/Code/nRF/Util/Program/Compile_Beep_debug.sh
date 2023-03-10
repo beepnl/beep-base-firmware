@@ -15,7 +15,7 @@ mergehex --merge ../../BTLDR/ses/Output/Debug/Exe/BL_settings.hex ../../BTLDR/se
 
 echo ""; sleep 1;
 
-nrfutil pkg generate --hw-version 52 --application-version 1 --application ../../BTLDR/ses/Output/Debug/Exe/BeepBase.hex --sd-req 0xB6 --key-file ../../Key/private.key Beepbase_app.zip;
+nrfutil pkg generate --hw-version 52 --application-version 1 --application ../../BTLDR/ses/Output/Debug/Exe/Beepbase.hex --sd-req 0xB6 --key-file ../../Key/private.key Beepbase_app.zip;
 
 echo ""; sleep 1;
 

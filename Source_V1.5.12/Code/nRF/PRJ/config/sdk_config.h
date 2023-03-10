@@ -39,7 +39,6 @@
  */
 
 
-
 #ifndef SDK_CONFIG_H
 #define SDK_CONFIG_H
 
@@ -66,7 +65,7 @@
 #define BLE_PASSKEY_ENABLED             1
 #define LORAWAN_JOIN_ENABLE             true
 #define TLV_ENABLE                      1
-#define BME280_ENABLE                   1
+#define BME280_ENABLE                   0
 #define SEND_FIRMWARE_VERSION_ON_JOIN   1
 
 
@@ -275,7 +274,7 @@
 #define FDS_BACKEND										2
 #define FDS_OP_QUEUE_SIZE								6
 #define FDS_CRC_CHECK_ON_READ							1
-#define FDS_CRC_CHECK_ON_WRITE							0
+#define FDS_CRC_CHECK_ON_WRITE 							0
 #define FDS_MAX_USERS									4
 
 
@@ -327,7 +326,7 @@
 #define NRFX_PWM_DEFAULT_CONFIG_COUNT_MODE			0
 #define NRFX_PWM_DEFAULT_CONFIG_TOP_VALUE			1000
 #define NRFX_PWM_DEFAULT_CONFIG_LOAD_MODE			0
-#define NRFX_PWM_DEFAULT_CONFIG_STEP_MODE			0
+#define NRFX_PWM_DEFAULT_CONFIG_STEP_MODE			0 
 #define NRFX_PWM_DEFAULT_CONFIG_IRQ_PRIORITY		6
 
 
@@ -341,8 +340,8 @@
 // <e> NRFX_TWIM_ENABLED - nrfx_twim - TWIM peripheral driver
 //==========================================================
 #define NRFX_TWIM_ENABLED							1
-#define NRFX_TWIM0_ENABLED							0
-#define NRFX_TWIM1_ENABLED							0
+#define NRFX_TWIM0_ENABLED							1
+#define NRFX_TWIM1_ENABLED							1
 #define NRFX_TWIM_DEFAULT_CONFIG_FREQUENCY			26738688  // <26738688=> 100k, <67108864=> 250k, <104857600=> 400k 
 #define NRFX_TWIM_DEFAULT_CONFIG_HOLD_BUS_UNINIT	0
 #define NRFX_TWIM_DEFAULT_CONFIG_IRQ_PRIORITY		6
@@ -350,7 +349,7 @@
 
 // <e> NRFX_TWIM_CONFIG_LOG_ENABLED - Enables logging in the module.
 //==========================================================
-#define NRFX_TWIM_CONFIG_LOG_ENABLED				0
+#define NRFX_TWIM_CONFIG_LOG_ENABLED				1
 #define NRFX_TWIM_CONFIG_LOG_LEVEL					3
 #define NRFX_TWIM_CONFIG_INFO_COLOR					0
 #define NRFX_TWIM_CONFIG_DEBUG_COLOR				0
@@ -358,7 +357,7 @@
 
 // <e> NRFX_TWI_ENABLED - nrfx_twi - TWI peripheral driver
 //==========================================================
-#define NRFX_TWI_ENABLED							1
+#define NRFX_TWI_ENABLED							0
 #define NRFX_TWI0_ENABLED							0
 #define NRFX_TWI1_ENABLED							0
 #define NRFX_TWI_DEFAULT_CONFIG_FREQUENCY			26738688  // <26738688=> 100k, <67108864=> 250k, <104857600=> 400k 
@@ -368,7 +367,7 @@
 
 // <e> NRFX_TWI_CONFIG_LOG_ENABLED - Enables logging in the module.
 //==========================================================
-#define NRFX_TWI_CONFIG_LOG_ENABLED					0
+#define NRFX_TWI_CONFIG_LOG_ENABLED					1
 #define NRFX_TWI_CONFIG_LOG_LEVEL					3
 #define NRFX_TWI_CONFIG_INFO_COLOR					0
 #define NRFX_TWI_CONFIG_DEBUG_COLOR					0
@@ -602,7 +601,7 @@
 // <e> I2S_CONFIG_LOG_ENABLED - Enables logging in the module.
 //==========================================================
 #ifndef I2S_CONFIG_LOG_ENABLED
-#define I2S_CONFIG_LOG_ENABLED 0
+#define I2S_CONFIG_LOG_ENABLED 1
 #endif
 // <o> I2S_CONFIG_LOG_LEVEL  - Default Severity level
  
@@ -1319,7 +1318,7 @@
 #define NRF_BLE_CONN_PARAMS_MAX_SUPERVISION_TIMEOUT_DEVIATION 65535
 #endif
 
-// </e>
+
 
 // <q> NRF_BLE_GATT_ENABLED  - nrf_ble_gatt - GATT module
  
@@ -4092,7 +4091,7 @@
 // <e> TWI_CONFIG_LOG_ENABLED - Enables logging in the module.
 //==========================================================
 #ifndef TWI_CONFIG_LOG_ENABLED
-#define TWI_CONFIG_LOG_ENABLED 0
+#define TWI_CONFIG_LOG_ENABLED 1
 #endif
 // <o> TWI_CONFIG_LOG_LEVEL  - Default Severity level
  
