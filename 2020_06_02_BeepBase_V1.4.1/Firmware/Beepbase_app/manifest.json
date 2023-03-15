@@ -1,8 +1,0 @@
-{
-    "manifest": {
-        "application": {
-            "bin_file": "BeepBase.bin",
-            "dat_file": "BeepBase.dat"
-        }
-    }
-}
