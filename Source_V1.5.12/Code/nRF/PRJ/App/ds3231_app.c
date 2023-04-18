@@ -258,10 +258,10 @@ void ds3231_getTime(struct tm *ds3231_dateTime)
         ds3231_dateTime->tm_sec = bcd2dec(rx_buf[0]);
         ds3231_dateTime->tm_min = bcd2dec(rx_buf[1]);
         ds3231_dateTime->tm_hour = bcd2dec(rx_buf[2]);
-        ds3231_dateTime->tm_wday = bcd2dec(rx_buf[3]);
-        ds3231_dateTime->tm_mday = bcd2dec(rx_buf[4]);
-        ds3231_dateTime->tm_mon = bcd2dec(rx_buf[5]);
-        ds3231_dateTime->tm_year = bcd2dec(rx_buf[6]);
+        // ds3231_dateTime->tm_wday = bcd2dec(rx_buf[3]);
+        ds3231_dateTime->tm_mday = bcd2dec(rx_buf[3]);
+        ds3231_dateTime->tm_mon = bcd2dec(rx_buf[4]);
+        ds3231_dateTime->tm_year = bcd2dec(rx_buf[5]) - 1900;
 
         // struct to timestamp
         time_t ds3231_dateTime_timestamp;
@@ -276,7 +276,7 @@ void ds3231_getTime(struct tm *ds3231_dateTime)
             NRF_LOG_FLUSH();
              
             NRF_LOG_INFO("### ds3231_dateTime -> tm_sec = %lu ###", ds3231_dateTime->tm_sec);
-            NRF_LOG_INFO("### ds3231_timestamp = %s ###", get_logtime_string(ds3231_dateTime_timestamp)); 
+            NRF_LOG_INFO("### get_logtime_string(ds3231_dateTime_timestamp) = %s ###", get_logtime_string(ds3231_dateTime_timestamp)); 
 
             /*
             NRF_LOG_INFO("### sec = %d, min = %d, hour = %d, day = %d, date = %d, month = %d, year = %d ###", 
