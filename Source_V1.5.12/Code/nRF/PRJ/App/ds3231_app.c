@@ -161,27 +161,26 @@ void ds3231_setTime(struct ds3231_time *ds3231_dateTime_s)
 void ds3231_getStatus()
 {
         uint8_t rx_buf;
+        uint8_t tx_buf[2];
+
         uint8_t reg;
         uint8_t statusflag;
-
 
         // go to STATUS REGISTER 0x0F
         reg = 0x0F;
         statusflag = 12;
+        tx_buf[0] = reg;
+        tx_buf[1] = statusflag; // 0xC
         
-        nrf_drv_twi_tx(&m_ds3231, 0x68, &reg, 1, 1);
+        // 0xC (set OSF bit in STATUS REGISTER to 0 to start clock when BAT-powered)   
+        nrf_drv_twi_tx(&m_ds3231, 0x68, tx_buf, sizeof(tx_buf), 0);
             while(!m_xfer_done)
                 {
                 __WFE();
                 };
+        nrf_delay_ms(1);
 
-        // 0xC (set OSF bit in STATUS REGISTER to 0 to start clock when BAT-powered)     
-        nrf_drv_twi_tx(&m_ds3231, 0x68, &statusflag, 1, 0);
-            while(!m_xfer_done)
-                {
-                __WFE();
-                };
-
+        // read STATUS REGISTER
         nrf_drv_twi_rx(&m_ds3231, 0x68, &rx_buf, sizeof(rx_buf));
             while(!m_xfer_done)
                 {
@@ -191,9 +190,10 @@ void ds3231_getStatus()
           #ifdef DS3231_LOG_ENABLED 
             NRF_LOG_FLUSH();
             NRF_LOG_INFO("### STATUS REGISTER = %x ###", rx_buf);
+            NRF_LOG_FLUSH();      
           #endif
 
-         // also get CONTROL REGISTER for oscillator on/off status 
+        // also read CONTROL REGISTER for oscillator on/off status 
         reg = 0x0E;
 
         nrf_drv_twi_tx(&m_ds3231, 0x68, &reg, 1, 0);
@@ -202,7 +202,7 @@ void ds3231_getStatus()
                 __WFE();
                 };
 
-        nrf_delay_ms(5);
+        nrf_delay_ms(1);
 
         nrf_drv_twi_rx(&m_ds3231, 0x68, &rx_buf, sizeof(rx_buf));
             while(!m_xfer_done)
