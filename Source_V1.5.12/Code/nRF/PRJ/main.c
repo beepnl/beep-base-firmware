@@ -1625,7 +1625,7 @@ int main(void)
 
     reedswitchInit(reedswitch_callback);
 
-	#if ATECC_ENABLED
+	#if ATECC_ENABLED 
 		if(!atecc_getID())
         {
             uicr_getHWid();
@@ -1648,39 +1648,42 @@ int main(void)
 
     bme_app_init(measurement_handler);
 
-   // logtime_init(logtime_callback, nvm_getLastTime());
+    logtime_init(logtime_callback, nvm_getLastTime());
 
     // Check whether the reedswitch and or the tilt switch have to be enabled
     on_off_enable();
 
     ds3231_init();
 
-    //#ifdef DS3231_ENABLE 
+    // start osc by writing 0 to reg 0
+    // ds3231_writeByte(0x68, 0, 0, 2);
+
+    #ifdef DS3231_ENABLE 
         // time_t ds3231_timestamp;
         // ds3231_timestamp = ds3231_getTime(&ds3231_readTime_s); 
 
-       struct ds3231_time ds3231_writeTime_s;
+        
+        #ifdef DS3231_SET_TIME
+        struct tm ds3231_writeTime_s;
         ds3231_setTime(&ds3231_writeTime_s);    
-
-                      nrf_delay_ms(1);
-
+        #endif
+/*                      
         ds3231_getStatus();
+        nrf_delay_us(50);
 
-                       nrf_delay_ms(1);
-
-
-        struct ds3231_time ds3231_readTime_s;
+*/
+        struct tm ds3231_readTime_s;
         ds3231_getTime(&ds3231_readTime_s); 
 
-        nrf_delay_ms(1200);
+        nrf_delay_ms(1005);
         ds3231_getTime(&ds3231_readTime_s); 
 
-        nrf_delay_ms(1200);
+        nrf_delay_ms(1005);
         ds3231_getTime(&ds3231_readTime_s); 
 
-        nrf_delay_ms(1200);
+        nrf_delay_ms(1005);
         ds3231_getTime(&ds3231_readTime_s); 
-
+    #endif
  
     while (1)
     {
