@@ -109,18 +109,18 @@ void ds3231_setTime(struct tm *ds3231_dateTime_s)
 {
         m_xfer_done = false;
         ret_code_t err_code;
-        struct tm logtime;
 
-        time_t timeValue = get_logtime_value();
-        logtime = *localtime(&timeValue); 
-        
-        ds3231_dateTime_s->tm_sec = dec2bcd(logtime.tm_sec); 
-        ds3231_dateTime_s->tm_min = dec2bcd(logtime.tm_min);
-        ds3231_dateTime_s->tm_hour = dec2bcd(logtime.tm_hour & 0x3f);  // always enable 24-hour mode (bit 3)
-        ds3231_dateTime_s->tm_wday = dec2bcd(logtime.tm_wday);
-        ds3231_dateTime_s->tm_mday = dec2bcd(logtime.tm_mday);
-        ds3231_dateTime_s->tm_mon = dec2bcd(logtime.tm_mon);
-        ds3231_dateTime_s->tm_year = dec2bcd(logtime.tm_year);
+        struct tm *logtime;
+        time_t logtime_value = get_logtime_value();
+        logtime = localtime(&logtime_value); 
+   
+        ds3231_dateTime_s->tm_sec = dec2bcd(logtime->tm_sec); 
+        ds3231_dateTime_s->tm_min = dec2bcd(logtime->tm_min);
+        ds3231_dateTime_s->tm_hour = dec2bcd(logtime->tm_hour & 0x3f);  // always enable 24-hour mode (bit 3)
+        ds3231_dateTime_s->tm_wday = dec2bcd(logtime->tm_wday); // ignored by mktime()
+        ds3231_dateTime_s->tm_mday = dec2bcd(logtime->tm_mday);
+        ds3231_dateTime_s->tm_mon = dec2bcd(logtime->tm_mon);
+        ds3231_dateTime_s->tm_year = dec2bcd(logtime->tm_year);
 
         uint8_t tx_buf[8];
         tx_buf[0] = 0; // register address 
@@ -129,38 +129,20 @@ void ds3231_setTime(struct tm *ds3231_dateTime_s)
 
         #ifdef DS3231_LOG_ENABLED
                 NRF_LOG_INFO("### tx_buf[1] = %d ###", tx_buf[1]);
-                NRF_LOG_FLUSH();
-
+                // NRF_LOG_FLUSH();
                 NRF_LOG_INFO("### ds3231_dateTime_s = %d ###", &ds3231_dateTime_s->tm_sec);
-               // NRF_LOG_FLUSH();
-
-                NRF_LOG_INFO("### get_logtime_value = %s ###", get_logtime_string(timeValue));
-               // NRF_LOG_FLUSH();
-
-                NRF_LOG_INFO("### logtime_sec = %d ###", logtime.tm_sec );
-              //  NRF_LOG_FLUSH();
-
+                // NRF_LOG_FLUSH();
+                NRF_LOG_INFO("### get_logtime_value = %s ###", get_logtime_string(logtime_value));
+                // NRF_LOG_FLUSH();
+                NRF_LOG_INFO("### logtime_sec = %d \n logtime_min = %d \n logtime_hour = %d \n logtime_wday = %d \n logtime_mday = %d \n logtime_mon = %d \n logtime_year = %d", logtime->tm_sec, logtime->tm_min, logtime->tm_hour,logtime->tm_wday,logtime->tm_mday,logtime->tm_year);
+                // NRF_LOG_FLUSH();
         #endif 
-
-
 
         nrf_drv_twi_tx(&m_ds3231, 0x68, tx_buf, sizeof(tx_buf), 0);        
             while(!m_xfer_done)
                 {
                 __WFE();
                 };
-/*
-        #ifdef DS3231_LOG_ENABLED 
-          NRF_LOG_INFO("### ds3231_dateTime_s ###");
-          NRF_LOG_HEXDUMP_INFO(ds3231_dateTime_s, sizeof(ds3231_dateTime_s));
-          nrf_delay_ms(1);
-          NRF_LOG_FLUSH();
-
-          NRF_LOG_INFO("### tx_buf ###");
-          NRF_LOG_HEXDUMP_INFO(tx_buf, sizeof(tx_buf));
-          NRF_LOG_FLUSH();
-        #endif
-*/
 }
 
 void ds3231_getStatus()
@@ -177,7 +159,8 @@ void ds3231_getStatus()
         tx_buf[0] = reg;
         tx_buf[1] = statusflag; // 0xC
         
-        // 0xC (set OSF bit in STATUS REGISTER to 0 to start clock when BAT-powered)   
+        // 0xC (set OSF bit in STATUS REGISTER to 0 to start clock when BAT-powered,
+        // this only has to be done on DS3231 that have never ran on battery before
         nrf_drv_twi_tx(&m_ds3231, 0x68, tx_buf, sizeof(tx_buf), 1);
             while(!m_xfer_done)
                 {
@@ -226,16 +209,19 @@ void ds3231_getStatus()
           #endif
 }
 
-void ds3231_getTime(struct tm *ds3231_dateTime)
+time_t ds3231_getTime()
 {
         uint8_t reg = 0;
         uint8_t rx_buf[7] = {0};
 
-        time_t ds3231_timestamp;
-        ds3231_timestamp = app_timer_cnt_get();
+        struct tm *ds3231_dateTime;
+
+        time_t app_timer;
+        app_timer = app_timer_cnt_get(); 
+        // todo: track time difference between RTC and internal clock?
 
         #ifdef DS3231_LOG_ENABLED
-            NRF_LOG_INFO("### app_timer_cnt_get = %lu ###", ds3231_timestamp);
+            NRF_LOG_INFO("### app_timer_cnt_get = %lu ###", app_timer);
             NRF_LOG_FLUSH();
         #endif
                    
@@ -253,38 +239,30 @@ void ds3231_getTime(struct tm *ds3231_dateTime)
                 __WFE();
                 };      
 
-            nrf_delay_ms(5);  
-        
         ds3231_dateTime->tm_sec = bcd2dec(rx_buf[0]);
         ds3231_dateTime->tm_min = bcd2dec(rx_buf[1]);
         ds3231_dateTime->tm_hour = bcd2dec(rx_buf[2]);
-        // ds3231_dateTime->tm_wday = bcd2dec(rx_buf[3]);
+        ds3231_dateTime->tm_wday = bcd2dec(rx_buf[3]); // is ignored by mktime()
         ds3231_dateTime->tm_mday = bcd2dec(rx_buf[3]);
         ds3231_dateTime->tm_mon = bcd2dec(rx_buf[4]);
         ds3231_dateTime->tm_year = bcd2dec(rx_buf[5]) - 1900;
 
-        // struct to timestamp
+        // convert received time from struct to timestamp
         time_t ds3231_dateTime_timestamp;
         ds3231_dateTime_timestamp = mktime(ds3231_dateTime);
-
+        
           #ifdef DS3231_LOG_ENABLED 
-            nrf_delay_ms(5);
+            /* nrf_delay_ms(5);
             for(int i = 0; i < 7; ++i) 
             {
               NRF_LOG_INFO("rx_buf[ %d ] = %d ", i, rx_buf[i]);
             };
-            NRF_LOG_FLUSH();
-             
-            NRF_LOG_INFO("### ds3231_dateTime -> tm_sec = %lu ###", ds3231_dateTime->tm_sec);
+            NRF_LOG_FLUSH();  */    
+            NRF_LOG_INFO("### ds3231_dateTime_timestamp = %lu ###", ds3231_dateTime_timestamp );
             NRF_LOG_INFO("### get_logtime_string(ds3231_dateTime_timestamp) = %s ###", get_logtime_string(ds3231_dateTime_timestamp)); 
+          #endif   
 
-            /*
-            NRF_LOG_INFO("### sec = %d, min = %d, hour = %d, day = %d, date = %d, month = %d, year = %d ###", 
-                         ds3231_dateTime->second, ds3231_dateTime->minute, ds3231_dateTime->hour, ds3231_dateTime->day,
-                         ds3231_dateTime->date, ds3231_dateTime->month, ds3231_dateTime->year);
-            */
-
-          #endif
+        return ds3231_dateTime_timestamp;      
 }
 
 uint8_t dec2bcd(uint8_t dec)
