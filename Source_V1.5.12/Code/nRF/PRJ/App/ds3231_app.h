@@ -9,6 +9,8 @@
 
 nrfx_drv_state_t ds3231_state(void);
 
+extern time_t ds3231_timestamp;
+
 struct ds3231_time{
         uint8_t second;
         uint8_t minute;
@@ -23,6 +25,7 @@ void ds3231_init(void);
 void ds3231_uninit(void);
 void ds3231_handler(nrf_drv_twi_evt_t const * p_event, void * p_context);
 
+void ds3231_getStatus();
 void ds3231_setTime(struct ds3231_time *ds3231_dateTime);
 void ds3231_getTime(struct ds3231_time *ds3231_dateTime);
 

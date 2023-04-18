@@ -6,6 +6,7 @@ NRF_LOG_MODULE_REGISTER();
 #include "app_error.h"
 #include "app_timer.h"
 #include "beepbaseboard.h"
+#include "beep_protocol.h"
 #include "ds3231_app.h"
 #include "gpio-board.h"
 #include "power_app.h"
@@ -14,6 +15,7 @@ NRF_LOG_MODULE_REGISTER();
 #include "log_time.h"
 #include "time.h"
 #include "app_timer.h"
+#include "nvm_fs.h"
 
 #define DS3231_ADDR 0x68U
 
@@ -107,12 +109,12 @@ void ds3231_setTime(struct ds3231_time *ds3231_dateTime_s)
 {
         m_xfer_done = false;
         ret_code_t err_code;
+        struct tm logtime;
 
         time_t timeValue = get_logtime_value();
-        struct tm logtime;
-        logtime = *localtime(&timeValue);
-
-        ds3231_dateTime_s->second = dec2bcd(logtime.tm_sec);
+        logtime = *localtime(&timeValue); 
+        
+        ds3231_dateTime_s->second = dec2bcd(logtime.tm_sec); 
         ds3231_dateTime_s->minute = dec2bcd(logtime.tm_min);
         ds3231_dateTime_s->hour = dec2bcd(logtime.tm_hour);
         ds3231_dateTime_s->day = dec2bcd(logtime.tm_wday);
@@ -120,42 +122,127 @@ void ds3231_setTime(struct ds3231_time *ds3231_dateTime_s)
         ds3231_dateTime_s->month = dec2bcd(logtime.tm_mon);
         ds3231_dateTime_s->year = dec2bcd(logtime.tm_year);
 
+        #ifdef DS3231_LOG_ENABLED
+                NRF_LOG_FLUSH();
+                NRF_LOG_INFO("### get_logtime_value = %d ###", timeValue);
+                NRF_LOG_FLUSH();
+
+                NRF_LOG_INFO("### logtime_sec = %d ###", logtime.tm_sec );
+                NRF_LOG_FLUSH();
+
+                NRF_LOG_INFO("### ds3231_dateTime_s = %d ###", ds3231_dateTime_s->second );
+                NRF_LOG_FLUSH();
+        #endif 
+
         uint8_t tx_buf[8];
         tx_buf[0] = 0; // register address 
 
-        memcpy(tx_buf+1, ds3231_dateTime_s, sizeof(tx_buf));
-
-        #ifdef DS3231_LOG_ENABLED 
-          NRF_LOG_HEXDUMP_INFO(ds3231_dateTime_s, 7);
-         // nrf_delay_ms(1);
-          NRF_LOG_FLUSH();
-          NRF_LOG_HEXDUMP_INFO(tx_buf, 7);
-          NRF_LOG_FLUSH();
-        #endif
+        memcpy(&tx_buf[1], &ds3231_dateTime_s, ((sizeof(tx_buf))-1));
 
         nrf_drv_twi_tx(&m_ds3231, 0x68, tx_buf, sizeof(tx_buf), 0);        
             while(!m_xfer_done)
                 {
                 __WFE();
                 };
+/*
+        #ifdef DS3231_LOG_ENABLED 
+          NRF_LOG_INFO("### ds3231_dateTime_s ###");
+          NRF_LOG_HEXDUMP_INFO(ds3231_dateTime_s, sizeof(ds3231_dateTime_s));
+          nrf_delay_ms(1);
+          NRF_LOG_FLUSH();
+
+          NRF_LOG_INFO("### tx_buf ###");
+          NRF_LOG_HEXDUMP_INFO(tx_buf, sizeof(tx_buf));
+          NRF_LOG_FLUSH();
+        #endif
+*/
 }
 
-void ds3231_getTime(struct ds3231_time *ds3231_dateTime)
+void ds3231_getStatus()
 {
-        uint8_t rx_buf[7] = {0};
-        uint8_t reg = 0x00;
+        uint8_t rx_buf;
+        uint8_t reg;
+        uint8_t statusflag;
+
+
+        // go to STATUS REGISTER 0x0F
+        reg = 0x0F;
+        statusflag = 12;
+        
+        nrf_drv_twi_tx(&m_ds3231, 0x68, &reg, 1, 1);
+            while(!m_xfer_done)
+                {
+                __WFE();
+                };
+
+        // 0xC (set OSF bit in STATUS REGISTER to 0 to start clock when BAT-powered)     
+        nrf_drv_twi_tx(&m_ds3231, 0x68, &statusflag, 1, 0);
+            while(!m_xfer_done)
+                {
+                __WFE();
+                };
+
+        nrf_drv_twi_rx(&m_ds3231, 0x68, &rx_buf, sizeof(rx_buf));
+            while(!m_xfer_done)
+                {
+                __WFE();
+                };          
+
+          #ifdef DS3231_LOG_ENABLED 
+            NRF_LOG_FLUSH();
+            NRF_LOG_INFO("### STATUS REGISTER = %x ###", rx_buf);
+          #endif
+
+         // also get CONTROL REGISTER for oscillator on/off status 
+        reg = 0x0E;
 
         nrf_drv_twi_tx(&m_ds3231, 0x68, &reg, 1, 0);
             while(!m_xfer_done)
                 {
                 __WFE();
                 };
-             
+
+        nrf_delay_ms(5);
+
+        nrf_drv_twi_rx(&m_ds3231, 0x68, &rx_buf, sizeof(rx_buf));
+            while(!m_xfer_done)
+                {
+                __WFE();
+                };          
+
+          #ifdef DS3231_LOG_ENABLED 
+            NRF_LOG_FLUSH();      
+            NRF_LOG_INFO("### CONTROL REGISTER = %x ###", rx_buf);
+            NRF_LOG_FLUSH();      
+          #endif
+}
+
+void ds3231_getTime(struct ds3231_time *ds3231_dateTime)
+{
+        uint8_t reg = 0;
+        uint8_t rx_buf[7];
+
+        time_t ds3231_timestamp;
+        ds3231_timestamp = app_timer_cnt_get();
+
+        #ifdef DS3231_LOG_ENABLED
+            NRF_LOG_INFO("### app_timer_cnt_get = %lu ###", ds3231_timestamp);
+            NRF_LOG_FLUSH();
+        #endif
+                   
+        nrf_drv_twi_tx(&m_ds3231, 0x68, &reg, 1, 0);
+            while(!m_xfer_done)
+                {
+                __WFE();
+                };
+
+            nrf_delay_ms(1);
+
         nrf_drv_twi_rx(&m_ds3231, 0x68, rx_buf, sizeof(rx_buf));
             while(!m_xfer_done)
                 {
                 __WFE();
-                };             
+                };          
 
         ds3231_dateTime->second = bcd2dec(rx_buf[0]);
         ds3231_dateTime->minute = bcd2dec(rx_buf[1]);
@@ -165,27 +252,31 @@ void ds3231_getTime(struct ds3231_time *ds3231_dateTime)
         ds3231_dateTime->month = bcd2dec(rx_buf[5]);
         ds3231_dateTime->year = bcd2dec(rx_buf[6]);
 
-        #ifdef DS3231_LOG_ENABLED 
-          nrf_delay_ms(1);
-          NRF_LOG_HEXDUMP_INFO(rx_buf, 7);
-          nrf_delay_ms(1);
-          NRF_LOG_FLUSH();
-          NRF_LOG_HEXDUMP_INFO(ds3231_dateTime, 7);
-          NRF_LOG_FLUSH();
-        #endif
+          #ifdef DS3231_LOG_ENABLED 
+            NRF_LOG_INFO("### rx_buf = %d ###", rx_buf[0]);
+          //   NRF_LOG_HEXDUMP_INFO(rx_buf, sizeof(rx_buf));      
+            /*
+            NRF_LOG_INFO("### sec = %d, min = %d, hour = %d, day = %d, date = %d, month = %d, year = %d ###", 
+                         ds3231_dateTime->second, ds3231_dateTime->minute, ds3231_dateTime->hour, ds3231_dateTime->day,
+                         ds3231_dateTime->date, ds3231_dateTime->month, ds3231_dateTime->year);
+            */
+            NRF_LOG_FLUSH();
+            NRF_LOG_INFO("### sec = %d ###", ds3231_dateTime->second);
+          
+          #endif
 }
 
 uint8_t dec2bcd(uint8_t dec)
 {
         uint8_t bcd;
-        bcd = ((dec / 10) << 4) + (dec % 10);
+        bcd = (dec / 10 * 16) + (dec % 10);
         return bcd;
 }
 
 uint8_t bcd2dec(uint8_t bcd)
 {
         uint8_t dec;
-        dec = ((bcd >> 4) * 10) + (bcd & 0x0F);
+        dec = (bcd / 16 * 10) + (bcd % 16);
         return dec;
 }
    
