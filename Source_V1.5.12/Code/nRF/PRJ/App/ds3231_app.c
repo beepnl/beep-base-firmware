@@ -116,7 +116,7 @@ void ds3231_setTime(struct ds3231_time *ds3231_dateTime_s)
         
         ds3231_dateTime_s->second = dec2bcd(logtime.tm_sec); 
         ds3231_dateTime_s->minute = dec2bcd(logtime.tm_min);
-        ds3231_dateTime_s->hour = dec2bcd(logtime.tm_hour & 0x3f);  // mask bit to enable 24hr clock
+        ds3231_dateTime_s->hour = dec2bcd(logtime.tm_hour & 0x3f);  // always enable 24-hour mode (bit 3)
         ds3231_dateTime_s->day = dec2bcd(logtime.tm_wday);
         ds3231_dateTime_s->date = dec2bcd(logtime.tm_mday);
         ds3231_dateTime_s->month = dec2bcd(logtime.tm_mon);
