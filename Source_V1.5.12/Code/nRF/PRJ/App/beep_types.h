@@ -337,18 +337,6 @@
 		uint8_t		state;
 	}DS18B20_STATE_s;
 
-        // DS3231 time
-            typedef struct
-	{
-		uint8_t		channel;
-        uint8_t     gain;
-        int8_t      volume;
-        uint8_t     fft_count;
-        uint8_t     fft_start;
-        uint8_t     fft_stop;    
-        bool        min6dB;    
-	}ds3231_time_s;
-
     typedef struct
     {
         int16_t     Max;
