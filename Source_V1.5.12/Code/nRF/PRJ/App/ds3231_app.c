@@ -296,6 +296,11 @@ uint8_t bcd2dec(uint8_t bcd)
    
 bool ds3231_detected(void)
 {
+       if(ds3231_status() == !NRFX_DRV_STATE_POWERED_ON)
+         {
+           ds3231_init();
+         }
+
         ret_code_t err_code;
 
         uint8_t address;
@@ -327,6 +332,8 @@ bool ds3231_detected(void)
               NRF_LOG_INFO("### TWI SCAN FOUND NO DEVICES ###");
               NRF_LOG_FLUSH();
             #endif
+
+            ds3231_uninit();
         }
 
         APP_ERROR_CHECK(err_code);
