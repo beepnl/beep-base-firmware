@@ -61,13 +61,15 @@
 #define BLE_ADV_START_UP_ENABLE         1
 #define BLE_ADV_START_STOP              0
 #define BLE_ADV_ENABLE                  1
-#define ATECC_ENABLED                   1
+#define ATECC_ENABLED                   0
 #define BLE_PASSKEY_ENABLED             1
 #define LORAWAN_JOIN_ENABLE             true
 #define TLV_ENABLE                      1
 #define BME280_ENABLE                   1
 #define DS3231_ENABLE                   1
+#define DS3231_SET_INITIAL_TIME         0
 #define SEND_FIRMWARE_VERSION_ON_JOIN   1
+
 
 
 // <h> nRF_Log 
@@ -75,7 +77,7 @@
 // <e> NRF_LOG_ENABLED - nrf_log - Logger
 //==========================================================
 #ifdef DEBUG
-	#define NRF_LOG_ENABLED							1
+	#define NRF_LOG_ENABLED					1
     #define NRF_LOG_BACKEND_UART_ENABLED			0
     #define NRF_LOG_BACKEND_RTT_ENABLED				1
     #define NRF_LOG_USES_TIMESTAMP					1
@@ -114,8 +116,8 @@
 // <o> SEGGER_RTT_CONFIG_BUFFER_SIZE_UP - Size of upstream buffer. 
 // <i> Note that either @ref NRF_LOG_BACKEND_RTT_OUTPUT_BUFFER_SIZE
 // <i> or this value is actually used. It depends on which one is bigger.
-#define SEGGER_RTT_CONFIG_BUFFER_SIZE_UP		512
-#define SEGGER_RTT_CONFIG_MAX_NUM_UP_BUFFERS	32
+#define SEGGER_RTT_CONFIG_BUFFER_SIZE_UP		4096
+#define SEGGER_RTT_CONFIG_MAX_NUM_UP_BUFFERS	2
 #define SEGGER_RTT_CONFIG_BUFFER_SIZE_DOWN		16
 #define SEGGER_RTT_CONFIG_MAX_NUM_DOWN_BUFFERS	2
 #define SEGGER_RTT_CONFIG_DEFAULT_MODE			0
@@ -1401,7 +1403,7 @@
 // <i> If set to true, you need to call nrf_ble_lesc_request_handler() in the main loop to respond to LESC-related BLE events. If LESC support is not required, set this to false to save code space.
 
 #ifndef PM_LESC_ENABLED
-#define PM_LESC_ENABLED 1
+#define PM_LESC_ENABLED 0
 #endif
 
 // <e> PM_RA_PROTECTION_ENABLED - Enable/disable protection against repeated pairing attempts in Peer Manager.

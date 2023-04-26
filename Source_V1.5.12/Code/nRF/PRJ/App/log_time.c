@@ -5,6 +5,7 @@ NRF_LOG_MODULE_REGISTER();
 #include "nrf.h"
 #include "app_timer.h"
 #include "math.h"
+#include "ds3231_app.h"
 #include <stdlib.h>
 
 static volatile time_t m_time;
@@ -103,6 +104,9 @@ void logtime_set_time(uint32_t year, uint32_t month, uint32_t day, uint32_t hour
     time_struct.tm_min = minute;
     time_struct.tm_sec = second;   
     newtime = mktime(&time_struct);
+
+    // update
+    ds3231_setTime(&time_struct);
      
     // Apply the new time.            
     logtime_set_long(newtime);
@@ -112,8 +116,12 @@ void logtime_set_time(uint32_t year, uint32_t month, uint32_t day, uint32_t hour
 
 static void logtimeAppTimerCallback(void * p_context)
 {
-    // Get the current time in seconds
+    // Get the current time in seconds 
+    #ifdef DS3231_ENABLE
+    time_t return_time = get_logtime_value();
+    #else
     time_t return_time = get_local_logtime_value(true);
+    #endif
 
     // Return the current time back to the main.
     if(main_cb != NULL)

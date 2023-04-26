@@ -17,7 +17,7 @@ NRF_LOG_MODULE_REGISTER();
 #include "app_timer.h"
 #include "nvm_fs.h"
 
-#define DS3231_ADDR 0x68U
+#define DS3231_LOG_ENABLED 0
 
 nrf_drv_twi_t m_ds3231 = NRF_DRV_TWI_INSTANCE(1);
 static volatile bool m_xfer_done = false;
@@ -54,7 +54,7 @@ void ds3231_init(void)
            .scl                = SCL_EXT,
            .sda                = SDA_EXT,
            .frequency          = NRF_TWI_FREQ_100K,
-           .interrupt_priority = APP_IRQ_PRIORITY_LOW,
+           .interrupt_priority = APP_IRQ_PRIORITY_HIGH,
            .clear_bus_init     = true
         };
         
@@ -63,11 +63,13 @@ void ds3231_init(void)
             NRF_LOG_FLUSH();
           #endif
 
-          powerApp_Enable(true, PWR_BME280);
-          ret_code_t err_code = nrf_drv_twi_init(&m_ds3231, &ds3231_config, ds3231_handler, NULL); 
+        powerApp_Enable(true, PWR_BME280);
+        ret_code_t err_code = nrf_drv_twi_init(&m_ds3231, &ds3231_config, ds3231_handler, NULL); 
         
-          nrf_drv_twi_enable(&m_ds3231);
-          nrf_delay_ms(5);
+        nrf_drv_twi_enable(&m_ds3231);
+        nrf_delay_ms(5);
+
+        ds3231_start_clock_osc();
 
         APP_ERROR_CHECK(err_code);
 }
@@ -76,15 +78,17 @@ void ds3231_uninit(void)
 { 
         nrf_drv_twi_uninit(&m_ds3231);
         nrf_drv_twi_disable(&m_ds3231);
-        // todo: disable pullup on pin too?
 
-        #ifdef DS3231_LOG_ENABLED
-        NRF_LOG_INFO("### DS3231 TWI INSTANCE --> DE-INIT AND DISABLE ###");
-        NRF_LOG_FLUSH();
-        #endif
+        nrf_gpio_cfg_output_state(SCL_EXT, 0);
+        nrf_gpio_cfg_output_state(SDA_EXT, 0);
+
+          #ifdef DS3231_LOG_ENABLED
+            NRF_LOG_INFO("### DS3231 DE-INIT AND DISABLE ###");
+            NRF_LOG_FLUSH();
+          #endif
 }
 
-nrfx_drv_state_t ds3231_state(void)
+nrfx_drv_state_t ds3231_status(void)
 {
         return nrf_drv_twi_enabled(&m_ds3231);
 }
@@ -110,33 +114,30 @@ void ds3231_setTime(struct tm *ds3231_dateTime_s)
         m_xfer_done = false;
         ret_code_t err_code;
 
-        struct tm *logtime;
-        time_t logtime_value = get_logtime_value();
-        logtime = localtime(&logtime_value); 
-   
-        ds3231_dateTime_s->tm_sec = dec2bcd(logtime->tm_sec); 
-        ds3231_dateTime_s->tm_min = dec2bcd(logtime->tm_min);
-        ds3231_dateTime_s->tm_hour = dec2bcd(logtime->tm_hour & 0x3f);  // always enable 24-hour mode (bit 3)
-        ds3231_dateTime_s->tm_wday = dec2bcd(logtime->tm_wday); // ignored by mktime()
-        ds3231_dateTime_s->tm_mday = dec2bcd(logtime->tm_mday);
-        ds3231_dateTime_s->tm_mon = dec2bcd(logtime->tm_mon);
-        ds3231_dateTime_s->tm_year = dec2bcd(logtime->tm_year);
+        time_t init_time = 0;
+        struct tm *init_time_tm;
+        init_time_tm = localtime(&init_time); 
+
+        ds3231_init(); // init TWI
+
+        ds3231_writeByte(0x68, 0, 0, 2);
+        nrf_delay_ms(5);
+
+        memset(ds3231_dateTime_s, 0, sizeof(struct tm));
 
         uint8_t tx_buf[8];
         tx_buf[0] = 0; // register address 
+   
+        tx_buf[1] = dec2bcd(ds3231_dateTime_s->tm_sec);// & 0x7F; 
+        tx_buf[2] = dec2bcd(ds3231_dateTime_s->tm_min);// & 0x7F;
+        tx_buf[3] = dec2bcd(ds3231_dateTime_s->tm_hour);// & 0x3F;  // always enable 24-hour mode (bit 3)
+        tx_buf[4] = dec2bcd(ds3231_dateTime_s->tm_wday);// & 0x07; // ignored by mktime(), memset to 0?
+        tx_buf[5] = dec2bcd(ds3231_dateTime_s->tm_mday);// & 0x3F;
+        tx_buf[6] = dec2bcd(ds3231_dateTime_s->tm_mon);// & 0x1F;
+        tx_buf[7] = dec2bcd(ds3231_dateTime_s->tm_year);// % 100);
 
-        memcpy(&tx_buf[1], ds3231_dateTime_s, ((sizeof(tx_buf))-1));
-
-        #ifdef DS3231_LOG_ENABLED
-                NRF_LOG_INFO("### tx_buf[1] = %d ###", tx_buf[1]);
-                // NRF_LOG_FLUSH();
-                NRF_LOG_INFO("### ds3231_dateTime_s = %d ###", &ds3231_dateTime_s->tm_sec);
-                // NRF_LOG_FLUSH();
-                NRF_LOG_INFO("### get_logtime_value = %s ###", get_logtime_string(logtime_value));
-                // NRF_LOG_FLUSH();
-                NRF_LOG_INFO("### logtime_sec = %d \n logtime_min = %d \n logtime_hour = %d \n logtime_wday = %d \n logtime_mday = %d \n logtime_mon = %d \n logtime_year = %d", logtime->tm_sec, logtime->tm_min, logtime->tm_hour,logtime->tm_wday,logtime->tm_mday,logtime->tm_year);
-                // NRF_LOG_FLUSH();
-        #endif 
+        time_t newtime = mktime(ds3231_dateTime_s);
+        // time_t diff = logtime_value - newtime;
 
         nrf_drv_twi_tx(&m_ds3231, 0x68, tx_buf, sizeof(tx_buf), 0);        
             while(!m_xfer_done)
@@ -145,93 +146,92 @@ void ds3231_setTime(struct tm *ds3231_dateTime_s)
                 };
 }
 
-void ds3231_getStatus()
+void ds3231_start_clock_osc()
 {
         uint8_t rx_buf;
         uint8_t tx_buf[2];
-
         uint8_t reg;
         uint8_t statusflag;
 
-        // go to STATUS REGISTER 0x0F
-        reg = 0x0F;
-        statusflag = 12;
+        //  set OSF bit to 0 in status reg
+        //  starts clock when DS3231 has VBAT 
+        reg = 0x0F; 
+        statusflag = 0x0C; 
         tx_buf[0] = reg;
-        tx_buf[1] = statusflag; // 0xC
+        tx_buf[1] = statusflag; 
         
-        // 0xC (set OSF bit in STATUS REGISTER to 0 to start clock when BAT-powered,
-        // this only has to be done on DS3231 that have never ran on battery before
-        nrf_drv_twi_tx(&m_ds3231, 0x68, tx_buf, sizeof(tx_buf), 1);
+        nrf_drv_twi_tx(&m_ds3231, 0x68, tx_buf, sizeof(tx_buf), 0);
             while(!m_xfer_done)
                 {
                 __WFE();
-                };
+                };    
         nrf_delay_ms(5);
 
-        // read STATUS REGISTER
-        nrf_drv_twi_tx(&m_ds3231, 0x68, &reg, 1, 1);
-            while(!m_xfer_done)
-                {
-                __WFE();
-                };
-
-        nrf_drv_twi_rx(&m_ds3231, 0x68, &rx_buf, sizeof(rx_buf));
-            while(!m_xfer_done)
-                {
-                __WFE();
-                };          
-
-          #ifdef DS3231_LOG_ENABLED 
-            NRF_LOG_INFO("### STATUS REGISTER = %x ###", rx_buf);
-           // NRF_LOG_FLUSH();      
-          #endif
-
-        // also read CONTROL REGISTER for oscillator on/off status 
-        reg = 0x0E;
-
+        // read back status reg
         nrf_drv_twi_tx(&m_ds3231, 0x68, &reg, 1, 0);
             while(!m_xfer_done)
                 {
                 __WFE();
                 };
-
         nrf_delay_ms(5);
 
         nrf_drv_twi_rx(&m_ds3231, 0x68, &rx_buf, sizeof(rx_buf));
             while(!m_xfer_done)
                 {
                 __WFE();
+                };     
+        nrf_delay_ms(5);     
+
+          #ifdef DS3231_LOG_ENABLED
+              NRF_LOG_INFO("### STATUS REGISTER = %d ###", rx_buf);                               
+            if(rx_buf == 12)
+              {
+              NRF_LOG_INFO("### OSF BIT = 1 ### \n ### DS3231 clock oscillator is STOPPED ###");
+              };
+          #endif
+ 
+        reg = 0x0E; // also read control reg for oscillator on/off status 
+        rx_buf = 0; // empty rx buffer
+
+        nrf_drv_twi_tx(&m_ds3231, 0x68, &reg, 1, 0);
+            while(!m_xfer_done)
+                {
+                __WFE();
+                }; 
+        nrf_delay_ms(5);
+                   
+        nrf_drv_twi_rx(&m_ds3231, 0x68, &rx_buf, sizeof(rx_buf));
+            while(!m_xfer_done)
+                {
+                __WFE();
                 };          
+        nrf_delay_ms(5);
 
           #ifdef DS3231_LOG_ENABLED   
-            NRF_LOG_INFO("### CONTROL REGISTER = %x ###", rx_buf);
-            // NRF_LOG_FLUSH();      
+            NRF_LOG_INFO("### CONTROL REGISTER = %d ###", rx_buf);
+                          NRF_LOG_FLUSH();      
           #endif
 }
 
 time_t ds3231_getTime()
 {
+        if(ds3231_status() == !NRFX_DRV_STATE_POWERED_ON)
+          {
+            ds3231_init();
+          }
+
         uint8_t reg = 0;
         uint8_t rx_buf[7] = {0};
 
-        struct tm *ds3231_dateTime;
+        struct tm *ds3231_dateTime; 
+        memset(ds3231_dateTime, 0, sizeof(struct tm));
 
-        time_t app_timer;
-        app_timer = app_timer_cnt_get(); 
-        // todo: track time difference between RTC and internal clock?
-
-        #ifdef DS3231_LOG_ENABLED
-            NRF_LOG_INFO("### app_timer_cnt_get = %lu ###", app_timer);
-            NRF_LOG_FLUSH();
-        #endif
-                   
         nrf_drv_twi_tx(&m_ds3231, 0x68, &reg, 1, 0);
             while(!m_xfer_done)
                 {
                 __WFE();
                 };
-
-            nrf_delay_ms(1);
+        nrf_delay_ms(5);
 
         nrf_drv_twi_rx(&m_ds3231, 0x68, rx_buf, sizeof(rx_buf));
             while(!m_xfer_done)
@@ -243,24 +243,39 @@ time_t ds3231_getTime()
         ds3231_dateTime->tm_min = bcd2dec(rx_buf[1]);
         ds3231_dateTime->tm_hour = bcd2dec(rx_buf[2]);
         ds3231_dateTime->tm_wday = bcd2dec(rx_buf[3]); // is ignored by mktime()
-        ds3231_dateTime->tm_mday = bcd2dec(rx_buf[3]);
-        ds3231_dateTime->tm_mon = bcd2dec(rx_buf[4]);
-        ds3231_dateTime->tm_year = bcd2dec(rx_buf[5]) - 1900;
+        ds3231_dateTime->tm_mday = bcd2dec(rx_buf[4]);
+        ds3231_dateTime->tm_mon = bcd2dec(rx_buf[5]);
+        ds3231_dateTime->tm_year = (bcd2dec(rx_buf[6]) - 1900);
+         
+         /* validity check */
+         /*
+         if (ds3231_dateTime->tm_mon) {
+             ds3231_dateTime->tm_mon--;
+         };
+         // 0 = sunday
+         if (ds3231_dateTime->tm_wday) {
+             ds3231_dateTime->tm_wday--;
+         };
+         if ((ds3231_dateTime->tm_sec > 59) || (ds3231_dateTime->tm_min > 59) || (ds3231_dateTime->tm_hour > 23) ||
+             (ds3231_dateTime->tm_mday < 1) || (ds3231_dateTime->tm_mday > 31) || (ds3231_dateTime->tm_mon > 11) || (ds3231_dateTime->tm_year > 199) ||
+             (ds3231_dateTime->tm_wday > 6))
+         {
+           #ifdef DS3231_LOG_ENABLED 1
+             NRF_LOG_INFO("### DS3231 date is invalid %s ###", get_logtime_string(get_logtime_value()));
+             NRF_LOG_FLUSH(); 
+           #endif 
+         }; 
+         */
 
-        // convert received time from struct to timestamp
         time_t ds3231_dateTime_timestamp;
-        ds3231_dateTime_timestamp = mktime(ds3231_dateTime);
+        ds3231_dateTime_timestamp = mktime(ds3231_dateTime); // ds3231 time struct to timestamp
         
-          #ifdef DS3231_LOG_ENABLED 
-            /* nrf_delay_ms(5);
-            for(int i = 0; i < 7; ++i) 
-            {
-              NRF_LOG_INFO("rx_buf[ %d ] = %d ", i, rx_buf[i]);
-            };
-            NRF_LOG_FLUSH();  */    
-            NRF_LOG_INFO("### ds3231_dateTime_timestamp = %lu ###", ds3231_dateTime_timestamp );
-            NRF_LOG_INFO("### get_logtime_string(ds3231_dateTime_timestamp) = %s ###", get_logtime_string(ds3231_dateTime_timestamp)); 
+          #ifdef DS3231_LOG_ENABLED              
+                    NRF_LOG_INFO("### get_logtime_string(ds3231_dateTime_timestamp) = %s ###", get_logtime_string(ds3231_dateTime_timestamp)); 
+                    NRF_LOG_FLUSH();
           #endif   
+
+        ds3231_uninit();
 
         return ds3231_dateTime_timestamp;      
 }
@@ -269,9 +284,6 @@ uint8_t dec2bcd(uint8_t dec)
 {
         uint8_t bcd;
         bcd = ((dec / 10 * 16) + (dec % 10));
-        #ifdef DS3231_LOG_ENABLED
-          NRF_LOG_INFO("### DEC %d = %d in BCD ###", dec, bcd); 
-        #endif
         return bcd;
 }
 
@@ -279,40 +291,45 @@ uint8_t bcd2dec(uint8_t bcd)
 {
         uint8_t dec;
         dec = ((bcd / 16 * 10) + (bcd % 16));
-        #ifdef DS3231_LOG_ENABLED
-          NRF_LOG_INFO("### BCD %d = %d in DEC ###", bcd, dec); 
-        #endif
         return dec;
 }
    
-void twi_scanner(void)
+bool ds3231_detected(void)
 {
         ret_code_t err_code;
 
         uint8_t address;
         uint8_t sample_data;
-        bool detected_device = false;
+        bool detected = false;
 
-        NRF_LOG_INFO("### START TWI BUS SCAN ###");
-        NRF_LOG_FLUSH();
+        #ifdef DS3231_LOG_ENABLED
+          NRF_LOG_INFO("### START TWI BUS SCAN ###");
+          NRF_LOG_FLUSH();
+        #endif
 
           for (address = 1; address <= 127; address++)
           {
               err_code = nrf_drv_twi_rx(&m_ds3231, address, &sample_data, sizeof(sample_data));
-              if (err_code == NRF_SUCCESS)
+              if (err_code == NRF_SUCCESS && address == 0x68)
               {
-                  detected_device = true;
-                  NRF_LOG_INFO("### TWI SCAN FOUND DEVICE AT 0x%x ###", address);
-            
+                  detected = true;
+
+                  #ifdef DS3231_LOG_ENABLED
+                    NRF_LOG_INFO("### TWI SCAN FOUND DS3231 RTC AT 0x%x ###", address);
+                    NRF_LOG_FLUSH();
+                  #endif    
               }
-          NRF_LOG_FLUSH();
           }
 
-        if (!detected_device)
+        if (!detected)
         {
-            NRF_LOG_INFO("### TWI SCAN FOUND NO DEVICES ###");
-            NRF_LOG_FLUSH();
+            #ifdef DS3231_LOG_ENABLED
+              NRF_LOG_INFO("### TWI SCAN FOUND NO DEVICES ###");
+              NRF_LOG_FLUSH();
+            #endif
         }
 
         APP_ERROR_CHECK(err_code);
+
+        return detected;
 }
