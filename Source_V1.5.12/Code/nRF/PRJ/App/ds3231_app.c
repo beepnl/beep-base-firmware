@@ -305,38 +305,45 @@ bool ds3231_detected(void)
 
         uint8_t address;
         uint8_t sample_data;
-        bool detected = false;
 
         #ifdef DS3231_LOG_ENABLED
           NRF_LOG_INFO("### START TWI BUS SCAN ###");
           NRF_LOG_FLUSH();
         #endif
 
-          for (address = 1; address <= 127; address++)
-          {
-              err_code = nrf_drv_twi_rx(&m_ds3231, address, &sample_data, sizeof(sample_data));
-              if (err_code == NRF_SUCCESS && address == 0x68)
-              {
-                  detected = true;
+              nrf_drv_twi_tx(&m_ds3231, 0x68, &sample_data, 1, 0);
+                  while(!m_xfer_done)
+                      {
+                      __WFE();
+                      };
+              nrf_delay_ms(5);
 
+              err_code = nrf_drv_twi_rx(&m_ds3231, 0x68, &sample_data, sizeof(sample_data));
+                  while(!m_xfer_done)
+                      {
+                      __WFE();
+                      };
+              nrf_delay_ms(5);
+
+              if (err_code == NRF_SUCCESS)
+              {
                   #ifdef DS3231_LOG_ENABLED
                     NRF_LOG_INFO("### TWI SCAN FOUND DS3231 RTC AT 0x%x ###", address);
                     NRF_LOG_FLUSH();
                   #endif    
+
+                return true;
               }
-          }
+          
+              if (!detected)
+              {
+                  #ifdef DS3231_LOG_ENABLED
+                    NRF_LOG_INFO("### TWI SCAN FOUND NO DEVICES ###");
+                    NRF_LOG_FLUSH();
+                  #endif          
+                         
+                ds3231_uninit();
 
-        if (!detected)
-        {
-            #ifdef DS3231_LOG_ENABLED
-              NRF_LOG_INFO("### TWI SCAN FOUND NO DEVICES ###");
-              NRF_LOG_FLUSH();
-            #endif
-
-            ds3231_uninit();
-        }
-
-        APP_ERROR_CHECK(err_code);
-
-        return detected;
+                return false;
+              }
 }
