@@ -1081,12 +1081,12 @@ void nvm_ds3231_set_initialized()
     nvm_fds_changed();
 }
 
-bool nvm_ds3231_is_initialized(void)
+bool nvm_ds3231_is_ble_initialized(void)
 {
     return (bool) flash_cfg.ds3231_ble_initialized;
 }
 
-void nvm_ds3231_set_initialized()
+void nvm_ds3231_set_ble_initialized()
 {
     flash_cfg.ds3231_ble_initialized = true;
     nvm_fds_changed();
