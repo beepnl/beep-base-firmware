@@ -4,7 +4,7 @@ NRF_LOG_MODULE_REGISTER();
 #include "nrf_log_ctrl.h"
 #include "sdk_errors.h"	
 #include "app_error.h"
-#include "app_timer.h"
+#include <stdbool.h>
 #include "beepbaseboard.h"
 #include "beep_protocol.h"
 #include "ds3231_app.h"
@@ -14,8 +14,8 @@ NRF_LOG_MODULE_REGISTER();
 #include "nrf.h"
 #include "log_time.h"
 #include "time.h"
-#include "app_timer.h"
 #include "nvm_fs.h"
+#include "Buzzer.h"
 
 #define DS3231_LOG_ENABLED 0
 
@@ -53,9 +53,10 @@ void ds3231_init(void)
         nrf_drv_twi_config_t ds3231_config = {
            .scl                = SCL_EXT,
            .sda                = SDA_EXT,
-           .frequency          = NRF_TWI_FREQ_100K,
-           .interrupt_priority = APP_IRQ_PRIORITY_HIGH,
-           .clear_bus_init     = true
+           .frequency          = NRF_TWI_FREQ_400K,
+           .interrupt_priority = APP_IRQ_PRIORITY_LOW,
+           .clear_bus_init     = true,
+           .hold_bus_uninit = true,
         };
         
           #ifdef DS3231_LOG_ENABLED
@@ -68,8 +69,6 @@ void ds3231_init(void)
         
         nrf_drv_twi_enable(&m_ds3231);
         nrf_delay_ms(5);
-
-        ds3231_start_clock_osc();
 
         APP_ERROR_CHECK(err_code);
 }
@@ -102,7 +101,7 @@ ret_code_t ds3231_writeByte(const uint8_t address, const uint8_t reg, uint8_t da
         buf[0] = reg;
         buf[1] = data;     
 
-        err_code = nrf_drv_twi_tx(&m_ds3231, 0x68, buf, 2, 1);
+        err_code = nrf_drv_twi_tx(&m_ds3231, 0x68, buf, 2, 0);
         
         APP_ERROR_CHECK(err_code);
         return err_code;
@@ -114,16 +113,18 @@ void ds3231_setTime(struct tm *ds3231_dateTime_s)
         m_xfer_done = false;
         ret_code_t err_code;
 
-        time_t init_time = 0;
-        struct tm *init_time_tm;
-        init_time_tm = localtime(&init_time); 
-
-        ds3231_init(); // init TWI
+        if(ds3231_status() != NRFX_DRV_STATE_POWERED_ON)
+          {
+              #ifdef DEBUG
+                Buzzer_sound(50, 600, 1000, 200, 4);
+              #endif
+            ds3231_init();        
+          }
 
         ds3231_writeByte(0x68, 0, 0, 2);
         nrf_delay_ms(5);
 
-        memset(ds3231_dateTime_s, 0, sizeof(struct tm));
+        //memset(ds3231_dateTime_s, 0, sizeof(struct tm));
 
         uint8_t tx_buf[8];
         tx_buf[0] = 0; // register address 
@@ -137,13 +138,18 @@ void ds3231_setTime(struct tm *ds3231_dateTime_s)
         tx_buf[7] = dec2bcd(ds3231_dateTime_s->tm_year);// % 100);
 
         time_t newtime = mktime(ds3231_dateTime_s);
+              #ifdef DEBUG
+                Buzzer_sound(50, 500, 400, 400, 7);
+              #endif
         // time_t diff = logtime_value - newtime;
-
+ 
         nrf_drv_twi_tx(&m_ds3231, 0x68, tx_buf, sizeof(tx_buf), 0);        
             while(!m_xfer_done)
                 {
                 __WFE();
                 };
+       
+       ds3231_start_clock_osc();
 }
 
 void ds3231_start_clock_osc()
@@ -163,7 +169,7 @@ void ds3231_start_clock_osc()
         nrf_drv_twi_tx(&m_ds3231, 0x68, tx_buf, sizeof(tx_buf), 0);
             while(!m_xfer_done)
                 {
-                __WFE();
+                __WFE();  
                 };    
         nrf_delay_ms(5);
 
@@ -176,7 +182,7 @@ void ds3231_start_clock_osc()
         nrf_delay_ms(5);
 
         nrf_drv_twi_rx(&m_ds3231, 0x68, &rx_buf, sizeof(rx_buf));
-            while(!m_xfer_done)
+            while(!m_xfer_done) 
                 {
                 __WFE();
                 };     
@@ -215,10 +221,10 @@ void ds3231_start_clock_osc()
 
 time_t ds3231_getTime()
 {
-        if(ds3231_status() == !NRFX_DRV_STATE_POWERED_ON)
+        /*if(ds3231_status() != NRFX_DRV_STATE_POWERED_ON)
           {
             ds3231_init();
-          }
+          }*/
 
         uint8_t reg = 0;
         uint8_t rx_buf[7] = {0};
@@ -249,13 +255,6 @@ time_t ds3231_getTime()
          
          /* validity check */
          /*
-         if (ds3231_dateTime->tm_mon) {
-             ds3231_dateTime->tm_mon--;
-         };
-         // 0 = sunday
-         if (ds3231_dateTime->tm_wday) {
-             ds3231_dateTime->tm_wday--;
-         };
          if ((ds3231_dateTime->tm_sec > 59) || (ds3231_dateTime->tm_min > 59) || (ds3231_dateTime->tm_hour > 23) ||
              (ds3231_dateTime->tm_mday < 1) || (ds3231_dateTime->tm_mday > 31) || (ds3231_dateTime->tm_mon > 11) || (ds3231_dateTime->tm_year > 199) ||
              (ds3231_dateTime->tm_wday > 6))
@@ -271,11 +270,13 @@ time_t ds3231_getTime()
         ds3231_dateTime_timestamp = mktime(ds3231_dateTime); // ds3231 time struct to timestamp
         
           #ifdef DS3231_LOG_ENABLED              
-                    NRF_LOG_INFO("### get_logtime_string(ds3231_dateTime_timestamp) = %s ###", get_logtime_string(ds3231_dateTime_timestamp)); 
-                    NRF_LOG_FLUSH();
+             NRF_LOG_INFO("### get_logtime_string(ds3231_dateTime_timestamp) = %s ###", get_logtime_string(ds3231_dateTime_timestamp)); 
+             NRF_LOG_FLUSH();
           #endif   
 
-        ds3231_uninit();
+        nrf_delay_ms(5);
+
+        //ds3231_uninit();
 
         return ds3231_dateTime_timestamp;      
 }
@@ -304,21 +305,22 @@ bool ds3231_detected(void)
         ret_code_t err_code;
 
         uint8_t address;
-        uint8_t sample_data;
+        uint8_t tx = 0;
+        uint8_t rx = 0;
 
         #ifdef DS3231_LOG_ENABLED
-          NRF_LOG_INFO("### START TWI BUS SCAN ###");
+          NRF_LOG_INFO("### START SCAN ###");
           NRF_LOG_FLUSH();
         #endif
 
-              nrf_drv_twi_tx(&m_ds3231, 0x68, &sample_data, 1, 0);
+              nrf_drv_twi_tx(&m_ds3231, 0x68, &tx, 1, 0);
                   while(!m_xfer_done)
                       {
                       __WFE();
                       };
               nrf_delay_ms(5);
 
-              err_code = nrf_drv_twi_rx(&m_ds3231, 0x68, &sample_data, sizeof(sample_data));
+              err_code = nrf_drv_twi_rx(&m_ds3231, 0x68, &rx, sizeof(rx));
                   while(!m_xfer_done)
                       {
                       __WFE();
@@ -328,14 +330,17 @@ bool ds3231_detected(void)
               if (err_code == NRF_SUCCESS)
               {
                   #ifdef DS3231_LOG_ENABLED
-                    NRF_LOG_INFO("### TWI SCAN FOUND DS3231 RTC AT 0x%x ###", address);
+                    NRF_LOG_INFO("### TWI SCAN FOUND DS3231 RTC AT 0x68 ###");
                     NRF_LOG_FLUSH();
                   #endif    
 
+                ds3231_start_clock_osc();
+                  #ifdef DEBUG 
+                    Buzzer_sound(50, 400, 500, 200, 2);
+                  #endif
                 return true;
               }
-          
-              if (!detected)
+              else
               {
                   #ifdef DS3231_LOG_ENABLED
                     NRF_LOG_INFO("### TWI SCAN FOUND NO DEVICES ###");
@@ -343,7 +348,6 @@ bool ds3231_detected(void)
                   #endif          
                          
                 ds3231_uninit();
-
                 return false;
               }
 }

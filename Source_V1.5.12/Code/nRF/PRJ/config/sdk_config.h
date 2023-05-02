@@ -67,7 +67,6 @@
 #define TLV_ENABLE                      1
 #define BME280_ENABLE                   1
 #define DS3231_ENABLE                   1
-#define DS3231_SET_INITIAL_TIME         0
 #define SEND_FIRMWARE_VERSION_ON_JOIN   1
 
 
@@ -77,10 +76,10 @@
 // <e> NRF_LOG_ENABLED - nrf_log - Logger
 //==========================================================
 #ifdef DEBUG
-	#define NRF_LOG_ENABLED					1
+	#define NRF_LOG_ENABLED					0
     #define NRF_LOG_BACKEND_UART_ENABLED			0
-    #define NRF_LOG_BACKEND_RTT_ENABLED				1
-    #define NRF_LOG_USES_TIMESTAMP					1
+    #define NRF_LOG_BACKEND_RTT_ENABLED				0
+    #define NRF_LOG_USES_TIMESTAMP					0
 	#define	NRF_LOG_HIGH_ACCURACY_TIMESTAMP			0
 #else
 	#define NRF_LOG_ENABLED							0

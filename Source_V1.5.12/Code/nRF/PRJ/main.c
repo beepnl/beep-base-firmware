@@ -749,6 +749,20 @@ void beep_ctrlpt_event_handler(CONTROL_SOURCE source, BEEP_protocol_s * prot)
             nvm_setLastTime(prot->param.time);
             nvm_fds_changed(); 
             sendResponse(source, prot->command, ret);
+
+           #ifdef DS3231_ENABLE 1
+           // and store the new time in the ds3231 if this hasn't been done before     
+                if(nvm_ds3231_is_ble_initialized() == false)
+                {
+                  struct tm *ble_time_tm;
+                  ble_time_tm = localtime(&prot->param.time);
+
+                  ds3231_setTime(ble_time_tm); 
+              
+                  nvm_ds3231_set_ble_initialized(true);
+                } 
+           #endif
+
             return;
             break;
         }
@@ -1007,7 +1021,7 @@ static void sampleTimerStart(bool en)
 		}
 
 		// Use a faster interval while debugging.
-		#if 0 // DEBUG
+		#ifdef   DEBUG
 			msInterval = main_app.sampleInterval_min * 1000 * 20;
 		#else
 			msInterval = main_app.sampleInterval_min * 1000 * 60;
@@ -1581,8 +1595,8 @@ static void power_management_init(void)
  */
 int main(void)
 {
-	uint32_t ret;
-  resetReason = NRF_POWER->RESETREAS;
+    uint32_t ret;
+    resetReason = NRF_POWER->RESETREAS;
 
     GpioMcuInit();
     RFM_LowPowerMode();// Disable the clock output on DIO5 and set the RFM to sleep mode.
@@ -1612,10 +1626,10 @@ int main(void)
 
     HX711_app_Init(measurement_handler);
 
-	// Init the OWI bus and search for DS18B20 devices
+    // Init the OWI bus and search for DS18B20 devices
     DS18B20_App_init(300, TEMP_12BIT_RESOLUTION, measurement_handler);
-
-	// Buzzer initialization
+    
+    // Buzzer initialization
     Buzzer_init(0);
 
     ret = app_timer_create(&sampleTimer, APP_TIMER_MODE_REPEATED, sampleTimerCallback);
@@ -1648,45 +1662,46 @@ int main(void)
 
     bme_app_init(measurement_handler);
 
-    logtime_init(logtime_callback, nvm_getLastTime());
+    logtime_init(logtime_callback, nvm_getLastTime()); 
 
     // Check whether the reedswitch and or the tilt switch have to be enabled
     on_off_enable();
 
-    ds3231_init();
+    if(ds3231_detected())
+      {
+        // on first-time use: set time with last known time from flash 
+        if (nvm_ds3231_is_initialized() == false)
+          {     
+          #ifdef DEBUG 
+          Buzzer_sound(50, 600, 1000, 1000, 3);
+          #endif
+                time_t init_time = nvm_getLastTime();         
+                struct tm *init_time_tm;
+                init_time_tm = localtime(&init_time);
+                ds3231_setTime(init_time_tm);  
+                nvm_ds3231_set_initialized();
+          }     
+              
+            #ifdef DEBUG 
+              Buzzer_sound(50, 1800, 2000, 500, 5);
+            #endif
+            // get the ds3231 time and store in flash
+            time_t ds3231_time;
+            ds3231_time = ds3231_getTime();
 
-    // start osc by writing 0 to reg 0
-    // ds3231_writeByte(0x68, 0, 0, 2);
+            nvm_setLastTime(ds3231_time); 
+            nvm_fds_changed();
 
-    #ifdef DS3231_ENABLE 
-        // time_t ds3231_timestamp;
-        // ds3231_timestamp = ds3231_getTime(&ds3231_readTime_s); 
-
-        
-        #ifdef DS3231_SET_TIME
-        struct tm ds3231_writeTime_s;
-        ds3231_setTime(&ds3231_writeTime_s);    
-        #endif
-/*                      
-        ds3231_getStatus();
-        nrf_delay_us(50);
-
-*/
-        struct tm ds3231_readTime_s;
-        ds3231_getTime(&ds3231_readTime_s); 
-
-        nrf_delay_ms(1005);
-        ds3231_getTime(&ds3231_readTime_s); 
-
-        nrf_delay_ms(1005);
-        ds3231_getTime(&ds3231_readTime_s); 
-
-        nrf_delay_ms(1005);
-        ds3231_getTime(&ds3231_readTime_s); 
-    #endif
+          #ifdef DEBUG 
+            nrf_delay_ms(1001); ds3231_getTime();
+            nrf_delay_ms(1001); ds3231_getTime();
+          #endif
+          }
+      
  
     while (1)
     {
+
         DS18B20_App_while();
 
         HX711_app_While();
@@ -1708,8 +1723,8 @@ int main(void)
 			nvm_fds_check_pending();
 		}
 
-        // Handle encryption requests when needed
-        err_code = nrf_ble_lesc_request_handler();
+        // Handle encryption requests when needed -- #define PM_LESC_ENABLED 1
+        // err_code = nrf_ble_lesc_request_handler();
         APP_ERROR_CHECK(err_code);
 
 		if(!lorawan_busy() && !DS18B20_App_busy() && !audio_app_sleep())
@@ -1719,5 +1734,3 @@ int main(void)
 		}
     }
 }
-
-/** @} */

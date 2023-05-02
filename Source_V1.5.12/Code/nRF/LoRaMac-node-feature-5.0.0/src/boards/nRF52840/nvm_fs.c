@@ -106,7 +106,7 @@ static flash_struct_s flash_cfg =
         .Temp_Max		= DEFAULT_BME_TEMP_MAX,
         .Temp_Min		= DEFAULT_BME_TEMP_MIN,
         .Temp_Diff		= DEFAULT_BME_TEMP_DIFF,
-
+ 
         .humidity_Max	= DEFAULT_BME_HUMIDITY_MAX,
 		.humidity_Min	= DEFAULT_BME_HUMIDITY_MIN,
 		.humidity_Diff	= DEFAULT_BME_HUMIDITY_MIN,
@@ -124,7 +124,10 @@ static flash_struct_s flash_cfg =
     .lastTime           = TIME_DEFAULT,
 
     // Added Firmware version 1.5.1
-    .onoff_control      = ONOFF_CONTROL_DEFAULT_VALUE
+    .onoff_control      = ONOFF_CONTROL_DEFAULT_VALUE,
+
+    // Added Firmware version 1.5.13
+    .ds3231_initialized = DEFAULT_DS3231_INITIALIZED
 };
 
 /* A record containing dummy configuration data. */
@@ -661,7 +664,7 @@ uint32_t nvm_fds_eeprom_get(BEEP_protocol_s * prot)
 
 		//-----------------------------------------------------------------------------
 		case READ_ATECC_READ_ID:
-            memcpy(prot->param.atecc_id.ROM, flash_cfg.attecSerialNumber, ATECC_ID_LENGHT);
+                        memcpy(prot->param.atecc_id.ROM, flash_cfg.attecSerialNumber, ATECC_ID_LENGHT);
 			break;
 
         //-----------------------------------------------------------------------------
@@ -1068,12 +1071,13 @@ bool nvm_tiltSwitchEnabled(void)
 
 bool nvm_ds3231_is_initialized(void)
 {
-    return (flash_cfg.ds3231_initialized);
+    return (bool) flash_cfg.ds3231_initialized;
 }
 
-void nvm_ds3231_set_initialized(bool ds3231_initialized)
+void nvm_ds3231_set_initialized()
 {
-    flash_cfg.ds3231_initialized = ds3231_initialized;
+    flash_cfg.ds3231_initialized = true;
+    nvm_fds_changed();
 }
 
 

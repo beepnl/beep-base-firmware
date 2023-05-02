@@ -64,6 +64,8 @@
     #define TIME_DEFAULT                0
     #define TIME_SAVE_INTERVAL_MIN      (48 * 60)
 
+    #define DEFAULT_DS3231_INITIALIZED false
+
     typedef enum
     {
         UICR_HARDWARE_REVISION_LOCATION = 0,  // Stores the Hardware revision in two uint16_t: Major (LSB), Minor (MSB)
@@ -177,7 +179,7 @@
     bool    nvm_tiltSwitchEnabled   (void);
 
     bool    nvm_ds3231_is_initialized     (void); 
-    void    nvm_ds3231_set_initialized    (bool ds3231_initialized);
+    void    nvm_ds3231_set_initialized    (void);
 
     void    uicr_getHWid                  (void);
 
