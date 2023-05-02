@@ -137,6 +137,7 @@
          *  Added on 26-04-2023, firmware version: 1.5.13
          */
          bool        ds3231_initialized;
+         bool        ds3231_ble_initialized;
     } flash_struct_s;
 
 
