@@ -65,6 +65,7 @@
     #define TIME_SAVE_INTERVAL_MIN      (48 * 60)
 
     #define DEFAULT_DS3231_INITIALIZED false
+    #define DEFAULT_DS3231_BLE_INITIALIZED false
 
     typedef enum
     {
@@ -173,13 +174,15 @@
     bool    nvm_get_on_state        (void);
 
     time_t  nvm_getLastTime         (void);
-    void    nvm_setLastTime         (const time_t newTime);
+    void    nvm_setLastTime         (time_t newTime);
 
     bool    nvm_reedSwitchEnabled   (void);
     bool    nvm_tiltSwitchEnabled   (void);
 
     bool    nvm_ds3231_is_initialized     (void); 
     void    nvm_ds3231_set_initialized    (void);
+    bool    nvm_ds3231_is_ble_initialized     (void); 
+    void    nvm_ds3231_set_ble_initialized    (void);
 
     void    uicr_getHWid                  (void);
 

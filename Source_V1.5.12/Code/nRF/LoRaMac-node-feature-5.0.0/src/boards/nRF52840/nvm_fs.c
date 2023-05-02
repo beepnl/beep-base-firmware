@@ -127,7 +127,8 @@ static flash_struct_s flash_cfg =
     .onoff_control      = ONOFF_CONTROL_DEFAULT_VALUE,
 
     // Added Firmware version 1.5.13
-    .ds3231_initialized = DEFAULT_DS3231_INITIALIZED
+    .ds3231_initialized = DEFAULT_DS3231_INITIALIZED,
+    .ds3231_ble_initialized = DEFAULT_DS3231_BLE_INITIALIZED
 };
 
 /* A record containing dummy configuration data. */
@@ -1047,7 +1048,7 @@ time_t nvm_getLastTime(void)
 
 /*@Brief Sets the current time value in the flash, but doesn't force an store
  */
-void nvm_setLastTime(const time_t newTime)
+void nvm_setLastTime(time_t newTime)
 {
     flash_cfg.lastTime = newTime;
 
@@ -1077,6 +1078,17 @@ bool nvm_ds3231_is_initialized(void)
 void nvm_ds3231_set_initialized()
 {
     flash_cfg.ds3231_initialized = true;
+    nvm_fds_changed();
+}
+
+bool nvm_ds3231_is_initialized(void)
+{
+    return (bool) flash_cfg.ds3231_ble_initialized;
+}
+
+void nvm_ds3231_set_initialized()
+{
+    flash_cfg.ds3231_ble_initialized = true;
     nvm_fds_changed();
 }
 
