@@ -759,7 +759,7 @@ void beep_ctrlpt_event_handler(CONTROL_SOURCE source, BEEP_protocol_s * prot)
 
                   ds3231_setTime(ble_time_tm); 
               
-                  nvm_ds3231_set_ble_initialized(true);
+                  nvm_ds3231_set_ble_initialized();
                 } 
            #endif
 
@@ -1723,7 +1723,7 @@ int main(void)
 			nvm_fds_check_pending();
 		}
 
-        // Handle encryption requests when needed -- #define PM_LESC_ENABLED 1
+        // Handle encryption requests whecp *n needed -- #define PM_LESC_ENABLED 1
         // err_code = nrf_ble_lesc_request_handler();
         APP_ERROR_CHECK(err_code);
 
