@@ -76,10 +76,10 @@
 // <e> NRF_LOG_ENABLED - nrf_log - Logger
 //==========================================================
 #ifdef DEBUG
-	#define NRF_LOG_ENABLED					0
+	#define NRF_LOG_ENABLED					1
     #define NRF_LOG_BACKEND_UART_ENABLED			0
-    #define NRF_LOG_BACKEND_RTT_ENABLED				0
-    #define NRF_LOG_USES_TIMESTAMP					0
+    #define NRF_LOG_BACKEND_RTT_ENABLED				1
+    #define NRF_LOG_USES_TIMESTAMP					1
 	#define	NRF_LOG_HIGH_ACCURACY_TIMESTAMP			0
 #else
 	#define NRF_LOG_ENABLED							0
@@ -91,7 +91,7 @@
 
 
 
-#define NRF_LOG_BACKEND_RTT_TEMP_BUFFER_SIZE        1024
+#define NRF_LOG_BACKEND_RTT_TEMP_BUFFER_SIZE        256
 #define NRF_LOG_BACKEND_RTT_TX_RETRY_DELAY_MS       1
 #define NRF_LOG_BACKEND_RTT_TX_RETRY_CNT            3
 
@@ -115,7 +115,7 @@
 // <o> SEGGER_RTT_CONFIG_BUFFER_SIZE_UP - Size of upstream buffer. 
 // <i> Note that either @ref NRF_LOG_BACKEND_RTT_OUTPUT_BUFFER_SIZE
 // <i> or this value is actually used. It depends on which one is bigger.
-#define SEGGER_RTT_CONFIG_BUFFER_SIZE_UP		4096
+#define SEGGER_RTT_CONFIG_BUFFER_SIZE_UP		512
 #define SEGGER_RTT_CONFIG_MAX_NUM_UP_BUFFERS	2
 #define SEGGER_RTT_CONFIG_BUFFER_SIZE_DOWN		16
 #define SEGGER_RTT_CONFIG_MAX_NUM_DOWN_BUFFERS	2
@@ -1402,7 +1402,7 @@
 // <i> If set to true, you need to call nrf_ble_lesc_request_handler() in the main loop to respond to LESC-related BLE events. If LESC support is not required, set this to false to save code space.
 
 #ifndef PM_LESC_ENABLED
-#define PM_LESC_ENABLED 0
+#define PM_LESC_ENABLED 1
 #endif
 
 // <e> PM_RA_PROTECTION_ENABLED - Enable/disable protection against repeated pairing attempts in Peer Manager.
@@ -2866,7 +2866,7 @@
 // <16384=> 16384 
 
 #ifndef NRF_LOG_BUFSIZE
-#define NRF_LOG_BUFSIZE 1024
+#define NRF_LOG_BUFSIZE 8192
 #endif
 
 // <q> NRF_LOG_CLI_CMDS  - Enable CLI commands for the module.

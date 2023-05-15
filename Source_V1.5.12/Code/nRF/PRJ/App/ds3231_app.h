@@ -22,7 +22,7 @@ void             ds3231_handler(nrf_drv_twi_evt_t const * p_event, void * p_cont
 ret_code_t       ds3231_writeByte(const uint8_t address, const uint8_t reg, uint8_t data, uint8_t length);
 void             ds3231_start_clock_osc(void);
 void             ds3231_setTime(struct tm *ds3231_dateTime_s);
-time_t           ds3231_getTime();
+time_t           ds3231_getTime(void);
 
 uint8_t          bcd2dec(uint8_t bcd);
 uint8_t          dec2bcd(uint8_t dec);
