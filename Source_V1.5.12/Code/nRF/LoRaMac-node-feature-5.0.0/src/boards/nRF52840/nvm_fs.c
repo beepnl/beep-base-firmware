@@ -124,11 +124,13 @@ static flash_struct_s flash_cfg =
     .lastTime           = TIME_DEFAULT,
 
     // Added Firmware version 1.5.1
-    .onoff_control      = ONOFF_CONTROL_DEFAULT_VALUE,
+    .onoff_control      = ONOFF_CONTROL_DEFAULT_VALUE
 
+    /*
     // Added Firmware version 1.5.13
     .ds3231_initialized = DEFAULT_DS3231_INITIALIZED,
     .ds3231_ble_initialized = DEFAULT_DS3231_BLE_INITIALIZED
+    */
 };
 
 /* A record containing dummy configuration data. */
@@ -1070,6 +1072,7 @@ bool nvm_tiltSwitchEnabled(void)
     return (flash_cfg.onoff_control & ONOFF_CONTROL_TILTSWITCH_MASK) ? true : false;
 }
 
+/*
 bool nvm_ds3231_is_initialized(void)
 {
     return (bool) flash_cfg.ds3231_initialized;
@@ -1091,7 +1094,7 @@ void nvm_ds3231_set_ble_initialized()
     flash_cfg.ds3231_ble_initialized = true;
     nvm_fds_changed();
 }
-
+*/
 
 
 /**
