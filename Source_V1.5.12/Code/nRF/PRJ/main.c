@@ -724,24 +724,28 @@ void beep_ctrlpt_event_handler(CONTROL_SOURCE source, BEEP_protocol_s * prot)
 
         //-----------------------------------------------------------------------------
         case READ_TIME:
-            // reply.param.time = get_logtime_value();
+            
+           #ifdef DS3231_ENABLE
             reply.param.time = nvm_getLastTime();
-            NRF_LOG_INFO("Read Time: %s, val=%u/0x%04X", get_logtime_string(reply.param.time), reply.param.time, reply.param.time);
-            break;
+           #else
+            reply.param.time = get_logtime_value(); 
+           #endif
+             
+           break;
 
         //-----------------------------------------------------------------------------
         case WRITE_TIME:
         {
           #ifdef DS3231_ENABLE 
-              const time_t oldTime = get_logtime_value();
-              flash_queWriteTimeChanged(oldTime, prot->param.time);
+              //const time_t oldTime = get_logtime_value();
+              //flash_queWriteTimeChanged(oldTime, prot->param.time);
               // store the new time in the DS3231 
               struct tm *ble_time_tm;
               time_t ble_timestamp;
 
               ble_timestamp = prot->param.time;
               ble_time_tm = gmtime(&ble_timestamp); 
-              NRF_LOG_INFO("### NEWTIME from RTC: %2d:%02d\n", (ble_time_tm->tm_hour)%24, ble_time_tm->tm_min);
+              NRF_LOG_INFO("### NEWTIME from bluetooth: %2d:%02d\n", (ble_time_tm->tm_hour)%24, ble_time_tm->tm_min);
               NRF_LOG_FLUSH();
 
               ds3231_setTime(ble_time_tm);     
@@ -1675,8 +1679,6 @@ int main(void)
 
     if(ds3231_detected())
       {
-            ds3231_start_clock_osc();
-
                #ifdef DEBUG 
                   Buzzer_sound(50, 1800, 500, 200, 2);
                #endif
@@ -1687,8 +1689,7 @@ int main(void)
              nrf_delay_ms(2);
 
                #ifdef DEBUG  
-                NRF_LOG_INFO("LAST KNOWN FLASH TIME\n");
-                NRF_LOG_INFO("### DS3231 time_t: %s, %u/0x%04X", get_logtime_string(lastTime), lastTime, lastTime);
+                NRF_LOG_INFO("### LAST KNOWN FLASH TIME: %s, %u/0x%04X", get_logtime_string(lastTime), lastTime, lastTime);
                 NRF_LOG_FLUSH();
                #endif
 
@@ -1698,11 +1699,11 @@ int main(void)
              // get time from DS3231
              time_t ds3231_time;
              ds3231_time = ds3231_getTime();
-             struct tm *ds3231_time_s;
-             ds3231_time_s = gmtime(&ds3231_time);
+             //struct tm *ds3231_time_s;
+             //ds3231_time_s = gmtime(&ds3231_time);
 
                 // initialize DS3231 to 00:00 01-06-2023 if it's still in the 1970s
-                if(ds3231_time_s->tm_year == 0)
+                /*if(ds3231_time_s->tm_year == 0)
                   {
                     if (lastTime_tm->tm_year == 0)
                     {
@@ -1720,9 +1721,10 @@ int main(void)
                       {
                       ds3231_setTime(lastTime_tm);  
                       }
-                    }                 
+                    } */                
 
                 nvm_setLastTime(ds3231_time); 
+                ds3231_start_clock_osc();
         }
       
 
