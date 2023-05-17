@@ -104,9 +104,11 @@ void logtime_set_time(uint32_t year, uint32_t month, uint32_t day, uint32_t hour
     time_struct.tm_min = minute;
     time_struct.tm_sec = second;   
     newtime = mktime(&time_struct);
-
-    // update
+    
+    #ifdef DS3231_ENABLE
+    // update RTC with new time
     ds3231_setTime(&time_struct);
+    #endif
      
     // Apply the new time.            
     logtime_set_long(newtime);
@@ -118,15 +120,18 @@ static void logtimeAppTimerCallback(void * p_context)
 {
     // Get the current time in seconds 
     #ifdef DS3231_ENABLE
-    time_t return_time = get_logtime_value();
+    time_t return_time;
+    return_time = get_logtime_value();
     #else
     time_t return_time = get_local_logtime_value(true);
     #endif
 
+    m_time = return_time;
+
     // Return the current time back to the main.
     if(main_cb != NULL)
     {
-        main_cb(return_time);
+        main_cb(m_time);
     }
 
     NRF_LOG_INFO("Time: %s, %u/0x%04X", get_logtime_string(m_time), m_time, m_time);

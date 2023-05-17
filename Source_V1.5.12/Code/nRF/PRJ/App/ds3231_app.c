@@ -121,32 +121,37 @@ void ds3231_setTime(struct tm *ds3231_dateTime_s)
             ds3231_init();        
           }
 
-        ds3231_writeByte(0x68, 0, 0, 2);
-        nrf_delay_ms(5);
-
-        //memset(ds3231_dateTime_s, 0, sizeof(struct tm));
+        // ds3231_writeByte(0x68, 0, 0, 2);
+        // nrf_delay_ms(5);
+        // memset(ds3231_dateTime_s, 0, sizeof(struct tm));
 
         uint8_t tx_buf[8];
         tx_buf[0] = 0; // register address 
    
         tx_buf[1] = dec2bcd(ds3231_dateTime_s->tm_sec);// & 0x7F; 
         tx_buf[2] = dec2bcd(ds3231_dateTime_s->tm_min);// & 0x7F;
-        tx_buf[3] = dec2bcd(ds3231_dateTime_s->tm_hour);// & 0x3F;  // always enable 24-hour mode (bit 3)
+        tx_buf[3] = dec2bcd(ds3231_dateTime_s->tm_hour) & 0x3F;  // always enable 24-hour mode (bit 3)
         tx_buf[4] = dec2bcd(ds3231_dateTime_s->tm_wday);// & 0x07; // ignored by mktime(), memset to 0?
-        tx_buf[5] = dec2bcd(ds3231_dateTime_s->tm_mday);// & 0x3F;
-        tx_buf[6] = dec2bcd(ds3231_dateTime_s->tm_mon);// & 0x1F;
-        tx_buf[7] = dec2bcd(ds3231_dateTime_s->tm_year);// % 100);
+        tx_buf[5] = dec2bcd(ds3231_dateTime_s->tm_mday) & 0x3F;
+        tx_buf[6] = dec2bcd(ds3231_dateTime_s->tm_mon) & 0x1F;
+        tx_buf[7] = dec2bcd(ds3231_dateTime_s->tm_year);
 
         time_t newtime = mktime(ds3231_dateTime_s);
-              #ifdef DEBUG
-                Buzzer_sound(50, 500, 400, 400, 7);
-              #endif
+
+          #ifdef DS3231_LOG_ENABLED        
+          NRF_LOG_FLUSH();               
+            NRF_LOG_INFO("### setting DS3231 to: %s, %u/0x%04X", get_logtime_string(newtime), newtime, newtime);
+            NRF_LOG_FINAL_FLUSH();
+            nrf_delay_ms(5);  
+          #endif   
  
         nrf_drv_twi_tx(&m_ds3231, 0x68, tx_buf, sizeof(tx_buf), 0);        
             while(!m_xfer_done)
                 {
                 __WFE();
                 };
+
+       ds3231_start_clock_osc();
 }
 
 void ds3231_start_clock_osc()
@@ -200,7 +205,7 @@ void ds3231_start_clock_osc()
             while(!m_xfer_done)
                 {
                 __WFE();
-                }; 
+                };   
         nrf_delay_ms(5);
                    
         nrf_drv_twi_rx(&m_ds3231, 0x68, &rx_buf, sizeof(rx_buf));
@@ -218,10 +223,10 @@ void ds3231_start_clock_osc()
 
 time_t ds3231_getTime()
 {
-        /*if(ds3231_status() != NRFX_DRV_STATE_POWERED_ON)
+        if(ds3231_status() != NRFX_DRV_STATE_POWERED_ON)
           {
             ds3231_init();
-          }*/
+          }
 
         uint8_t reg = 0;
         uint8_t rx_buf[7] = {0};
@@ -247,9 +252,9 @@ time_t ds3231_getTime()
         ds3231_dateTime.tm_sec = bcd2dec(rx_buf[0]);
         ds3231_dateTime.tm_min = bcd2dec(rx_buf[1]);
         ds3231_dateTime.tm_hour = bcd2dec(rx_buf[2] & 0x3F); // use only the first six bits, for 24hr mode
-        ds3231_dateTime.tm_wday = bcd2dec(rx_buf[3]) - 1; // is ignored by mktime()
+        ds3231_dateTime.tm_wday = bcd2dec(rx_buf[3]); // is ignored by mktime()
         ds3231_dateTime.tm_mday = bcd2dec(rx_buf[4]);
-        ds3231_dateTime.tm_mon = bcd2dec(rx_buf[5] & 0x1f) - 1;
+        ds3231_dateTime.tm_mon = bcd2dec(rx_buf[5] & 0x1f);
         ds3231_dateTime.tm_year = bcd2dec(rx_buf[6]);
          
            /*
@@ -274,21 +279,21 @@ time_t ds3231_getTime()
              NRF_LOG_INFO("### DS3231 bcd mon %d ###\n", rx_buf[5]); nrf_delay_ms(1);
              NRF_LOG_FLUSH();  nrf_delay_ms(1); 
              NRF_LOG_INFO("### DS3231 bcd year %d ###\n", rx_buf[6]); nrf_delay_ms(1);
-             NRF_LOG_FLUSH();  nrf_delay_ms(1); 
+             NRF_LOG_FINAL_FLUSH();  nrf_delay_ms(1); 
 
-             NRF_LOG_INFO("### DS3231 bcd sec %d ###\n", ds3231_dateTime.tm_sec); nrf_delay_ms(1);
+             NRF_LOG_INFO("### DS3231 sec %d ###\n", ds3231_dateTime.tm_sec); nrf_delay_ms(1);
              NRF_LOG_FLUSH();  nrf_delay_ms(1); 
-             NRF_LOG_INFO("### DS3231 bcd min %d ###\n", ds3231_dateTime.tm_min); nrf_delay_ms(1); 
+             NRF_LOG_INFO("### DS3231 min %d ###\n", ds3231_dateTime.tm_min); nrf_delay_ms(1); 
              NRF_LOG_FLUSH();  nrf_delay_ms(1); 
-             NRF_LOG_INFO("### DS3231 bcd hr %d ###\n", ds3231_dateTime.tm_hour); nrf_delay_ms(1);
+             NRF_LOG_INFO("### DS3231 hr %d ###\n", ds3231_dateTime.tm_hour); nrf_delay_ms(1);
              NRF_LOG_FLUSH();  nrf_delay_ms(1); 
-             NRF_LOG_INFO("### DS3231 bcd wday %d ###\n", ds3231_dateTime.tm_wday); nrf_delay_ms(1);
+             NRF_LOG_INFO("### DS3231 wday %d ###\n", ds3231_dateTime.tm_wday); nrf_delay_ms(1);
              NRF_LOG_FLUSH();  nrf_delay_ms(1); 
-             NRF_LOG_INFO("### DS3231 bcd mday %d ###\n", ds3231_dateTime.tm_mday); nrf_delay_ms(1);
+             NRF_LOG_INFO("### DS3231 mday %d ###\n", ds3231_dateTime.tm_mday); nrf_delay_ms(1);
              NRF_LOG_FLUSH();  nrf_delay_ms(1); 
-             NRF_LOG_INFO("### DS3231 bcd mon %d ###\n", ds3231_dateTime.tm_mon); nrf_delay_ms(1);
+             NRF_LOG_INFO("### DS3231 mon %d ###\n", ds3231_dateTime.tm_mon); nrf_delay_ms(1);
              NRF_LOG_FLUSH();  nrf_delay_ms(1); 
-             NRF_LOG_INFO("### DS3231 bcd year %d ###\n", ds3231_dateTime.tm_year); nrf_delay_ms(1);
+             NRF_LOG_INFO("### DS3231 year %d ###\n", ds3231_dateTime.tm_year); nrf_delay_ms(1);
              NRF_LOG_FLUSH();  nrf_delay_ms(1); 
              // NRF_LOG_INFO("### DS3231 bcd2dec sec %d ###", rx_buf[0], rx_buf[1], rx_buf[2], rx_buf[3], rx_buf[4], rx_buf[5], rx_buf[6]);
              nrf_delay_ms(5);
@@ -317,7 +322,7 @@ uint8_t dec2bcd(uint8_t dec)
 uint8_t bcd2dec(uint8_t bcd)
 {
         uint8_t dec;
-        dec = (bcd / 16 * 10) + (bcd % 16);
+        dec = ((bcd / 16 * 10) + (bcd % 16));
         return dec;
 }
    
@@ -331,7 +336,7 @@ bool ds3231_detected()
         ret_code_t err_code;
 
         uint8_t address;
-        uint8_t tx = 0;
+        uint8_t tx = 9;
         uint8_t rx = 0;
 
         #ifdef DS3231_LOG_ENABLED

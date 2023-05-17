@@ -76,8 +76,8 @@
 // <e> NRF_LOG_ENABLED - nrf_log - Logger
 //==========================================================
 #ifdef DEBUG
-	#define NRF_LOG_ENABLED					1
-    #define NRF_LOG_BACKEND_UART_ENABLED			0
+	#define NRF_LOG_ENABLED                                 1
+        #define NRF_LOG_BACKEND_UART_ENABLED			0
     #define NRF_LOG_BACKEND_RTT_ENABLED				1
     #define NRF_LOG_USES_TIMESTAMP					1
 	#define	NRF_LOG_HIGH_ACCURACY_TIMESTAMP			0
@@ -115,7 +115,7 @@
 // <o> SEGGER_RTT_CONFIG_BUFFER_SIZE_UP - Size of upstream buffer. 
 // <i> Note that either @ref NRF_LOG_BACKEND_RTT_OUTPUT_BUFFER_SIZE
 // <i> or this value is actually used. It depends on which one is bigger.
-#define SEGGER_RTT_CONFIG_BUFFER_SIZE_UP		512
+#define SEGGER_RTT_CONFIG_BUFFER_SIZE_UP		2048
 #define SEGGER_RTT_CONFIG_MAX_NUM_UP_BUFFERS	2
 #define SEGGER_RTT_CONFIG_BUFFER_SIZE_DOWN		16
 #define SEGGER_RTT_CONFIG_MAX_NUM_DOWN_BUFFERS	2
@@ -351,7 +351,7 @@
 
 // <e> NRFX_TWIM_CONFIG_LOG_ENABLED - Enables logging in the module.
 //==========================================================
-#define NRFX_TWIM_CONFIG_LOG_ENABLED				1
+#define NRFX_TWIM_CONFIG_LOG_ENABLED				0
 #define NRFX_TWIM_CONFIG_LOG_LEVEL					3
 #define NRFX_TWIM_CONFIG_INFO_COLOR					0
 #define NRFX_TWIM_CONFIG_DEBUG_COLOR				0
@@ -369,7 +369,7 @@
 
 // <e> NRFX_TWI_CONFIG_LOG_ENABLED - Enables logging in the module.
 //==========================================================
-#define NRFX_TWI_CONFIG_LOG_ENABLED					1
+#define NRFX_TWI_CONFIG_LOG_ENABLED					0
 
 #define NRFX_TWI_CONFIG_LOG_LEVEL					3
 #define NRFX_TWI_CONFIG_INFO_COLOR					0
@@ -388,8 +388,8 @@
 #define TWI1_ENABLED								1
 #define TWI1_USE_EASY_DMA							1
 
-#define TWI_CONFIG_LOG_ENABLED 1
-#define TWI_CONFIG_LOG_LEVEL					3
+#define TWI_CONFIG_LOG_ENABLED                                                 0
+#define TWI_CONFIG_LOG_LEVEL					               3
 
 
 

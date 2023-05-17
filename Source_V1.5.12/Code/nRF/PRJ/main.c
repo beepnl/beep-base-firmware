@@ -724,7 +724,8 @@ void beep_ctrlpt_event_handler(CONTROL_SOURCE source, BEEP_protocol_s * prot)
 
         //-----------------------------------------------------------------------------
         case READ_TIME:
-            reply.param.time = get_logtime_value();
+            // reply.param.time = get_logtime_value();
+            reply.param.time = nvm_getLastTime();
             NRF_LOG_INFO("Read Time: %s, val=%u/0x%04X", get_logtime_string(reply.param.time), reply.param.time, reply.param.time);
             break;
 
@@ -732,39 +733,34 @@ void beep_ctrlpt_event_handler(CONTROL_SOURCE source, BEEP_protocol_s * prot)
         case WRITE_TIME:
         {
           #ifdef DS3231_ENABLE 
+              const time_t oldTime = get_logtime_value();
+              flash_queWriteTimeChanged(oldTime, prot->param.time);
               // store the new time in the DS3231 
               struct tm *ble_time_tm;
               time_t ble_timestamp;
-              ble_timestamp = prot->param.time;
-              ble_time_tm = localtime(&ble_timestamp); 
 
-                #ifdef DEBUG 
-                   Buzzer_sound(50, 3600, 500, 200, 6);
-                #endif
+              ble_timestamp = prot->param.time;
+              ble_time_tm = gmtime(&ble_timestamp); 
+              NRF_LOG_INFO("### NEWTIME from RTC: %2d:%02d\n", (ble_time_tm->tm_hour)%24, ble_time_tm->tm_min);
+              NRF_LOG_FLUSH();
 
               ds3231_setTime(ble_time_tm);     
 
-              const time_t oldTime = get_logtime_value();
-              logtime_set_long(prot->param.time);
-              ret = NRF_SUCCESS;
-
-              flash_queWriteTimeChanged(oldTime, prot->param.time);
-
               // Store the new time in flash.
               nvm_setLastTime(prot->param.time);
-              sendResponse(source, prot->command, ret);
+              nvm_fds_changed();
 
-              return;
-              break;
+              ret = NRF_SUCCESS;
+              sendResponse(source, prot->command, ret);
 
             #else
               const time_t oldTime = get_logtime_value();
               logtime_set_long(prot->param.time);
-              ret = NRF_SUCCESS;
-
               flash_queWriteTimeChanged(oldTime, prot->param.time);
               // Store the new time in flash.
               nvm_setLastTime(prot->param.time);
+
+               ret = NRF_SUCCESS;
               sendResponse(source, prot->command, ret);
             #endif
 
@@ -1620,7 +1616,7 @@ int main(void)
         bootloader_setupSVCI();
       #endif
 
-    BoardInitPeriph(); // check nvm_fds init - 05 mei
+    BoardInitPeriph(); 
 
     power_management_init();
 
@@ -1670,30 +1666,30 @@ int main(void)
 
     bme_app_init(measurement_handler);
 
+    #ifndef DS3231_ENABLE
     logtime_init(logtime_callback, nvm_getLastTime()); 
+    #endif
 
     // Check whether the reedswitch and or the tilt switch have to be enabled
     on_off_enable();
 
     if(ds3231_detected())
       {
-            // on first-time use: set time with last known time from flash 
-            // if (nvm_ds3231_is_initialized() == false)
-            //  {     
-
             ds3231_start_clock_osc();
 
                #ifdef DEBUG 
-                  Buzzer_sound(50, 800, 1500, 200, 3);
+                  Buzzer_sound(50, 1800, 500, 200, 2);
                #endif
                  
              // retrieve last known time from flash
              time_t lastTime;
              lastTime = nvm_getLastTime();   
+             nrf_delay_ms(2);
 
                #ifdef DEBUG  
-                NRF_LOG_INFO("LAST KNOWN FLASH TIME");
-                NRF_LOG_RAW_HEXDUMP_INFO(&lastTime, sizeof(lastTime));
+                NRF_LOG_INFO("LAST KNOWN FLASH TIME\n");
+                NRF_LOG_INFO("### DS3231 time_t: %s, %u/0x%04X", get_logtime_string(lastTime), lastTime, lastTime);
+                NRF_LOG_FLUSH();
                #endif
 
              struct tm *lastTime_tm;
@@ -1702,16 +1698,13 @@ int main(void)
              // get time from DS3231
              time_t ds3231_time;
              ds3231_time = ds3231_getTime();
-
-               #ifdef DEBUG  
-                NRF_LOG_INFO("DS3231 TIME");
-                NRF_LOG_RAW_HEXDUMP_INFO(&ds3231_time, sizeof(ds3231_time));
-               #endif
+             struct tm *ds3231_time_s;
+             ds3231_time_s = gmtime(&ds3231_time);
 
                 // initialize DS3231 to 00:00 01-06-2023 if it's still in the 1970s
-                if(ds3231_time < 10000)
+                if(ds3231_time_s->tm_year == 0)
                   {
-                    if (lastTime < 10000)
+                    if (lastTime_tm->tm_year == 0)
                     {
                       time_t initTime;
                       struct tm *initTime_tm;
@@ -1720,21 +1713,16 @@ int main(void)
                       ds3231_setTime(initTime_tm);
 
                         #ifdef DEBUG 
-                          Buzzer_sound(50, 1400, 150, 80, 5);
+                          Buzzer_sound(50, 1200, 500, 30, 2);
                         #endif
                     }
                     else 
                       {
                       ds3231_setTime(lastTime_tm);  
                       }
-                    }
-             //    nvm_ds3231_set_initialized();
-             // }                    
-                    #ifdef DEBUG 
-                      Buzzer_sound(50, 2400, 150, 80, 10);
-                    #endif
+                    }                 
 
-               nvm_setLastTime(ds3231_time); 
+                nvm_setLastTime(ds3231_time); 
         }
       
 
@@ -1762,7 +1750,7 @@ int main(void)
 			nvm_fds_check_pending();
 		}
 
-        // Handle encryption requests whecp *n needed -- #define PM_LESC_ENABLED 1
+        // Handle encryption requests when needed -- #define PM_LESC_ENABLED 1
          err_code = nrf_ble_lesc_request_handler();
          APP_ERROR_CHECK(err_code);
 
