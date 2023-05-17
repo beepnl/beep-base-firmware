@@ -7,7 +7,7 @@
     #include "beep_protocol.h"
     #include "ble_beep.h"
 
-    #define MX_FLASH_APP_LOG_ENABLED    1
+    #define MX_FLASH_APP_LOG_ENABLED    0
     #define MX_FLASH_LINE_LENGHT_MAX    (BLE_NUS_MAX_DATA_LEN * 12)
     #define STARTUP_LINE_ELEMENTS       7
     #define STARTUP_LINE_ELEMENTS_MIN   (STARTUP_LINE_ELEMENTS - 1)

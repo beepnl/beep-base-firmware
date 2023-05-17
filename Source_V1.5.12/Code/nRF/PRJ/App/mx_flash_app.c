@@ -182,11 +182,9 @@ bool flash_WriteStartUpLine(void)
     memset(&prot[STARTUP_LINE_ELEMENTS_MIN], 0, sizeof(BEEP_protocol_s));
     prot[STARTUP_LINE_ELEMENTS_MIN].command     = READ_TIME;
 
-    #ifdef DS3231_ENABLE 
-    prot[STARTUP_LINE_ELEMENTS_MIN].param.time  = ds3231_getTime();
-    #else
+
     prot[STARTUP_LINE_ELEMENTS_MIN].param.time  = get_logtime_value();
-    #endif
+
 
     return flash_Write_BeepProtocol(BEEP_SENSOR_ON, prot, STARTUP_LINE_ELEMENTS);
 }
@@ -948,12 +946,8 @@ void beep_fileTransfer_while(void)
                     memset(&prot[5], 0, sizeof(BEEP_protocol_s));
                     prot[5].command = READ_TIME;
  
-                    #ifdef DS3231_ENABLE 
-                      prot[5].param.time = ds3231_getTime() ; 
-                    #else
-
                     prot[5].param.time = get_logtime_value(); 
-                    #endif
+
 
                     if(!flash_newLineStart(BEEP_LOG_FILL))
                     {
