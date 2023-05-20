@@ -5,11 +5,13 @@
 #include "sdk_errors.h"	
 #include "nrf_drv_twi.h"
 
-#define          DS3231_LOG_ENABLED 0
+#define          DS3231_LOG_ENABLED 1
 
 #define          DS3231_ADDR 0x68U
 
 extern time_t    ds3231_timestamp;
+
+extern uint8_t ds3231_enabled;
 
 bool             ds3231_detected(void);
 void             ds3231_init(void);
