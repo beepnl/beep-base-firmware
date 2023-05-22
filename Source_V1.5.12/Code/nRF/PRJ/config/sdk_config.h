@@ -61,7 +61,7 @@
 #define BLE_ADV_START_UP_ENABLE         1
 #define BLE_ADV_START_STOP              0
 #define BLE_ADV_ENABLE                  1
-#define ATECC_ENABLED                   0
+#define ATECC_ENABLED                   1
 #define BLE_PASSKEY_ENABLED             1
 #define LORAWAN_JOIN_ENABLE             true
 #define TLV_ENABLE                      1
@@ -79,7 +79,7 @@
 	#define NRF_LOG_ENABLED                                 1
         #define NRF_LOG_BACKEND_UART_ENABLED			0
     #define NRF_LOG_BACKEND_RTT_ENABLED				1
-    #define NRF_LOG_USES_TIMESTAMP					0
+    #define NRF_LOG_USES_TIMESTAMP					1
 	#define	NRF_LOG_HIGH_ACCURACY_TIMESTAMP			0
 #else
 	#define NRF_LOG_ENABLED							0
@@ -369,7 +369,8 @@
 
 // <e> NRFX_TWI_CONFIG_LOG_ENABLED - Enables logging in the module.
 //==========================================================
-#define NRFX_TWI_CONFIG_LOG_ENABLED					0
+//==========================================================
+#define NRFX_TWI_CONFIG_LOG_ENABLED					1
 
 #define NRFX_TWI_CONFIG_LOG_LEVEL					3
 #define NRFX_TWI_CONFIG_INFO_COLOR					0
@@ -388,7 +389,7 @@
 #define TWI1_ENABLED								1
 #define TWI1_USE_EASY_DMA							1
 
-#define TWI_CONFIG_LOG_ENABLED                                                 0
+#define TWI_CONFIG_LOG_ENABLED                                                 1
 #define TWI_CONFIG_LOG_LEVEL					               3
 
 

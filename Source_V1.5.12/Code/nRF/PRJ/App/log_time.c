@@ -7,6 +7,7 @@ NRF_LOG_MODULE_REGISTER();
 #include "math.h"
 #include "ds3231_app.h"
 #include <stdlib.h>
+#include <stdbool.h>
 
 static volatile time_t m_time;
 static volatile uint32_t lastRTCcounterValue;
@@ -50,16 +51,18 @@ static time_t get_local_logtime_value(const bool rememberResult)
     }
 
     return return_time;
-}
+} 
 
 time_t get_logtime_value(void)
 {
-    #ifdef DS3231_ENABLE
+       if(ds3231_enabled)
+      {
       return ds3231_getTime(); 
-
-    #else
-    return get_local_logtime_value(false);
-    #endif
+      }
+      else
+      {
+      return get_local_logtime_value(false);
+      }
 }
 
 char * get_logtime_string(time_t timeValue)
@@ -81,7 +84,7 @@ void logtime_set_long(time_t newtime)
     ret = app_timer_stop(minute_app_timer);
 
     remainderRTCcounter = 0;
-    m_time = newtime;
+    // m_time = newtime;
     lastRTCcounterValue = app_timer_cnt_get();
 
     ret = app_timer_start(minute_app_timer, APP_TIMER_TICKS(60UL * 1000UL), NULL);
@@ -105,10 +108,11 @@ void logtime_set_time(uint32_t year, uint32_t month, uint32_t day, uint32_t hour
     time_struct.tm_sec = second;   
     newtime = mktime(&time_struct);
     
-    #ifdef DS3231_ENABLE
-    // update RTC with new time
-    ds3231_setTime(&time_struct);
-    #endif
+    if(ds3231_enabled)
+    {
+      // update RTC with new time
+      ds3231_setTime(time_struct);
+    }
      
     // Apply the new time.            
     logtime_set_long(newtime);
@@ -118,23 +122,20 @@ void logtime_set_time(uint32_t year, uint32_t month, uint32_t day, uint32_t hour
 
 static void logtimeAppTimerCallback(void * p_context)
 {
-    // Get the current time in seconds 
-    #ifdef DS3231_ENABLE
     time_t return_time;
+    // Get the current time in seconds 
     return_time = get_logtime_value();
-    #else
-    time_t return_time = get_local_logtime_value(true);
-    #endif
-
-    m_time = return_time;
+    
+      #ifdef DEBUG
+        NRF_LOG_INFO("### APP_TIMER_CALLBACK ds3231 time: %s, %u/0x%04X", get_logtime_string(return_time), return_time, return_time);
+      #endif
 
     // Return the current time back to the main.
     if(main_cb != NULL)
     {
-        main_cb(m_time);
+        main_cb(return_time);
     }
-
-    NRF_LOG_INFO("Time: %s, %u/0x%04X", get_logtime_string(m_time), m_time, m_time);
+    NRF_LOG_INFO("Time: %s, %u/0x%04X", get_logtime_string(return_time), return_time, return_time);
 }
 
 
@@ -150,4 +151,5 @@ void logtime_init(callback_log_time_t callback, const time_t lastKnownTime)
 
     // Start the minute timer with the last known time value.
     logtime_set_long(lastKnownTime);
+    NRF_LOG_INFO("### callback INIT time: %s, %u/0x%04X", get_logtime_string(lastKnownTime), lastKnownTime, lastKnownTime);
 }

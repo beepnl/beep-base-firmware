@@ -50,6 +50,7 @@
 NRF_LOG_MODULE_REGISTER();
 #include "nrf_log_ctrl.h"
 #include "nrf_log_default_backends.h"
+#include "JLINK_MONITOR.h"
 #include "app_timer.h"
 #include "nvm_fs.h"
 #include "utilities.h"
@@ -720,53 +721,47 @@ void beep_ctrlpt_event_handler(CONTROL_SOURCE source, BEEP_protocol_s * prot)
             ret = nvm_fds_eeprom_set(prot);
             sendResponse(source, prot->command, ret);
             return;
-			break;
+            break;
 
         //-----------------------------------------------------------------------------
         case READ_TIME:
-            
-           if(ds3231_enabled)
-           {
-           reply.param.time = nvm_getLastTime();
-           }
-           if(!ds3231_enabled)
-           {
-             reply.param.time = get_logtime_value();
-           }
-         break;
+
+            reply.param.time = get_logtime_value();
+            break;
 
         //-----------------------------------------------------------------------------
         case WRITE_TIME:
         {
-          if(ds3231_enabled) 
+          if(ds3231_enabled == 1) 
               {
               // store the new time in the DS3231 
-              struct tm *ble_time_tm;
-              time_t ble_timestamp;
+              struct tm * ble_time_tm;
+              struct tm ble_time_tm_s;
 
-              ble_timestamp = prot->param.time;
+              time_t  ble_timestamp;
+              ble_timestamp = (prot->param.time);
               ble_time_tm = localtime(&ble_timestamp); 
-              ble_time_tm->tm_isdst = 0;
+              memcpy(&ble_time_tm_s, ble_time_tm, sizeof(struct tm));
+              //ble_time_tm_s.tm_isdst = 0;
 
               #ifdef DEBUG
                 NRF_LOG_FLUSH();
-                NRF_LOG_INFO("### NEWTIME from bluetooth: %2d:%02d\n", (ble_time_tm->tm_hour)%24, ble_time_tm->tm_min);
+                NRF_LOG_INFO("### NEWTIME from bluetooth: %2d:%02d\n", (ble_time_tm_s.tm_hour)%24, ble_time_tm_s.tm_min);
                 NRF_LOG_FLUSH();
               #endif
 
-                ds3231_setTime(ble_time_tm);     
+              ds3231_setTime(ble_time_tm_s);     
+              nrf_delay_ms(1);
 
-                // Store the new time in flash.
-                nvm_setLastTime(prot->param.time);
-                nvm_fds_changed();
+              // Store the new time in flash.
+              nvm_setLastTime(prot->param.time);
  
-                ret = NRF_SUCCESS;
-                sendResponse(source, prot->command, ret);
-
+              ret = NRF_SUCCESS;
+              sendResponse(source, prot->command, ret);
               return;
               }
 
-              if(!ds3231_enabled)
+              if(ds3231_enabled == 0)
               {
               const time_t oldTime = nvm_getLastTime();
 
@@ -1637,7 +1632,7 @@ int main(void)
     NRF_LOG_INFO( "###### ===== Beep application start-up ==== ######, resetReason=%u", resetReason);
     NRF_LOG_FLUSH();
 
-    // Force the device to write the new bootcount to flash.
+    // Force the device to write w new bootcount to flash.
     nvm_fds_changed();
     
     lorawan_implementation_init(beep_ctrlpt_event_handler);
@@ -1683,12 +1678,9 @@ int main(void)
     // Check whether the reedswitch and or the tilt switch have to be enabled
     on_off_enable();
 
-    if(ds3231_detected())
+    if(ds3231_detected() && ds3231_enabled == 1)
       {
-        ds3231_enabled = 1;
-        ds3231_start_clock_osc();
-
-             // retrieve last known time from flash
+            // retrieve last known time from flash
             time_t lastTime;
             lastTime = nvm_getLastTime();   
 
@@ -1701,8 +1693,13 @@ int main(void)
              nvm_fds_changed();    
       }
 
-      else
+      if(ds3231_enabled == 0)
       {
+        #ifdef DEBUG
+          NRF_LOG_INFO( "### NO DS3231 ###");
+          NRF_LOG_FLUSH();
+        #endif
+
       logtime_init(logtime_callback, nvm_getLastTime()); 
       }
 
