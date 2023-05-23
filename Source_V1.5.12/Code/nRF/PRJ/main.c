@@ -1679,7 +1679,7 @@ int main(void)
     on_off_enable();
 
     if(ds3231_detected() && ds3231_enabled == 1)
-      {
+      {            
             // retrieve last known time from flash
             time_t lastTime;
             lastTime = nvm_getLastTime();   
