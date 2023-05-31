@@ -408,6 +408,7 @@ bool ds3231_detected()
                   #endif    
 
                 ds3231_enabled = 1;       
+                          ds3231_start_clock_osc();
                 return true;
               }
 }

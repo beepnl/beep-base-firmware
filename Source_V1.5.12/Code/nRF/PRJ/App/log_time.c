@@ -55,11 +55,11 @@ static time_t get_local_logtime_value(const bool rememberResult)
 
 time_t get_logtime_value(void)
 {
-       if(ds3231_enabled)
+       if(ds3231_enabled == 1)
       {
       return ds3231_getTime(); 
       }
-      else
+      if(ds3231_enabled == 0)
       {
       return get_local_logtime_value(false);
       }
@@ -84,7 +84,7 @@ void logtime_set_long(time_t newtime)
     ret = app_timer_stop(minute_app_timer);
 
     remainderRTCcounter = 0;
-    // m_time = newtime;
+    m_time = newtime;
     lastRTCcounterValue = app_timer_cnt_get();
 
     ret = app_timer_start(minute_app_timer, APP_TIMER_TICKS(60UL * 1000UL), NULL);
@@ -119,10 +119,27 @@ void logtime_set_time(uint32_t year, uint32_t month, uint32_t day, uint32_t hour
 }    
 
 
-
 static void logtimeAppTimerCallback(void * p_context)
 {
-    time_t return_time;
+  time_t return_time;
+  
+  if (ds3231_enabled == 0)
+    {
+      // Get the current time in seconds
+      return_time = get_local_logtime_value(true);
+
+      // Return the current time back to the main.
+      if(main_cb != NULL)
+      {
+          main_cb(return_time);
+      }
+
+      NRF_LOG_INFO("Time: %s, %u/0x%04X", get_logtime_string(m_time), m_time, m_time);
+    }
+
+  if(ds3231_enabled == 1)
+    {
+
     // Get the current time in seconds 
     return_time = get_logtime_value();
     
@@ -136,6 +153,7 @@ static void logtimeAppTimerCallback(void * p_context)
         main_cb(return_time);
     }
     NRF_LOG_INFO("Time: %s, %u/0x%04X", get_logtime_string(return_time), return_time, return_time);
+    }
 }
 
 
