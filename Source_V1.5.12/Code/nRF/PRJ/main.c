@@ -763,18 +763,29 @@ void beep_ctrlpt_event_handler(CONTROL_SOURCE source, BEEP_protocol_s * prot)
 
               if(ds3231_enabled == 0)
               {
-              const time_t oldTime = nvm_getLastTime();
+              //const time_t oldTime = nvm_getLastTime();
 
-                logtime_set_long(prot->param.time);
-                flash_queWriteTimeChanged(oldTime, prot->param.time);
+              //  logtime_set_long(prot->param.time);
+              //  flash_queWriteTimeChanged(oldTime, prot->param.time);
 
-                // Store the new time in flash.
-                nvm_setLastTime(prot->param.time);
+              //  // Store the new time in flash.
+              //  nvm_setLastTime(prot->param.time);
 
-              ret = NRF_SUCCESS;
-              sendResponse(source, prot->command, ret);
+              //ret = NRF_SUCCESS;
+              //sendResponse(source, prot->command, ret);
 
-              return;
+              //return;
+                  const time_t oldTime = get_logtime_value();
+                  logtime_set_long(prot->param.time);
+                  ret = NRF_SUCCESS;
+
+                  flash_queWriteTimeChanged(oldTime, prot->param.time);
+
+                  // Store the new time in flash.
+                  nvm_setLastTime(prot->param.time);
+                  nvm_fds_changed(); 
+                  sendResponse(source, prot->command, ret);
+                return;
               }
             break;
         }
@@ -1680,6 +1691,7 @@ int main(void)
 
     if(ds3231_detected() && ds3231_enabled == 1)
       {            
+            ds3231_start_clock_osc();
             // retrieve last known time from flash
             time_t lastTime;
             lastTime = nvm_getLastTime();   
