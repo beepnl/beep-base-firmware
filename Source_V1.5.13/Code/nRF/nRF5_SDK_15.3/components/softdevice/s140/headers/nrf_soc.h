@@ -749,7 +749,7 @@ SVCALL(SD_CLOCK_HFCLK_IS_RUNNING, uint32_t, sd_clock_hfclk_is_running(uint32_t *
  *
  * @retval ::NRF_SUCCESS
  */
-SVCALL(SD_APP_EVT_WAIT, uint32_t, sd_app_evt_wait(void));
+  SVCALL(SD_APP_EVT_WAIT, uint32_t, sd_app_evt_wait(void));
 
 /**@brief Get PPI channel enable register contents.
  *

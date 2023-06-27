@@ -4,7 +4,7 @@
   <BookmarkItem objectName="" line="207" column="0" path="/media/orlo/3dcae13c-ff11-41c7-9ee7-653b113c72a1/home/orlo/beep-base-firmware/Source_V1.5.12/Code/nRF/nRF5_SDK_15.3/components/libraries/queue/nrf_queue.c" number="1" extra="return status;" color="5"/>
  </Bookmarks>
  <Breakpoints groups="Breakpoints" active_group="Breakpoints">
-  <BreakpointListItem trigger="" line="4" counter="0" hardwareBreakpoint="" isFunctionBreakpoint="false" action="" expression="" group="Breakpoints" type="Breakpoint" state="4" filename="../App/ds3231_app.h" useHWbreakpoint="false"/>
+  <Exceptions set="MemManage;UsageFault_Coprocessor;UsageFault_CheckingError;UsageFault_StateError;BusFault;ExceptionEntryReturnFault;HardFault"/>
  </Breakpoints>
  <ExecutionProfileWindow/>
  <FrameBufferWindow>
@@ -28,20 +28,10 @@
   <ProjectSessionItem path="BeepBase;BeepBase;Application"/>
   <ProjectSessionItem path="BeepBase;BeepBase;Board Definition"/>
   <ProjectSessionItem path="BeepBase;BeepBase;FATFS"/>
-  <ProjectSessionItem path="BeepBase;BeepBase;LoRaWAN"/>
-  <ProjectSessionItem path="BeepBase;BeepBase;LoRaWAN;apps"/>
-  <ProjectSessionItem path="BeepBase;BeepBase;LoRaWAN;apps;LoRaMac"/>
-  <ProjectSessionItem path="BeepBase;BeepBase;LoRaWAN;apps;LoRaMac;common"/>
-  <ProjectSessionItem path="BeepBase;BeepBase;LoRaWAN;boards"/>
-  <ProjectSessionItem path="BeepBase;BeepBase;LoRaWAN;boards;nRF52840"/>
-  <ProjectSessionItem path="BeepBase;BeepBase;LoRaWAN;mac"/>
-  <ProjectSessionItem path="BeepBase;BeepBase;LoRaWAN;peripherals"/>
-  <ProjectSessionItem path="BeepBase;BeepBase;LoRaWAN;peripherals;soft_se"/>
-  <ProjectSessionItem path="BeepBase;BeepBase;LoRaWAN;radio"/>
-  <ProjectSessionItem path="BeepBase;BeepBase;LoRaWAN;system"/>
   <ProjectSessionItem path="BeepBase;BeepBase;LoRaWAN_nRF"/>
   <ProjectSessionItem path="BeepBase;BeepBase;None"/>
   <ProjectSessionItem path="BeepBase;BeepBase;nRF_Crypto backend nRF HW"/>
+  <ProjectSessionItem path="BeepBase;BeepBase;nRF_Crypto backend nRF HW;nRF_Crypto"/>
   <ProjectSessionItem path="BeepBase;BeepBase;nRF_Crypto backend nRF HW;nRF_TLS"/>
   <ProjectSessionItem path="BeepBase;BeepBase;nRF_Drivers"/>
   <ProjectSessionItem path="BeepBase;BeepBase;nRF_Libraries"/>
@@ -110,93 +100,11 @@
   <Watches active="0" update="Never"/>
  </Watch4>
  <Files>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="543" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../../LoRaMac-node-feature-5.0.0/src/boards/nRF52840/gpio-board.c" selected="0" top="132" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="1" y="531" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../../nRF5_SDK_15.3/modules/nrfx/hal/nrf_gpio.h" selected="0" top="525" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="15" y="67" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../../nRF5_SDK_15.3/components/libraries/delay/nrf_delay.h" selected="0" top="54" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="365" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../../nRF5_SDK_15.3/components/libraries/timer/app_timer.c" selected="0" top="359" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="82" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../../LoRaMac-node-feature-5.0.0/src/boards/nRF52840/board.c" selected="0" top="67" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="14" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../Sensors/I2C2.c" selected="0" top="105" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="723" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../Sensors/mx_flash_fs.c" selected="0" top="954" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="30" y="8" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="10" path="../App/bme_app.h" selected="0" top="0" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="23" y="31" useTextEdit="1" openedFrom="/mnt6/beepfw/beep-base-firmware/Source_V1.5.12/Code/nRF/PRJ/main.c" useBinaryEdit="0" left="0" path="../Sensors/reedswitch.c" selected="0" top="140" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="48" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../Sensors/nRF_ADC.c" selected="0" top="12" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="27" y="378" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../App/DS18B20_app.c" selected="0" top="364" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="37" y="954" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="10" path="../App/mx_flash_app.c" selected="0" top="943" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="17" y="15" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../App/log_time.h" selected="0" top="9" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="236" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../App/audio_app.c" selected="0" top="209" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../Sensors/timeslot.c" selected="0" top="0" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="28" y="6" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../Sensors/I2C2.h" selected="0" top="21" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="29" y="9" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../Sensors/mx_flash_fs.h" selected="0" top="15" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../Sensors/reedswitch.h" selected="0" top="0" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="5" y="158" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../Sensors/tiltswitch.c" selected="0" top="150" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../Sensors/tiltswitch.h" selected="0" top="0" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="41" y="16" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="14" path="../Sensors/nRF_ADC.h" selected="0" top="12" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../Sensors/audioFFT.c" selected="0" top="54" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="49" y="6" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="22" path="../Sensors/audioFFT.h" selected="0" top="0" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="41" y="80" useTextEdit="1" openedFrom="/home/orlo/Source_V1.5.12/Code/nRF/PRJ/main.c" useBinaryEdit="0" left="14" path="../Sensors/Buzzer.c" selected="0" top="96" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="11" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../Sensors/Buzzer.h" selected="0" top="9" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../Sensors/atecc608A.h" selected="0" top="0" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../Sensors/I2C.h" selected="0" top="15" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../Sensors/I2C.c" selected="0" top="105" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="35" y="10" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="15" path="../Sensors/I2S.h" selected="0" top="0" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../Sensors/I2S.c" selected="0" top="48" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../Sensors/TLV320ADC3100.c" selected="0" top="72" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="33" y="8" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../Sensors/TLV320ADC3100.h" selected="0" top="0" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="33" y="62" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../Sensors/BME280.h" selected="0" top="114" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../../LoRaMac-node-feature-5.0.0/src/peripherals/soft-se/soft-se.c" selected="0" top="0" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../../LoRaMac-node-feature-5.0.0/src/system/fifo.h" selected="0" top="0" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../../LoRaMac-node-feature-5.0.0/src/system/adc.c" selected="0" top="0" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../../LoRaMac-node-feature-5.0.0/src/boards/gpio-board.h" selected="0" top="105" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../../LoRaMac-node-feature-5.0.0/src/boards/rtc-board.h" selected="0" top="162" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../../LoRaMac-node-feature-5.0.0/src/boards/nRF52840/timestamp_timer.h" selected="0" top="20" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="1" y="128" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../../LoRaMac-node-feature-5.0.0/src/boards/nRF52840/timestamp_timer.c" selected="0" top="128" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="1" y="1048" useTextEdit="1" openedFrom="/home/orlo/Source_V1.5.12/Code/nRF/PRJ/main.c" useBinaryEdit="0" left="0" path="../../LoRaMac-node-feature-5.0.0/src/boards/nRF52840/nvm_fs.c" selected="0" top="1039" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../../LoRaMac-node-feature-5.0.0/src/boards/nRF52840/eeprom-board.c" selected="0" top="39" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../../nRF5_SDK_15.3/external/fatfs/src/ff.h" selected="0" top="0" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../../nRF5_SDK_15.3/external/fatfs/src/ff.c" selected="0" top="0" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../BLE/BLE_setup.h" selected="0" top="36" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../../nRF5_SDK_15.3/components/ble/ble_services/ble_bas/ble_bas.h" selected="0" top="197" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="17" y="663" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="18" path="../../nRF5_SDK_15.3/components/ble/ble_services/ble_beep/ble_beep.c" selected="0" top="651" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../../nRF5_SDK_15.3/components/ble/ble_services/ble_beep/ble_beep.h" selected="0" top="129" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../../nRF5_SDK_15.3/components/ble/ble_services/ble_dfu/ble_dfu.c" selected="0" top="0" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="250" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../../nRF5_SDK_15.3/components/ble/ble_services/ble_dfu/ble_dfu.h" selected="0" top="250" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../../nRF5_SDK_15.3/components/ble/ble_services/ble_dfu/ble_dfu_unbonded.c" selected="0" top="0" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../../nRF5_SDK_15.3/components/ble/ble_services/ble_dis/ble_dis.c" selected="0" top="102" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="53" y="19" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="26" path="../App/alarm_app.h" selected="0" top="12" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="125" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../App/alarm_app.c" selected="0" top="141" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../App/mx_flash_app.h" selected="0" top="60" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="2" y="61" useTextEdit="1" openedFrom="/mnt6/beepfw/beep-base-firmware/Source_V1.5.12/Code/nRF/LoRaMac-node-feature-5.0.0/src/boards/nRF52840/nvm_fs.h" useBinaryEdit="0" left="0" path="../../nRF5_SDK_15.3/modules/nrfx/drivers/src/nrfx_timer.c" selected="0" top="0" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="68" useTextEdit="1" openedFrom="/mnt6/beepfw/beep-base-firmware/Source_V1.5.12/Code/nRF/PRJ/App/log_time.c" useBinaryEdit="0" left="0" path="../../nRF5_SDK_15.3/components/libraries/log/nrf_log_ctrl.h" selected="0" top="47" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="3" y="151" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../../LoRaMac-node-feature-5.0.0/src/system/systime.h" selected="0" top="138" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="429" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../../nRF5_SDK_15.3/modules/nrfx/hal/nrf_twim.h" selected="0" top="419" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="213" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../../nRF5_SDK_15.3/external/fatfs/port/diskio_blkdev.c" selected="0" top="200" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="949" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../../nRF5_SDK_15.3/components/softdevice/s140/headers/nrf_soc.h" selected="0" top="945" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../App/DS18B20_app.h" selected="0" top="0" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="19" y="92" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../main.h" selected="0" top="0" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="19" y="164" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../../nRF5_SDK_15.3/external/mbedtls/library/ctr_drbg.c" selected="0" top="160" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="63" y="143" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="50" path="../LoRaWAN_nRF/Commissioning.h" selected="0" top="139" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="12" y="46" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="23" path="../App/beep_protocol.h" selected="0" top="39" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="49" y="279" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="22" path="../../nRF5_SDK_15.3/components/libraries/sdcard/app_sdcard.c" selected="0" top="312" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../App/HX711_app.h" selected="0" top="0" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="8" y="112" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../App/beep_types.h" selected="0" top="98" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="13" y="447" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="3" path="../App/beep_protocol.c" selected="0" top="447" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="354" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../../nRF5_SDK_15.3/components/softdevice/s140/headers/nrf_sdm.h" selected="0" top="343" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="22" y="62" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../../LoRaMac-node-feature-5.0.0/src/boards/nRF52840/nvm_fs.h" selected="0" top="51" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="87" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../../nRF5_SDK_15.3/modules/nrfx/mdk/ses_startup_nrf52840.s" selected="0" top="74" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="48" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../../nRF5_SDK_15.3/components/libraries/util/app_error_handler_gcc.c" selected="0" top="38" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="272" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../../nRF5_SDK_15.3/modules/nrfx/drivers/src/nrfx_gpiote.c" selected="0" top="261" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="25" y="189" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../../LoRaMac-node-feature-5.0.0/src/boards/nRF52840/rtc-board.c" selected="0" top="183" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../../LoRaMac-node-feature-5.0.0/src/apps/LoRaMac/common/NvmCtxMgmt.c" selected="0" top="0" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="506" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../../nRF5_SDK_15.3/external/fprintf/nrf_fprintf_format.c" selected="0" top="492" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="990" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../BLE/BLE_setup.c" selected="0" top="983" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="99" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../../nRF5_SDK_15.3/components/libraries/util/app_error_weak.c" selected="0" top="83" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="26" y="1699" useTextEdit="1" openedFrom="/home/orlo/Source_V1.5.12/Code/nRF/PRJ/main.c" useBinaryEdit="0" left="0" path="../../nRF5_SDK_15.3/components/toolchain/cmsis/include/core_cm4.h" selected="0" top="1685" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="26" y="432" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../LoRaWAN_nRF/LoRaWAN_imp.c" selected="0" top="409" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="20" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../App/ds3231_app.h" selected="0" top="3" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="379" useTextEdit="1" openedFrom="/home/orlo/Source_V1.5.13/Code/nRF/PRJ/main.c" useBinaryEdit="0" left="0" path="../App/ds3231_app.c" selected="0" top="367" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="16" y="15" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="9" path="../App/power_app.h" selected="0" top="8" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="41" y="67" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../config/sdk_config.h" selected="1" top="45" codecName="Default"/>
-  <SessionOpenFile windowGroup="HUD {0c70833d-2a7a-4547-a8af-8f4dc4f11b13} Middle" x="0" y="1498" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../main.c" selected="0" top="1493" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="1619" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../main.c" selected="0" top="1601" codecName=""/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="115" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../../nRF5_SDK_15.3/components/libraries/log/src/nrf_log_backend_rtt.c" selected="0" top="97" codecName=""/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="249" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../../nRF5_SDK_15.3/components/libraries/log/nrf_log_backend_interface.h" selected="0" top="214" codecName=""/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="898" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../../nRF5_SDK_15.3/components/libraries/log/src/nrf_log_frontend.c" selected="0" top="880" codecName=""/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="99" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="app_error_weak.c" selected="1" top="81" codecName=""/>
  </Files>
- <ARMCrossStudioWindow activeProject="BeepBase" fileDialogDefaultFilter="*" autoConnectTarget="J-Link" buildConfiguration="Release" sessionSettings="" debugSearchFileMap="../TransformFunctions/arm_cfft_radix8_f32.c&#xa;&#xa;/mnt3/segger_embedded_studio_for_arm_5.64/source/thumb_crt0.s&#xa;/mnt3/segger_embedded_studio_for_arm_5.64/source/thumb_crt0.s" fileDialogInitialDirectory="/home/orlo/Source_V1.5.12/Code/nRF/nRF5_SDK_15.3/external/mmd" debugSearchPath="" autoConnectCapabilities="3199"/>
+ <ARMCrossStudioWindow activeProject="BeepBase" fileDialogDefaultFilter="*.asm;*.s;*.inc" autoConnectTarget="J-Link" buildConfiguration="DebugRelease" sessionSettings="" debugSearchFileMap="../TransformFunctions/arm_cfft_radix8_f32.c&#xa;&#xa;/home/orlo/Source_V1.5.12/Code/nRF/nRF5_SDK_15.3/modules/nrfx/mdk/ses_startup_nrf52840.s&#xa;/home/orlo/Source_V1.5.13/Code/nRF/nRF5_SDK_15.3/modules/nrfx/mdk/ses_startup_nrf52840.s&#xa;/mnt3/segger_embedded_studio_for_arm_5.64/source/thumb_crt0.s&#xa;/mnt2/segger_embedded_studio_for_arm_5.64/source/thumb_crt0.s" fileDialogInitialDirectory="/mnt2/segger_embedded_studio_for_arm_5.64/source" debugSearchPath="" autoConnectCapabilities="3711"/>
 </session>

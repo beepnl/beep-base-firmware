@@ -434,6 +434,9 @@ uint32_t Beep_SendFormat(BEEP_STATUS index, MEASUREMENT_RESULT_s * alarm)
             get.param.time = get_logtime_value();
             beep_protocol_encode(true, &get, payload, &payloadLenght, PAYLOAD_SIZE_MAX);
 			break;
+
+            // Add external RTC status
+            //get.command = 
 		}
 
         case BEEP_ALARM:

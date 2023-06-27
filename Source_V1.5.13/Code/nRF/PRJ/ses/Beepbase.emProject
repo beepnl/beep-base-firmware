@@ -612,7 +612,7 @@
     gcc_debugging_level="Level 3"
     gcc_optimization_level="Level 0" />
   <configuration
-    JLinkExecuteCommand="SetMonModeDebug = 1;mon exec SetMonModeVTableAddr=0x26000;EnableLowPowerHandlingMode"
+    JLinkExecuteCommand="SetMonModeDebug = 1;SetMonModeVTableAddr=0x26000;EnableLowPowerHandlingMode"
     JLinkScriptFileName="$(ProjectDir)/EnableMonitorModeDebugging.JLinkScript"
     Name="Debug"
     adaptive="Yes"

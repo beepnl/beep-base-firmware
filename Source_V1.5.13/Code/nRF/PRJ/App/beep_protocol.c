@@ -1291,6 +1291,10 @@ uint32_t beep_protocol_encode(bool cmdPrepend, BEEP_protocol_s * prot, uint8_t *
             break;
         case WRITE_TIME:
             break;
+
+                //-----------------------------------------------------------------------------
+        //case RTC_STATUS:
+			//break;      
         
         //-----------------------------------------------------------------------------
         case READ_CID_nRF_FLASH:

@@ -115,6 +115,8 @@
             ALARM_CONFIG_s          alarm;
             BME_CONFIG_s            bme_config;
             time_t                  time;
+            uint8_t                 rtc_status;
+
 		}param;
 	}BEEP_protocol_s;
 
