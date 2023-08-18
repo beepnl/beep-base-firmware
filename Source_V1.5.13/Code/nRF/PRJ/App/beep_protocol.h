@@ -13,7 +13,13 @@
     #include "app_util.h"
     #include "time.h"
 	
-    #define BEEP_PROTOCOL_LOGGING   0
+    #ifdef DEBUG
+      #define BEEP_PROTOCOL_LOGGING   1
+    #ifndef DEBUG
+      #define BEEP_PROTOCOL_LOGGING   0
+    #endif
+
+
 	#define BEEP_WRITE			(0x80)
 	#define BEEP_READ			(0x00)
 	#define BEEP_RW_bitmask		(0x7F)

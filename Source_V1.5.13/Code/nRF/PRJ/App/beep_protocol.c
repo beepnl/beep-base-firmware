@@ -13,6 +13,7 @@ NRF_LOG_MODULE_REGISTER();
 #include "app_util.h"
 #include "nrf_strerror.h"
 #include "log_time.h"
+#include "ds3231_app.h"
 
 
 static const char * beep_protocol_cmd_strget(BEEP_CID cmd)
@@ -991,10 +992,22 @@ uint32_t beep_protocol_encode(bool cmdPrepend, BEEP_protocol_s * prot, uint8_t *
 		return NRF_ERROR_INVALID_PARAM;
 	}
 
-	if(cmdPrepend)
+	if(cmdPrepend && !ds3231_enabled)
 	{
 		data[0] = prot->command;
 		offset	= 1;
+                              #if BEEP_PROTOCOL_LOGGING
+                        NRF_LOG_INFO("Encoding cmd: %u/0x%02X", prot->command, prot->command);
+                #endif 
+	}
+        
+        if(cmdPrepend && ds3231_enabled)
+	{
+		data[0] = prot->(command+1);
+		offset	= 1;
+                #if BEEP_PROTOCOL_LOGGING
+                        NRF_LOG_INFO("Time field prepended with: %u/0x%02X", prot->(command+1), prot->(command+1));
+                #endif 
 	}
 
     #if BEEP_PROTOCOL_LOGGING
