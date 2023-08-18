@@ -996,17 +996,17 @@ uint32_t beep_protocol_encode(bool cmdPrepend, BEEP_protocol_s * prot, uint8_t *
 	{
 		data[0] = prot->command;
 		offset	= 1;
-                              #if BEEP_PROTOCOL_LOGGING
+                #if BEEP_PROTOCOL_LOGGING
                         NRF_LOG_INFO("Encoding cmd: %u/0x%02X", prot->command, prot->command);
                 #endif 
 	}
         
         if(cmdPrepend && ds3231_enabled)
 	{
-		data[0] = prot->(command+1);
+		data[0] = ((prot->command)+1);
 		offset	= 1;
                 #if BEEP_PROTOCOL_LOGGING
-                        NRF_LOG_INFO("Time field prepended with: %u/0x%02X", prot->(command+1), prot->(command+1));
+                        NRF_LOG_INFO("Time field prepended with: %u/0x%02X", ((prot->command)+1), ((prot->command)+1));
                 #endif 
 	}
 
