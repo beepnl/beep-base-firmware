@@ -12,12 +12,7 @@
 	#include "beep_types.h"
     #include "app_util.h"
     #include "time.h"
-	
-    #ifdef DEBUG
-      #define BEEP_PROTOCOL_LOGGING   1
-    #ifndef DEBUG
-      #define BEEP_PROTOCOL_LOGGING   0
-    #endif
+
 
 
 	#define BEEP_WRITE			(0x80)

@@ -15,6 +15,14 @@ NRF_LOG_MODULE_REGISTER();
 #include "log_time.h"
 #include "ds3231_app.h"
 
+	
+    #ifdef DEBUG
+      #define BEEP_PROTOCOL_LOGGING   1
+    #endif
+    #ifndef DEBUG
+      #define BEEP_PROTOCOL_LOGGING   0
+    #endif
+
 
 static const char * beep_protocol_cmd_strget(BEEP_CID cmd)
 {
