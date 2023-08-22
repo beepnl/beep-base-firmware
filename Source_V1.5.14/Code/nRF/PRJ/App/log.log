@@ -1,0 +1,755 @@
+[ info]: --------------------------------------------------------------------------------
+[ info]: nrfjprog --qspieraseall --log 
+[ info]: nrfjprog version 10.17.3 external
+[ info]: --------------------------------------------------------------------------------
+[ info]: Load library at /opt/nrf-command-line-tools/lib/libnrfjprogdll.so.
+[ info]: Library loaded, loading member functions.
+[ info]: Member functions succesfully loaded.
+[debug]: [ Client] - open
+[debug]: [ Client] - start
+[ info]: [ Client] - stdout: Jlinkarm nRF Worker ready. Handling sequence a93ffe65-72ef-4bfe-b530-db5fb3dfe42c.
+[debug]: [SeggerBackend] - Logger sink registered in Segger backend logger
+[debug]: [  JLink] - Logger sink registered in JLink logger
+[debug]: [  nRFXX] - open
+[debug]: [  nRFXX] - just_check_family
+[debug]: [SeggerBackend] - open_dll
+[debug]: [SeggerBackend] - No J-Link DLL path was provided. Attempting to auto detect.
+[trace]: [ Client] - Command open executed for 5 milliseconds with result 0
+[debug]: [ Client] - config
+[trace]: [ Client] - Command config executed for 2 milliseconds with result 0
+[debug]: [ Client] - enum_emu_snr
+[ info]: [SeggerBackend] - Load library at /opt/SEGGER/JLink/libjlinkarm.so.7.84.6.
+[ info]: [SeggerBackend] - Library loaded, loading member functions.
+[ info]: [SeggerBackend] - Member functions succesfully loaded.
+[debug]: [SeggerBackend] - Set batch mode
+[debug]: [SeggerBackend] - dll_version
+[ info]: [SeggerBackend] - Segger dll version 7.84.f loaded.
+[trace]: [ Worker] - Command open executed for 2 milliseconds with result 0
+[debug]: [  nRFXX] - config
+[trace]: [ Worker] - Command config executed for 2 milliseconds with result 0
+
+[debug]: [  nRFXX] - enum_emu_con_info
+
+[debug]: [SeggerBackend] - is_connected_to_emu
+
+[debug]: [SeggerBackend] - enum_emu_con_info
+
+[trace]: [ Client] - Command enum_emu_con_info executed for 163 milliseconds with result 0
+[debug]: [ Client] - connect_to_emu_with_snr
+[debug]: [SeggerBackend] - is_connected_to_emu
+
+[trace]: [ Worker] - Command enum_emu_con_info executed for 163 milliseconds with result 0
+
+[debug]: [  nRFXX] - connect_to_emu_with_snr
+
+[debug]: [SeggerBackend] - is_connected_to_emu
+
+[debug]: [SeggerBackend] - connect_to_emu_with_snr
+
+[debug]: [SeggerBackend] - is_connected_to_emu
+
+[debug]: [SeggerBackend] - ---just_enum_emu_snr
+
+[debug]: [SeggerBackend] - ---just_get_num_emus
+
+[debug]: [SeggerBackend] - ---just_connect_to_emu_with_snr
+
+[debug]: [SeggerBackend] - ---just_connect_to_emu_without_snr
+
+[debug]: [SeggerBackend] - Segger logging enabled.
+
+[trace]: [  JLink] - Firmware: J-Link OB-SAM3U128-V2-NordicSemi compiled Nov  7 2022 16:21:57
+
+[trace]: [  JLink] - Firmware: J-Link OB-SAM3U128-V2-NordicSemi compiled Nov  7 2022 16:21:57
+
+[trace]: [  JLink] - Hardware: V1.00
+
+[trace]: [  JLink] - S/N: 683907809
+
+[trace]: [  JLink] - OEM: SEGGER
+
+[trace]: [  JLink] - Feature(s): RDI, FlashBP, FlashDL, JFlash, GDB
+
+[trace]: [  JLink] - USB speed mode: High speed (480 MBit/s)
+
+[trace]: [  JLink] - TELNET listener socket opened on port 19021
+
+[trace]: [  JLink] - WEBSRV WEBSRV_Init(): Starting webserver thread(s)
+
+[trace]: [  JLink] - WEBSRV Webserver running on local port 19080
+
+[trace]: [  JLink] - - 3.174ms returns "O.K."  
+
+[trace]: [  JLink] - JLINK_HasError()  
+
+[trace]: [  JLink] - JLINK_Lock()  
+
+[trace]: [  JLink] - JLINK_ExecCommand("SetRestartOnClose = 0", ...).   
+
+[trace]: [  JLink] - - 0.004ms returns 0x01  
+
+[trace]: [  JLink] - JLINK_HasError()  
+
+[trace]: [  JLink] - JLINK_ExecCommand("DisableFlashDL", ...).   
+
+[trace]: [  JLink] - - 0.003ms returns 0x00  
+
+[trace]: [  JLink] - JLINK_HasError()  
+
+[trace]: [  JLink] - JLINK_ExecCommand("ExcludeFlashCacheRange 0x0-0xFFFFFFFF", ...).   
+
+[trace]: [  JLink] - - 0.004ms returns 0x00  
+
+[trace]: [  JLink] - JLINK_HasError()  
+
+[trace]: [  JLink] - JLINK_SetHookUnsecureDialog  
+
+[trace]: [  JLink] - JLINK_SetHookUnsecureDialog(...)
+
+[trace]: [  JLink] - - 0.013ms returns 0  
+
+[trace]: [  JLink] - JLINK_HasError()  
+
+[trace]: [  JLink] - JLINK_TIF_Select(JLINKARM_TIF_SWD)  
+
+[trace]: [  JLink] - - 0.367ms returns 0x00  
+
+[trace]: [  JLink] - JLINK_HasError()  
+
+[trace]: [  JLink] - JLINK_GetSpeedInfo()  
+
+[trace]: [  JLink] - 10000000 Hz / n, n >= 10
+
+[trace]: [  JLink] - - 0.021ms  
+
+[trace]: [  JLink] - JLINK_HasError()  
+
+[debug]: [SeggerBackend] - Connected emulator supports SWD speeds up to 1000kHz
+
+[debug]: [SeggerBackend] - Requested speed 2000kHz is higher than the emulator max speed of 1000kHz
+
+[trace]: [  JLink] - JLINK_SetSpeed(2000)  
+
+[trace]: [  JLink] - - 0.046ms  
+
+[trace]: [  JLink] - JLINK_HasError()  
+
+[trace]: [  JLink] - JLINK_GetSpeed()  
+
+[trace]: [  JLink] - - 0.007ms returns 1000  
+
+[trace]: [  JLink] - JLINK_HasError()  
+
+[debug]: [SeggerBackend] - SWD speed was reported as 1000kHz after requesting 2000kHz. Check the capabilities of the selected emulator.
+
+[trace]: [  JLink] - JLINK_GetSN()  
+
+[trace]: [  JLink] - - 0.007ms returns 683907809  
+
+[trace]: [  JLink] - JLINK_HasError()  
+
+[debug]: [SeggerBackend] - read_debug_port_idr
+
+[debug]: [SeggerBackend] - read_debug_port_register
+
+[debug]: [SeggerBackend] - ---just_read_debug_port_register
+
+[debug]: [SeggerBackend] - coresight_configure
+
+[trace]: [  JLink] - JLINK_GetHWStatus(...)  
+
+[trace]: [  JLink] - - 0.114ms returns 0  
+
+[trace]: [  JLink] - JLINK_HasError()  
+
+[trace]: [  JLink] - JLINK_CORESIGHT_Configure()  
+
+[trace]: [  JLink] - - 100.712ms returns 0  
+
+[trace]: [  JLink] - JLINK_HasError()  
+
+[debug]: [SeggerBackend] - ---just_select_debug_port_register
+
+[debug]: [SeggerBackend] - Select AP 255, DP Bank 0, AP Bank 255
+
+[trace]: [  JLink] - JLINK_CORESIGHT_WriteAPDPReg(DP reg 0x02, 0x00000000)  
+
+[trace]: [  JLink] - - 0.811ms returns -1  
+
+[trace]: [  JLink] - JLINK_HasError()  
+
+[error]: [SeggerBackend] - JLinkARM.dll reported "-1", "An unknown error.".
+
+[debug]: [SeggerBackend] - ---just_abort_debug_action
+
+[debug]: [SeggerBackend] - Attempting to clear any configuration errors in debug port before closing connection. 
+
+[trace]: [  JLink] - JLINK_CORESIGHT_WriteAPDPReg(DP reg 0x00, 0x0000001F)  
+
+[trace]: [  JLink] - - 0.801ms returns -1  
+
+[trace]: [  JLink] - JLINK_HasError()  
+
+[error]: [SeggerBackend] - JLinkARM.dll reported "-1", "An unknown error.".
+
+[trace]: [  JLink] - JLINK_CORESIGHT_WriteAPDPReg(DP reg 0x00, 0x0000001F)  
+
+[trace]: [  JLink] - - 0.758ms returns -1  
+
+[trace]: [  JLink] - JLINK_HasError()  
+
+[error]: [SeggerBackend] - JLinkARM.dll reported "-1", "An unknown error.".
+
+[trace]: [  JLink] - JLINK_CORESIGHT_WriteAPDPReg(DP reg 0x00, 0x0000001F)  
+
+[trace]: [  JLink] - - 0.748ms returns -1  
+
+[trace]: [  JLink] - JLINK_HasError()  
+
+[error]: [SeggerBackend] - JLinkARM.dll reported "-1", "An unknown error.".
+
+[trace]: [  JLink] - JLINK_CORESIGHT_WriteAPDPReg(DP reg 0x00, 0x0000001F)  
+
+[trace]: [  JLink] - - 0.792ms returns -1  
+
+[trace]: [  JLink] - JLINK_HasError()  
+
+[error]: [SeggerBackend] - JLinkARM.dll reported "-1", "An unknown error.".
+
+[trace]: [  JLink] - JLINK_CORESIGHT_WriteAPDPReg(DP reg 0x00, 0x0000001F)  
+
+[trace]: [  JLink] - - 0.796ms returns -1  
+
+[trace]: [  JLink] - JLINK_HasError()  
+
+[error]: [SeggerBackend] - JLinkARM.dll reported "-1", "An unknown error.".
+
+[trace]: [  JLink] - JLINK_CORESIGHT_WriteAPDPReg(DP reg 0x02, 0x00000000)  
+
+[trace]: [  JLink] - - 0.816ms returns -1  
+
+[trace]: [  JLink] - JLINK_HasError()  
+
+[error]: [SeggerBackend] - JLinkARM.dll reported "-1", "An unknown error.".
+
+[debug]: [SeggerBackend] - ---just_abort_debug_action
+
+[debug]: [SeggerBackend] - Attempting to clear any configuration errors in debug port before closing connection. 
+
+[trace]: [  JLink] - JLINK_CORESIGHT_WriteAPDPReg(DP reg 0x00, 0x0000001F)  
+
+[trace]: [  JLink] - - 0.815ms returns -1  
+
+[trace]: [  JLink] - JLINK_HasError()  
+
+[error]: [SeggerBackend] - JLinkARM.dll reported "-1", "An unknown error.".
+
+[trace]: [  JLink] - JLINK_CORESIGHT_WriteAPDPReg(DP reg 0x00, 0x0000001F)  
+
+[trace]: [  JLink] - - 0.836ms returns -1  
+
+[trace]: [  JLink] - JLINK_HasError()  
+
+[error]: [SeggerBackend] - JLinkARM.dll reported "-1", "An unknown error.".
+
+[trace]: [  JLink] - JLINK_CORESIGHT_WriteAPDPReg(DP reg 0x00, 0x0000001F)  
+
+[trace]: [  JLink] - - 0.823ms returns -1  
+
+[trace]: [  JLink] - JLINK_HasError()  
+
+[error]: [SeggerBackend] - JLinkARM.dll reported "-1", "An unknown error.".
+
+[trace]: [  JLink] - JLINK_CORESIGHT_WriteAPDPReg(DP reg 0x00, 0x0000001F)  
+
+[trace]: [  JLink] - - 0.819ms returns -1  
+
+[trace]: [  JLink] - JLINK_HasError()  
+
+[error]: [SeggerBackend] - JLinkARM.dll reported "-1", "An unknown error.".
+
+[trace]: [  JLink] - JLINK_CORESIGHT_WriteAPDPReg(DP reg 0x00, 0x0000001F)  
+
+[trace]: [  JLink] - - 0.795ms returns -1  
+
+[trace]: [  JLink] - JLINK_HasError()  
+
+[error]: [SeggerBackend] - JLinkARM.dll reported "-1", "An unknown error.".
+
+[trace]: [  JLink] - JLINK_CORESIGHT_WriteAPDPReg(DP reg 0x02, 0x00000000)  
+
+[trace]: [  JLink] - - 0.809ms returns -1  
+
+[trace]: [  JLink] - JLINK_HasError()  
+
+[error]: [SeggerBackend] - JLinkARM.dll reported "-1", "An unknown error.".
+
+[debug]: [SeggerBackend] - ---just_abort_debug_action
+
+[debug]: [SeggerBackend] - Attempting to clear any configuration errors in debug port before closing connection. 
+
+[trace]: [  JLink] - JLINK_CORESIGHT_WriteAPDPReg(DP reg 0x00, 0x0000001F)  
+
+[trace]: [  JLink] - - 0.812ms returns -1  
+
+[trace]: [  JLink] - JLINK_HasError()  
+
+[error]: [SeggerBackend] - JLinkARM.dll reported "-1", "An unknown error.".
+
+[trace]: [  JLink] - JLINK_CORESIGHT_WriteAPDPReg(DP reg 0x00, 0x0000001F)  
+
+[trace]: [  JLink] - - 0.832ms returns -1  
+
+[trace]: [  JLink] - JLINK_HasError()  
+
+[error]: [SeggerBackend] - JLinkARM.dll reported "-1", "An unknown error.".
+
+[trace]: [  JLink] - JLINK_CORESIGHT_WriteAPDPReg(DP reg 0x00, 0x0000001F)  
+
+[trace]: [  JLink] - - 0.813ms returns -1  
+
+[trace]: [  JLink] - JLINK_HasError()  
+
+[error]: [SeggerBackend] - JLinkARM.dll reported "-1", "An unknown error.".
+
+[trace]: [  JLink] - JLINK_CORESIGHT_WriteAPDPReg(DP reg 0x00, 0x0000001F)  
+
+[trace]: [  JLink] - - 0.802ms returns -1  
+
+[trace]: [  JLink] - JLINK_HasError()  
+
+[error]: [SeggerBackend] - JLinkARM.dll reported "-1", "An unknown error.".
+
+[trace]: [  JLink] - JLINK_CORESIGHT_WriteAPDPReg(DP reg 0x00, 0x0000001F)  
+
+[trace]: [  JLink] - - 0.800ms returns -1  
+
+[trace]: [  JLink] - JLINK_HasError()  
+
+[error]: [SeggerBackend] - JLinkARM.dll reported "-1", "An unknown error.".
+
+[trace]: [  JLink] - JLINK_CORESIGHT_WriteAPDPReg(DP reg 0x02, 0x00000000)  
+
+[trace]: [ Client] - Command connect_to_emu_with_snr executed for 516 milliseconds with result -102
+[trace]: [  JLink] - - 0.747ms returns -1  
+
+[trace]: [  JLink] - JLINK_HasError()  
+
+[error]: [SeggerBackend] - JLinkARM.dll reported "-1", "An unknown error.".
+
+[debug]: [SeggerBackend] - ---just_abort_debug_action
+
+[debug]: [SeggerBackend] - Attempting to clear any configuration errors in debug port before closing connection. 
+
+[trace]: [  JLink] - JLINK_CORESIGHT_WriteAPDPReg(DP reg 0x00, 0x0000001F)  
+
+[trace]: [  JLink] - - 0.818ms returns -1  
+
+[trace]: [  JLink] - JLINK_HasError()  
+
+[error]: [SeggerBackend] - JLinkARM.dll reported "-1", "An unknown error.".
+
+[trace]: [  JLink] - JLINK_CORESIGHT_WriteAPDPReg(DP reg 0x00, 0x0000001F)  
+
+[trace]: [  JLink] - - 0.830ms returns -1  
+
+[trace]: [  JLink] - JLINK_HasError()  
+
+[error]: [SeggerBackend] - JLinkARM.dll reported "-1", "An unknown error.".
+
+[trace]: [  JLink] - JLINK_CORESIGHT_WriteAPDPReg(DP reg 0x00, 0x0000001F)  
+
+[trace]: [  JLink] - - 0.824ms returns -1  
+
+[trace]: [  JLink] - JLINK_HasError()  
+
+[error]: [SeggerBackend] - JLinkARM.dll reported "-1", "An unknown error.".
+
+[trace]: [  JLink] - JLINK_CORESIGHT_WriteAPDPReg(DP reg 0x00, 0x0000001F)  
+
+[trace]: [  JLink] - - 0.801ms returns -1  
+
+[trace]: [  JLink] - JLINK_HasError()  
+
+[error]: [SeggerBackend] - JLinkARM.dll reported "-1", "An unknown error.".
+
+[trace]: [  JLink] - JLINK_CORESIGHT_WriteAPDPReg(DP reg 0x00, 0x0000001F)  
+
+[trace]: [  JLink] - - 0.786ms returns -1  
+
+[trace]: [  JLink] - JLINK_HasError()  
+
+[error]: [SeggerBackend] - JLinkARM.dll reported "-1", "An unknown error.".
+
+[trace]: [  JLink] - JLINK_CORESIGHT_WriteAPDPReg(DP reg 0x02, 0x00000000)  
+
+[trace]: [  JLink] - - 0.782ms returns -1  
+
+[trace]: [  JLink] - JLINK_HasError()  
+
+[error]: [SeggerBackend] - JLinkARM.dll reported "-1", "An unknown error.".
+
+[debug]: [SeggerBackend] - ---just_abort_debug_action
+
+[debug]: [SeggerBackend] - Attempting to clear any configuration errors in debug port before closing connection. 
+
+[trace]: [  JLink] - JLINK_CORESIGHT_WriteAPDPReg(DP reg 0x00, 0x0000001F)  
+
+[trace]: [  JLink] - - 0.744ms returns -1  
+
+[trace]: [  JLink] - JLINK_HasError()  
+
+[error]: [SeggerBackend] - JLinkARM.dll reported "-1", "An unknown error.".
+
+[trace]: [  JLink] - JLINK_CORESIGHT_WriteAPDPReg(DP reg 0x00, 0x0000001F)  
+
+[trace]: [  JLink] - - 0.728ms returns -1  
+
+[trace]: [  JLink] - JLINK_HasError()  
+
+[error]: [SeggerBackend] - JLinkARM.dll reported "-1", "An unknown error.".
+
+[trace]: [  JLink] - JLINK_CORESIGHT_WriteAPDPReg(DP reg 0x00, 0x0000001F)  
+
+[trace]: [  JLink] - - 0.751ms returns -1  
+
+[trace]: [  JLink] - JLINK_HasError()  
+
+[error]: [SeggerBackend] - JLinkARM.dll reported "-1", "An unknown error.".
+
+[trace]: [  JLink] - JLINK_CORESIGHT_WriteAPDPReg(DP reg 0x00, 0x0000001F)  
+
+[trace]: [  JLink] - - 0.768ms returns -1  
+
+[trace]: [  JLink] - JLINK_HasError()  
+
+[error]: [SeggerBackend] - JLinkARM.dll reported "-1", "An unknown error.".
+
+[trace]: [  JLink] - JLINK_CORESIGHT_WriteAPDPReg(DP reg 0x00, 0x0000001F)  
+
+[trace]: [  JLink] - - 0.737ms returns -1  
+
+[trace]: [  JLink] - JLINK_HasError()  
+
+[error]: [SeggerBackend] - JLinkARM.dll reported "-1", "An unknown error.".
+
+[trace]: [  JLink] - - 0.013ms  
+
+[trace]: [ Worker] - Command connect_to_emu_with_snr executed for 516 milliseconds with result -102
+
+[debug]: [  nRFXX] - close
+
+[debug]: [SeggerBackend] - is_connected_to_emu
+
+[trace]: [  JLink] - JLINK_IsOpen()  
+
+[trace]: [  JLink] - - 0.011ms returns 0x01  
+
+[trace]: [  JLink] - JLINK_HasError()  
+
+[trace]: [  JLink] - JLINK_Lock()  
+
+[debug]: [SeggerBackend] - close
+
+[debug]: [SeggerBackend] - disconnect_from_emu
+
+[debug]: [SeggerBackend] - ---just_disconnect_from_emu
+
+[debug]: [SeggerBackend] - is_connected_to_device
+
+[trace]: [  JLink] - JLINK_IsConnected()  
+
+[trace]: [  JLink] - - 0.007ms returns FALSE  
+
+[trace]: [  JLink] - JLINK_HasError()  
+
+[debug]: [SeggerBackend] - ---just_is_debug_region_powered
+
+[debug]: [SeggerBackend] - ---just_read_debug_port_register
+
+[debug]: [SeggerBackend] - ---just_select_debug_port_register
+
+[debug]: [SeggerBackend] - Select AP 255, DP Bank 0, AP Bank 255
+
+[trace]: [  JLink] - JLINK_CORESIGHT_WriteAPDPReg(DP reg 0x02, 0x00000000)  
+
+[trace]: [  JLink] - - 0.761ms returns -1  
+
+[trace]: [  JLink] - JLINK_HasError()  
+
+[error]: [SeggerBackend] - JLinkARM.dll reported "-1", "An unknown error.".
+
+[debug]: [SeggerBackend] - ---just_abort_debug_action
+
+[debug]: [SeggerBackend] - Attempting to clear any configuration errors in debug port before closing connection. 
+
+[trace]: [  JLink] - JLINK_CORESIGHT_WriteAPDPReg(DP reg 0x00, 0x0000001F)  
+
+[trace]: [  JLink] - - 0.745ms returns -1  
+
+[trace]: [  JLink] - JLINK_HasError()  
+
+[error]: [SeggerBackend] - JLinkARM.dll reported "-1", "An unknown error.".
+
+[trace]: [  JLink] - JLINK_CORESIGHT_WriteAPDPReg(DP reg 0x00, 0x0000001F)  
+
+[trace]: [  JLink] - - 0.744ms returns -1  
+
+[trace]: [  JLink] - JLINK_HasError()  
+
+[error]: [SeggerBackend] - JLinkARM.dll reported "-1", "An unknown error.".
+
+[trace]: [  JLink] - JLINK_CORESIGHT_WriteAPDPReg(DP reg 0x00, 0x0000001F)  
+
+[trace]: [  JLink] - - 0.742ms returns -1  
+
+[trace]: [  JLink] - JLINK_HasError()  
+
+[error]: [SeggerBackend] - JLinkARM.dll reported "-1", "An unknown error.".
+
+[trace]: [  JLink] - JLINK_CORESIGHT_WriteAPDPReg(DP reg 0x00, 0x0000001F)  
+
+[trace]: [  JLink] - - 0.751ms returns -1  
+
+[trace]: [  JLink] - JLINK_HasError()  
+
+[error]: [SeggerBackend] - JLinkARM.dll reported "-1", "An unknown error.".
+
+[trace]: [  JLink] - JLINK_CORESIGHT_WriteAPDPReg(DP reg 0x00, 0x0000001F)  
+
+[trace]: [  JLink] - - 0.768ms returns -1  
+
+[trace]: [  JLink] - JLINK_HasError()  
+
+[error]: [SeggerBackend] - JLinkARM.dll reported "-1", "An unknown error.".
+
+[trace]: [  JLink] - JLINK_CORESIGHT_WriteAPDPReg(DP reg 0x02, 0x00000000)  
+
+[trace]: [  JLink] - - 0.782ms returns -1  
+
+[trace]: [  JLink] - JLINK_HasError()  
+
+[error]: [SeggerBackend] - JLinkARM.dll reported "-1", "An unknown error.".
+
+[debug]: [SeggerBackend] - ---just_abort_debug_action
+
+[debug]: [SeggerBackend] - Attempting to clear any configuration errors in debug port before closing connection. 
+
+[trace]: [  JLink] - JLINK_CORESIGHT_WriteAPDPReg(DP reg 0x00, 0x0000001F)  
+
+[trace]: [  JLink] - - 0.733ms returns -1  
+
+[trace]: [  JLink] - JLINK_HasError()  
+
+[error]: [SeggerBackend] - JLinkARM.dll reported "-1", "An unknown error.".
+
+[trace]: [  JLink] - JLINK_CORESIGHT_WriteAPDPReg(DP reg 0x00, 0x0000001F)  
+
+[trace]: [  JLink] - - 0.753ms returns -1  
+
+[trace]: [  JLink] - JLINK_HasError()  
+
+[error]: [SeggerBackend] - JLinkARM.dll reported "-1", "An unknown error.".
+
+[trace]: [  JLink] - JLINK_CORESIGHT_WriteAPDPReg(DP reg 0x00, 0x0000001F)  
+
+[trace]: [  JLink] - - 0.776ms returns -1  
+
+[trace]: [  JLink] - JLINK_HasError()  
+
+[error]: [SeggerBackend] - JLinkARM.dll reported "-1", "An unknown error.".
+
+[trace]: [  JLink] - JLINK_CORESIGHT_WriteAPDPReg(DP reg 0x00, 0x0000001F)  
+
+[trace]: [  JLink] - - 0.769ms returns -1  
+
+[trace]: [  JLink] - JLINK_HasError()  
+
+[error]: [SeggerBackend] - JLinkARM.dll reported "-1", "An unknown error.".
+
+[trace]: [  JLink] - JLINK_CORESIGHT_WriteAPDPReg(DP reg 0x00, 0x0000001F)  
+
+[trace]: [  JLink] - - 0.788ms returns -1  
+
+[trace]: [  JLink] - JLINK_HasError()  
+
+[error]: [SeggerBackend] - JLinkARM.dll reported "-1", "An unknown error.".
+
+[trace]: [  JLink] - JLINK_CORESIGHT_WriteAPDPReg(DP reg 0x02, 0x00000000)  
+
+[trace]: [  JLink] - - 0.803ms returns -1  
+
+[trace]: [  JLink] - JLINK_HasError()  
+
+[error]: [SeggerBackend] - JLinkARM.dll reported "-1", "An unknown error.".
+
+[debug]: [SeggerBackend] - ---just_abort_debug_action
+
+[debug]: [SeggerBackend] - Attempting to clear any configuration errors in debug port before closing connection. 
+
+[trace]: [  JLink] - JLINK_CORESIGHT_WriteAPDPReg(DP reg 0x00, 0x0000001F)  
+
+[trace]: [  JLink] - - 0.782ms returns -1  
+
+[trace]: [  JLink] - JLINK_HasError()  
+
+[error]: [SeggerBackend] - JLinkARM.dll reported "-1", "An unknown error.".
+
+[trace]: [  JLink] - JLINK_CORESIGHT_WriteAPDPReg(DP reg 0x00, 0x0000001F)  
+
+[trace]: [  JLink] - - 0.787ms returns -1  
+
+[trace]: [  JLink] - JLINK_HasError()  
+
+[error]: [SeggerBackend] - JLinkARM.dll reported "-1", "An unknown error.".
+
+[trace]: [  JLink] - JLINK_CORESIGHT_WriteAPDPReg(DP reg 0x00, 0x0000001F)  
+
+[trace]: [  JLink] - - 0.758ms returns -1  
+
+[trace]: [  JLink] - JLINK_HasError()  
+
+[error]: [SeggerBackend] - JLinkARM.dll reported "-1", "An unknown error.".
+
+[trace]: [  JLink] - JLINK_CORESIGHT_WriteAPDPReg(DP reg 0x00, 0x0000001F)  
+
+[trace]: [  JLink] - - 0.747ms returns -1  
+
+[trace]: [  JLink] - JLINK_HasError()  
+
+[error]: [SeggerBackend] - JLinkARM.dll reported "-1", "An unknown error.".
+
+[trace]: [  JLink] - JLINK_CORESIGHT_WriteAPDPReg(DP reg 0x00, 0x0000001F)  
+
+[trace]: [  JLink] - - 0.756ms returns -1  
+
+[trace]: [  JLink] - JLINK_HasError()  
+
+[error]: [SeggerBackend] - JLinkARM.dll reported "-1", "An unknown error.".
+
+[trace]: [  JLink] - JLINK_CORESIGHT_WriteAPDPReg(DP reg 0x02, 0x00000000)  
+
+[trace]: [  JLink] - - 0.767ms returns -1  
+
+[trace]: [  JLink] - JLINK_HasError()  
+
+[error]: [SeggerBackend] - JLinkARM.dll reported "-1", "An unknown error.".
+
+[debug]: [SeggerBackend] - ---just_abort_debug_action
+
+[debug]: [SeggerBackend] - Attempting to clear any configuration errors in debug port before closing connection. 
+
+[trace]: [  JLink] - JLINK_CORESIGHT_WriteAPDPReg(DP reg 0x00, 0x0000001F)  
+
+[trace]: [  JLink] - - 0.808ms returns -1  
+
+[trace]: [  JLink] - JLINK_HasError()  
+
+[error]: [SeggerBackend] - JLinkARM.dll reported "-1", "An unknown error.".
+
+[trace]: [  JLink] - JLINK_CORESIGHT_WriteAPDPReg(DP reg 0x00, 0x0000001F)  
+
+[trace]: [  JLink] - - 0.802ms returns -1  
+
+[trace]: [  JLink] - JLINK_HasError()  
+
+[error]: [SeggerBackend] - JLinkARM.dll reported "-1", "An unknown error.".
+
+[trace]: [  JLink] - JLINK_CORESIGHT_WriteAPDPReg(DP reg 0x00, 0x0000001F)  
+
+[trace]: [  JLink] - - 0.836ms returns -1  
+
+[trace]: [  JLink] - JLINK_HasError()  
+
+[error]: [SeggerBackend] - JLinkARM.dll reported "-1", "An unknown error.".
+
+[trace]: [  JLink] - JLINK_CORESIGHT_WriteAPDPReg(DP reg 0x00, 0x0000001F)  
+
+[trace]: [  JLink] - - 0.802ms returns -1  
+
+[trace]: [  JLink] - JLINK_HasError()  
+
+[error]: [SeggerBackend] - JLinkARM.dll reported "-1", "An unknown error.".
+
+[trace]: [  JLink] - JLINK_CORESIGHT_WriteAPDPReg(DP reg 0x00, 0x0000001F)  
+
+[trace]: [  JLink] - - 0.755ms returns -1  
+
+[trace]: [  JLink] - JLINK_HasError()  
+
+[error]: [SeggerBackend] - JLinkARM.dll reported "-1", "An unknown error.".
+
+[trace]: [  JLink] - JLINK_CORESIGHT_WriteAPDPReg(DP reg 0x02, 0x00000000)  
+
+[trace]: [  JLink] - - 0.803ms returns -1  
+
+[trace]: [  JLink] - JLINK_HasError()  
+
+[error]: [SeggerBackend] - JLinkARM.dll reported "-1", "An unknown error.".
+
+[debug]: [SeggerBackend] - ---just_abort_debug_action
+
+[debug]: [SeggerBackend] - Attempting to clear any configuration errors in debug port before closing connection. 
+
+[trace]: [  JLink] - JLINK_CORESIGHT_WriteAPDPReg(DP reg 0x00, 0x0000001F)  
+
+[trace]: [  JLink] - - 0.878ms returns -1  
+
+[trace]: [  JLink] - JLINK_HasError()  
+
+[error]: [SeggerBackend] - JLinkARM.dll reported "-1", "An unknown error.".
+
+[trace]: [  JLink] - JLINK_CORESIGHT_WriteAPDPReg(DP reg 0x00, 0x0000001F)  
+
+[trace]: [  JLink] - - 0.870ms returns -1  
+
+[trace]: [  JLink] - JLINK_HasError()  
+
+[error]: [SeggerBackend] - JLinkARM.dll reported "-1", "An unknown error.".
+
+[trace]: [  JLink] - JLINK_CORESIGHT_WriteAPDPReg(DP reg 0x00, 0x0000001F)  
+
+[trace]: [  JLink] - - 0.816ms returns -1  
+
+[trace]: [  JLink] - JLINK_HasError()  
+
+[error]: [SeggerBackend] - JLinkARM.dll reported "-1", "An unknown error.".
+
+[trace]: [  JLink] - JLINK_CORESIGHT_WriteAPDPReg(DP reg 0x00, 0x0000001F)  
+
+[trace]: [  JLink] - - 0.799ms returns -1  
+
+[trace]: [  JLink] - JLINK_HasError()  
+
+[error]: [SeggerBackend] - JLinkARM.dll reported "-1", "An unknown error.".
+
+[trace]: [  JLink] - JLINK_CORESIGHT_WriteAPDPReg(DP reg 0x00, 0x0000001F)  
+
+[trace]: [  JLink] - - 0.793ms returns -1  
+
+[trace]: [  JLink] - JLINK_HasError()  
+
+[error]: [SeggerBackend] - JLinkARM.dll reported "-1", "An unknown error.".
+
+[trace]: [  JLink] - - 0.012ms  
+
+[trace]: [  JLink] - JLINK_Close()  
+
+[debug]: [SeggerBackend] - Segger Backend closed.
+
+[debug]: [  nRFXX] - nRF family DLL closed
+
+[trace]: [ Client] - Command close executed for 44 milliseconds with result 0
+[debug]: [ Client] - terminate
+[trace]: [ Client] - Command terminate executed for 0 milliseconds with result 0
+[trace]: [ Worker] - Command close executed for 44 milliseconds with result 0
+
+[trace]: [ Worker] - Command terminate executed for 0 milliseconds with result 0
+
+[trace]: [ Worker] - Executed 6 commands for 727 milliseconds
+
+[debug]: [ Client] - Worker process exited with code: 0
+[debug]: [ Client] - Worker process exited with code: 0
+[debug]: [ Client] - Child process terminated with result 0
+[trace]: [ Client] - Executed 6 commands for 730 milliseconds
+[debug]: [ Client] - terminate
