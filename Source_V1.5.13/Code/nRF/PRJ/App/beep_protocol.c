@@ -987,8 +987,6 @@ uint32_t beep_protocol_decode(BEEP_protocol_s * prot, uint8_t * data, uint8_t ms
 }
 
 
-/*
- */
 uint32_t beep_protocol_encode(bool cmdPrepend, BEEP_protocol_s * prot, uint8_t * pBuffer, uint8_t * msg_lenght, uint8_t maxBufferLenght)
 {
     uint8_t data[50] = {0};
@@ -999,8 +997,8 @@ uint32_t beep_protocol_encode(bool cmdPrepend, BEEP_protocol_s * prot, uint8_t *
 	{
 		return NRF_ERROR_INVALID_PARAM;
 	}
-
-	if(cmdPrepend && !ds3231_enabled)
+ 
+	if(cmdPrepend)
 	{
 		data[0] = prot->command;
 		offset	= 1;
@@ -1009,15 +1007,6 @@ uint32_t beep_protocol_encode(bool cmdPrepend, BEEP_protocol_s * prot, uint8_t *
                 #endif 
 	}
         
-        if(cmdPrepend && ds3231_enabled)
-	{
-		data[0] = ((prot->command)+1);
-		offset	= 1;
-                #if BEEP_PROTOCOL_LOGGING
-                        NRF_LOG_INFO("Time field prepended with: %u/0x%02X", ((prot->command)+1), ((prot->command)+1));
-                #endif 
-	}
-
     #if BEEP_PROTOCOL_LOGGING
         NRF_LOG_INFO("Encoding cmd: %u/0x%02X", prot->command, prot->command);
     #endif

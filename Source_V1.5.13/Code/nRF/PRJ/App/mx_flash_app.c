@@ -944,10 +944,16 @@ void beep_fileTransfer_while(void)
 
                     // Add the log time from DS3231 RTC or from internal clock
                     memset(&prot[5], 0, sizeof(BEEP_protocol_s));
-                    prot[5].command = READ_TIME;
- 
+                   
+                    if(ds3231_enabled == 1)
+                    {
+                    prot[5].command = READ_TIME + 1; // 0x26 
+                    }
+                    if(ds3231_enabled == 0)
+                    {
+                    prot[5].command = READ_TIME; // 0x25
                     prot[5].param.time = get_logtime_value(); 
-
+                    }
 
                     if(!flash_newLineStart(BEEP_LOG_FILL))
                     {
