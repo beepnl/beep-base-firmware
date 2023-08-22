@@ -43,6 +43,7 @@ NRF_LOG_MODULE_REGISTER();
 #include "alarm_app.h"
 #include "bme_app.h"
 #include "log_time.h" 
+#include "ds3231_app.h"
 
 static bool joinedOTAA			= false;
 static bool	adrEnable			= LORAWAN_ADR_ON;
@@ -430,7 +431,15 @@ uint32_t Beep_SendFormat(BEEP_STATUS index, MEASUREMENT_RESULT_s * alarm)
             beep_protocol_encode(true, &get, payload, &payloadLenght, PAYLOAD_SIZE_MAX);
 
             // Add the current time
+            if(ds3231_enabled == 0) // time is from MCU
+            {
             get.command = READ_TIME;
+            }
+            if(ds3231_enabled == 1) // time is from RTC
+            {
+            get.command = ((READ_TIME) + 1);
+            }
+            
             get.param.time = get_logtime_value();
             beep_protocol_encode(true, &get, payload, &payloadLenght, PAYLOAD_SIZE_MAX);
 			break;
