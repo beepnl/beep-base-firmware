@@ -947,7 +947,7 @@ void beep_fileTransfer_while(void)
                    
                     if(ds3231_enabled == 1)
                     {
-                    prot[5].command = READ_TIME + 1; // 0x26 
+                    prot[5].command = ((READ_TIME) + 1); // 0x26 
                     }
                     if(ds3231_enabled == 0)
                     {

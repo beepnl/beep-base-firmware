@@ -87,7 +87,7 @@ void ds3231_init(void)
         
         nrf_drv_twi_enable(&m_ds3231); 
          
-        ds3231_enabled = 1;
+        ds3231_enabled = 0;
 
         APP_ERROR_CHECK(err_code);
 }
@@ -398,6 +398,7 @@ bool ds3231_detected()
                   #endif          
 
                 powerApp_Enable(false, PWR_BME280);
+                ds3231_uninit();
                 return false;
               }
               else
