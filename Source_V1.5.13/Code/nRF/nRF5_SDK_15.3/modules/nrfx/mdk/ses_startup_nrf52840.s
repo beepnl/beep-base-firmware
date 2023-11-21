@@ -57,7 +57,7 @@
   .align 0
   
 /************************************************************************************
- * Default Exception Handlers                                                       *
+ * Default Exception Handlers                                                        *
  ************************************************************************************/
 
 
@@ -70,7 +70,7 @@ NMI_Handler:
   .weak   HardFault_Handler
 HardFault_Handler:
   b     .
-
+ 
   .thumb_func
   .weak   MemoryManagement_Handler
 MemoryManagement_Handler:

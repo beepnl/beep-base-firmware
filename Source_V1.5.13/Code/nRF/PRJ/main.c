@@ -730,6 +730,12 @@ void beep_ctrlpt_event_handler(CONTROL_SOURCE source, BEEP_protocol_s * prot)
             break;
 
         //-----------------------------------------------------------------------------
+        case READ_TIME_DS3231:
+
+            reply.param.time = get_logtime_value();
+            break;
+
+        //-----------------------------------------------------------------------------
         case WRITE_TIME:
         {
           if(ds3231_enabled == 1) 
@@ -745,9 +751,9 @@ void beep_ctrlpt_event_handler(CONTROL_SOURCE source, BEEP_protocol_s * prot)
               //ble_time_tm_s.tm_isdst = 0;
 
               #ifdef DEBUG
-                NRF_LOG_FLUSH();
+               // NRF_LOG_FLUSH();
                 NRF_LOG_INFO("### NEWTIME from bluetooth: %2d:%02d\n", (ble_time_tm_s.tm_hour)%24, ble_time_tm_s.tm_min);
-                NRF_LOG_FLUSH();
+               // NRF_LOG_FLUSH();
               #endif
 
               ds3231_setTime(ble_time_tm_s);     
@@ -757,7 +763,7 @@ void beep_ctrlpt_event_handler(CONTROL_SOURCE source, BEEP_protocol_s * prot)
               nvm_setLastTime(prot->param.time);
  
               ret = NRF_SUCCESS;
-              sendResponse(source, prot->command, ret);
+              sendResponse(source, 38, ret);
               return;
               }
 
@@ -1253,7 +1259,15 @@ static void sample_statemachine(void)
 
             // Add the log time
             memset(&prot[5], 0, sizeof(BEEP_protocol_s));
-            prot[5].command = READ_TIME;
+            if(ds3231_enabled == 0)
+            {
+            prot[5].command     = READ_TIME;
+            }
+            if(ds3231_enabled == 1)
+            {
+            prot[5].command     = READ_TIME_DS3231;
+            }
+
             prot[5].param.time = get_logtime_value();
 
             flash_Write_BeepProtocol(BEEP_KEEP_ALIVE, prot, 6);
@@ -1505,7 +1519,7 @@ void main_application_while(void)
 				// Complete the last processes before going to sleep.
 				main_application_change_state(HORIZONTAL_DFU_READY);
 				#ifdef DEBUG
-					NRF_LOG_PROCESS();
+					// NRF_LOG_PROCESS();
 				#else
 					NRF_LOG_FINAL_FLUSH();
 				#endif
@@ -1691,6 +1705,7 @@ int main(void)
 
     if(ds3231_detected() && ds3231_enabled == 1)
       {            
+         NRF_LOG_INFO( "DS3231 ENABLED");
             ds3231_start_clock_osc();
             // retrieve last known time from flash
             time_t lastTime;
@@ -1709,7 +1724,7 @@ int main(void)
       {
         #ifdef DEBUG
           NRF_LOG_INFO( "### NO DS3231 ###");
-          NRF_LOG_FLUSH();
+          //NRF_LOG_FLUSH();
         #endif
 
       logtime_init(logtime_callback, nvm_getLastTime()); 
@@ -1733,7 +1748,7 @@ int main(void)
 
         bme_app_while();
 
-        NRF_LOG_PROCESS();
+        // NRF_LOG_PROCESS();
 
         if(!DS18B20_App_busy())
 		{

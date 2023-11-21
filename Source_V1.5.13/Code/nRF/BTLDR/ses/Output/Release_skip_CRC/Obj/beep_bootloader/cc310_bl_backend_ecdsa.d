@@ -1,13 +1,13 @@
 Output/Release_skip_CRC/Obj/beep_bootloader/cc310_bl_backend_ecdsa.o: \
- /media/orlo/3dcae13c-ff11-41c7-9ee7-653b113c72a1/home/orlo/beep-base-firmware/Source_V1.5.12/Code/nRF/nRF5_SDK_15.3/components/libraries/crypto/backend/cc310_bl/cc310_bl_backend_ecdsa.c \
+ /home/orlo/beep-base-firmware/Source_V1.5.13/Code/nRF/nRF5_SDK_15.3/components/libraries/crypto/backend/cc310_bl/cc310_bl_backend_ecdsa.c \
  ../config/sdk_config.h \
  ../../nRF5_SDK_15.3/components/libraries/util/nordic_common.h \
- /mnt3/segger_embedded_studio_for_arm_5.64/include/string.h \
- /mnt3/segger_embedded_studio_for_arm_5.64/include/__crossworks.h \
+ /usr/share/segger_embedded_studio_for_arm_5.42a/include/string.h \
+ /usr/share/segger_embedded_studio_for_arm_5.42a/include/__crossworks.h \
  ../../nRF5_SDK_15.3/components/libraries/util/app_util.h \
- /mnt3/segger_embedded_studio_for_arm_5.64/include/stdint.h \
- /mnt3/segger_embedded_studio_for_arm_5.64/include/stdbool.h \
- /mnt3/segger_embedded_studio_for_arm_5.64/include/stddef.h \
+ /usr/share/segger_embedded_studio_for_arm_5.42a/include/stdint.h \
+ /usr/share/segger_embedded_studio_for_arm_5.42a/include/stdbool.h \
+ /usr/share/segger_embedded_studio_for_arm_5.42a/include/stddef.h \
  ../../nRF5_SDK_15.3/modules/nrfx/mdk/compiler_abstraction.h \
  ../../nRF5_SDK_15.3/components/libraries/util/nordic_common.h \
  ../../nRF5_SDK_15.3/modules/nrfx/mdk/nrf.h \
@@ -39,7 +39,7 @@ Output/Release_skip_CRC/Obj/beep_bootloader/cc310_bl_backend_ecdsa.o: \
  ../../nRF5_SDK_15.3/components/libraries/crypto/nrf_crypto_shared.h \
  ../../nRF5_SDK_15.3/components/libraries/util/sdk_macros.h \
  ../../nRF5_SDK_15.3/components/libraries/crypto/nrf_crypto_mem.h \
- /media/orlo/3dcae13c-ff11-41c7-9ee7-653b113c72a1/home/orlo/beep-base-firmware/Source_V1.5.12/Code/nRF/nRF5_SDK_15.3/components/libraries/crypto/backend/cc310_bl/cc310_bl_backend_ecdsa.h \
+ /home/orlo/beep-base-firmware/Source_V1.5.13/Code/nRF/nRF5_SDK_15.3/components/libraries/crypto/backend/cc310_bl/cc310_bl_backend_ecdsa.h \
  ../../nRF5_SDK_15.3/components/libraries/crypto/nrf_crypto_ecc_shared.h \
  ../../nRF5_SDK_15.3/components/libraries/crypto/nrf_crypto_ecdsa_shared.h \
  ../../nRF5_SDK_15.3/components/libraries/crypto/nrf_crypto_ecc.h \
@@ -57,7 +57,7 @@ Output/Release_skip_CRC/Obj/beep_bootloader/cc310_bl_backend_ecdsa.o: \
  ../../nRF5_SDK_15.3/components/libraries/crypto/backend/oberon/oberon_backend_ecc.h \
  ../../nRF5_SDK_15.3/components/libraries/crypto/backend/micro_ecc/micro_ecc_backend_ecc.h \
  ../../nRF5_SDK_15.3/components/libraries/crypto/backend/optiga/optiga_backend_ecc.h \
- /media/orlo/3dcae13c-ff11-41c7-9ee7-653b113c72a1/home/orlo/beep-base-firmware/Source_V1.5.12/Code/nRF/nRF5_SDK_15.3/components/libraries/crypto/backend/cc310_bl/cc310_bl_backend_shared.h \
+ /home/orlo/beep-base-firmware/Source_V1.5.13/Code/nRF/nRF5_SDK_15.3/components/libraries/crypto/backend/cc310_bl/cc310_bl_backend_shared.h \
  ../../nRF5_SDK_15.3/components/libraries/crypto/nrf_crypto_hash_shared.h \
  ../../nRF5_SDK_15.3/components/libraries/crypto/backend/cc310/cc310_backend_mutex.h \
  ../../nRF5_SDK_15.3/components/libraries/mutex/nrf_mtx.h \

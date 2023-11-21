@@ -8,7 +8,7 @@
             "bin_file": "sd_bl.bin",
             "dat_file": "sd_bl.dat",
             "info_read_only_metadata": {
-                "bl_size": 46312,
+                "bl_size": 25876,
                 "sd_size": 151016
             }
         }

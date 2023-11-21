@@ -1,12 +1,12 @@
 Output/Release_skip_CRC/Obj/beep_bootloader/nrf_dfu_validation.o: \
- /media/orlo/3dcae13c-ff11-41c7-9ee7-653b113c72a1/home/orlo/beep-base-firmware/Source_V1.5.12/Code/nRF/nRF5_SDK_15.3/components/libraries/bootloader/dfu/nrf_dfu_validation.c \
- /mnt3/segger_embedded_studio_for_arm_5.64/include/stdbool.h \
- /media/orlo/3dcae13c-ff11-41c7-9ee7-653b113c72a1/home/orlo/beep-base-firmware/Source_V1.5.12/Code/nRF/nRF5_SDK_15.3/components/libraries/bootloader/dfu/nrf_dfu_types.h \
- /mnt3/segger_embedded_studio_for_arm_5.64/include/stdint.h \
- /mnt3/segger_embedded_studio_for_arm_5.64/include/stddef.h \
- /mnt3/segger_embedded_studio_for_arm_5.64/include/__crossworks.h \
+ /home/orlo/beep-base-firmware/Source_V1.5.13/Code/nRF/nRF5_SDK_15.3/components/libraries/bootloader/dfu/nrf_dfu_validation.c \
+ /usr/share/segger_embedded_studio_for_arm_5.42a/include/stdbool.h \
+ /home/orlo/beep-base-firmware/Source_V1.5.13/Code/nRF/nRF5_SDK_15.3/components/libraries/bootloader/dfu/nrf_dfu_types.h \
+ /usr/share/segger_embedded_studio_for_arm_5.42a/include/stdint.h \
+ /usr/share/segger_embedded_studio_for_arm_5.42a/include/stddef.h \
+ /usr/share/segger_embedded_studio_for_arm_5.42a/include/__crossworks.h \
  ../../nRF5_SDK_15.3/components/libraries/util/sdk_common.h \
- /mnt3/segger_embedded_studio_for_arm_5.64/include/string.h \
+ /usr/share/segger_embedded_studio_for_arm_5.42a/include/string.h \
  ../config/sdk_config.h \
  ../../nRF5_SDK_15.3/components/libraries/util/nordic_common.h \
  ../../nRF5_SDK_15.3/modules/nrfx/mdk/compiler_abstraction.h \
@@ -37,17 +37,17 @@ Output/Release_skip_CRC/Obj/beep_bootloader/nrf_dfu_validation.o: \
  ../../nRF5_SDK_15.3/components/softdevice/s140/headers/nrf_error_soc.h \
  ../../nRF5_SDK_15.3/components/softdevice/s140/headers/nrf_nvic.h \
  ../../nRF5_SDK_15.3/components/libraries/util/app_error.h \
- /mnt3/segger_embedded_studio_for_arm_5.64/include/stdio.h \
+ /usr/share/segger_embedded_studio_for_arm_5.42a/include/stdio.h \
  ../../nRF5_SDK_15.3/components/libraries/util/app_error_weak.h \
  ../../nRF5_SDK_15.3/components/softdevice/s140/headers/ble_gap.h \
  ../../nRF5_SDK_15.3/components/softdevice/s140/headers/ble_hci.h \
  ../../nRF5_SDK_15.3/components/softdevice/s140/headers/ble_ranges.h \
  ../../nRF5_SDK_15.3/components/softdevice/s140/headers/ble_types.h \
  ../../nRF5_SDK_15.3/components/softdevice/s140/headers/ble_err.h \
- /media/orlo/3dcae13c-ff11-41c7-9ee7-653b113c72a1/home/orlo/beep-base-firmware/Source_V1.5.12/Code/nRF/nRF5_SDK_15.3/components/libraries/bootloader/dfu/nrf_dfu_settings.h \
- /media/orlo/3dcae13c-ff11-41c7-9ee7-653b113c72a1/home/orlo/beep-base-firmware/Source_V1.5.12/Code/nRF/nRF5_SDK_15.3/components/libraries/bootloader/dfu/nrf_dfu_flash.h \
+ /home/orlo/beep-base-firmware/Source_V1.5.13/Code/nRF/nRF5_SDK_15.3/components/libraries/bootloader/dfu/nrf_dfu_settings.h \
+ /home/orlo/beep-base-firmware/Source_V1.5.13/Code/nRF/nRF5_SDK_15.3/components/libraries/bootloader/dfu/nrf_dfu_flash.h \
  ../../nRF5_SDK_15.3/components/libraries/util/sdk_errors.h \
- /media/orlo/3dcae13c-ff11-41c7-9ee7-653b113c72a1/home/orlo/beep-base-firmware/Source_V1.5.12/Code/nRF/nRF5_SDK_15.3/components/libraries/bootloader/dfu/nrf_dfu_utils.h \
+ /home/orlo/beep-base-firmware/Source_V1.5.13/Code/nRF/nRF5_SDK_15.3/components/libraries/bootloader/dfu/nrf_dfu_utils.h \
  ../../nRF5_SDK_15.3/components/libraries/util/app_util.h \
  ../../nRF5_SDK_15.3/components/libraries/bootloader/nrf_bootloader_info.h \
  ../../nRF5_SDK_15.3/components/softdevice/s140/headers/nrf_sdm.h \
@@ -57,7 +57,7 @@ Output/Release_skip_CRC/Obj/beep_bootloader/nrf_dfu_validation.o: \
  ../../nRF5_SDK_15.3/external/nano-pb/pb_common.h \
  ../../nRF5_SDK_15.3/external/nano-pb/pb.h \
  ../../nRF5_SDK_15.3/external/nano-pb/pb_decode.h \
- /media/orlo/3dcae13c-ff11-41c7-9ee7-653b113c72a1/home/orlo/beep-base-firmware/Source_V1.5.12/Code/nRF/nRF5_SDK_15.3/components/libraries/bootloader/dfu/dfu-cc.pb.h \
+ /home/orlo/beep-base-firmware/Source_V1.5.13/Code/nRF/nRF5_SDK_15.3/components/libraries/bootloader/dfu/dfu-cc.pb.h \
  ../../nRF5_SDK_15.3/components/libraries/crc32/crc32.h \
  ../../nRF5_SDK_15.3/components/libraries/crypto/nrf_crypto.h \
  ../../nRF5_SDK_15.3/components/libraries/crypto/nrf_crypto_init.h \
@@ -149,10 +149,10 @@ Output/Release_skip_CRC/Obj/beep_bootloader/nrf_dfu_validation.o: \
  ../../nRF5_SDK_15.3/components/libraries/crypto/nrf_crypto_shared.h \
  ../../nRF5_SDK_15.3/components/libraries/util/sdk_macros.h \
  ../../nRF5_SDK_15.3/components/libraries/util/nrf_assert.h \
- /media/orlo/3dcae13c-ff11-41c7-9ee7-653b113c72a1/home/orlo/beep-base-firmware/Source_V1.5.12/Code/nRF/nRF5_SDK_15.3/components/libraries/bootloader/dfu/nrf_dfu_validation.h \
- /media/orlo/3dcae13c-ff11-41c7-9ee7-653b113c72a1/home/orlo/beep-base-firmware/Source_V1.5.12/Code/nRF/nRF5_SDK_15.3/components/libraries/bootloader/dfu/nrf_dfu_handling_error.h \
- /media/orlo/3dcae13c-ff11-41c7-9ee7-653b113c72a1/home/orlo/beep-base-firmware/Source_V1.5.12/Code/nRF/nRF5_SDK_15.3/components/libraries/bootloader/dfu/nrf_dfu_req_handler.h \
- /media/orlo/3dcae13c-ff11-41c7-9ee7-653b113c72a1/home/orlo/beep-base-firmware/Source_V1.5.12/Code/nRF/nRF5_SDK_15.3/components/libraries/bootloader/dfu/nrf_dfu_ver_validation.h \
+ /home/orlo/beep-base-firmware/Source_V1.5.13/Code/nRF/nRF5_SDK_15.3/components/libraries/bootloader/dfu/nrf_dfu_validation.h \
+ /home/orlo/beep-base-firmware/Source_V1.5.13/Code/nRF/nRF5_SDK_15.3/components/libraries/bootloader/dfu/nrf_dfu_handling_error.h \
+ /home/orlo/beep-base-firmware/Source_V1.5.13/Code/nRF/nRF5_SDK_15.3/components/libraries/bootloader/dfu/nrf_dfu_req_handler.h \
+ /home/orlo/beep-base-firmware/Source_V1.5.13/Code/nRF/nRF5_SDK_15.3/components/libraries/bootloader/dfu/nrf_dfu_ver_validation.h \
  ../../nRF5_SDK_15.3/components/libraries/strerror/nrf_strerror.h \
  ../../nRF5_SDK_15.3/components/libraries/log/nrf_log.h \
  ../../nRF5_SDK_15.3/components/libraries/log/src/nrf_log_internal.h \

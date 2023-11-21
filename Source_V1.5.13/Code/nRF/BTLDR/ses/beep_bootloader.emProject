@@ -2,7 +2,7 @@
 <solution Name="beep_bootloader" target="8" version="2">
   <project Name="beep_bootloader">
     <configuration
-      Connection="USB 682613435"
+      Connection="USB 44222244"
       Name="Common"
       arm_architecture="v7EM"
       arm_core_type="Cortex-M4"

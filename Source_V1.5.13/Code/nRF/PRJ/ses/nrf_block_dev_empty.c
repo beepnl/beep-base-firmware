@@ -132,7 +132,7 @@ static ret_code_t block_dev_empty_read_req(nrf_block_dev_t const * p_blk_dev,
 
     NRF_LOG_INST_DEBUG(
         p_empty_dev->p_log,
-        "Read req from block %"PRIu32" size %"PRIu32"(x%"PRIu32") to %"PRIXPTR,
+e        "Read req from block %"PRIu32" size %"PRIu32"(x%"PRIu32") to %"xPRIXPTR"",
         p_blk->blk_id,
         p_blk->blk_count,
         p_blk_dev->p_ops->geometry(p_blk_dev)->blk_size,

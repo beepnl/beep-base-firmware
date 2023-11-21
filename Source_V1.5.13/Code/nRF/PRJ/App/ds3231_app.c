@@ -295,6 +295,7 @@ time_t ds3231_getTime()
         ds3231_dateTime.tm_mon = bcd2dec(rx_buf[5] & 0x1f);
         ds3231_dateTime.tm_year = bcd2dec(rx_buf[6]);
 
+        /*
            #ifdef DEBUG
            #ifdef DS3231_LOG_ENABLED
              NRF_LOG_FLUSH();  nrf_delay_ms(1); 
@@ -330,6 +331,7 @@ time_t ds3231_getTime()
              NRF_LOG_FLUSH();  nrf_delay_ms(1); 
            #endif 
            #endif
+           */
  
         time_t ds3231_dateTime_timestamp;
         ds3231_dateTime.tm_isdst = 0;
@@ -389,7 +391,7 @@ bool ds3231_detected()
                     ds3231_enabled = 0;
                   }
                 #endif
-              
+                
               if(ds3231_enabled == 0)
               {
                   #ifdef DS3231_LOG_ENABLED

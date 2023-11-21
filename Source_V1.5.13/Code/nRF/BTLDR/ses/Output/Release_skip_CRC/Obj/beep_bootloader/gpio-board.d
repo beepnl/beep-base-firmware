@@ -1,18 +1,18 @@
 Output/Release_skip_CRC/Obj/beep_bootloader/gpio-board.o: \
- /media/orlo/3dcae13c-ff11-41c7-9ee7-653b113c72a1/home/orlo/beep-base-firmware/Source_V1.5.12/Code/nRF/LoRaMac-node-feature-5.0.0/src/boards/nRF52840/gpio-board.c \
+ /home/orlo/beep-base-firmware/Source_V1.5.13/Code/nRF/LoRaMac-node-feature-5.0.0/src/boards/nRF52840/gpio-board.c \
  ../config/sdk_config.h \
  ../../LoRaMac-node-feature-5.0.0/src/boards/gpio-board.h \
  ../../LoRaMac-node-feature-5.0.0/src/system/gpio.h \
- /mnt3/segger_embedded_studio_for_arm_5.64/include/stdint.h \
+ /usr/share/segger_embedded_studio_for_arm_5.42a/include/stdint.h \
  ../../LoRaMac-node-feature-5.0.0/src/boards/pinName-board.h \
  ../../LoRaMac-node-feature-5.0.0/src/boards/pinName-ioe.h \
  ../../nRF5_SDK_15.3/modules/nrfx/hal/nrf_gpiote.h \
  ../../nRF5_SDK_15.3/modules/nrfx/nrfx.h \
  ../../nRF5_SDK_15.3/integration/nrfx/nrfx_config.h \
  ../../nRF5_SDK_15.3/modules/nrfx/drivers/nrfx_common.h \
- /mnt3/segger_embedded_studio_for_arm_5.64/include/stddef.h \
- /mnt3/segger_embedded_studio_for_arm_5.64/include/__crossworks.h \
- /mnt3/segger_embedded_studio_for_arm_5.64/include/stdbool.h \
+ /usr/share/segger_embedded_studio_for_arm_5.42a/include/stddef.h \
+ /usr/share/segger_embedded_studio_for_arm_5.42a/include/__crossworks.h \
+ /usr/share/segger_embedded_studio_for_arm_5.42a/include/stdbool.h \
  ../../nRF5_SDK_15.3/modules/nrfx/mdk/nrf.h \
  ../../nRF5_SDK_15.3/modules/nrfx/mdk/nrf52840.h \
  ../../nRF5_SDK_15.3/components/toolchain/cmsis/include/core_cm4.h \
@@ -46,7 +46,7 @@ Output/Release_skip_CRC/Obj/beep_bootloader/gpio-board.o: \
  ../../nRF5_SDK_15.3/components/softdevice/s140/headers/nrf_nvic.h \
  ../../nRF5_SDK_15.3/components/libraries/util/nrf_assert.h \
  ../../nRF5_SDK_15.3/components/libraries/util/app_error.h \
- /mnt3/segger_embedded_studio_for_arm_5.64/include/stdio.h \
+ /usr/share/segger_embedded_studio_for_arm_5.42a/include/stdio.h \
  ../../nRF5_SDK_15.3/components/libraries/util/sdk_errors.h \
  ../../nRF5_SDK_15.3/components/softdevice/s140/headers/nrf_error.h \
  ../../nRF5_SDK_15.3/components/libraries/util/app_error_weak.h \

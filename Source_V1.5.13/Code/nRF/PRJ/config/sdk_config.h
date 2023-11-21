@@ -91,7 +91,8 @@
 
 
 
-#define NRF_LOG_BACKEND_RTT_TEMP_BUFFER_SIZE        8192
+
+#define NRF_LOG_BACKEND_RTT_TEMP_BUFFER_SIZE        256
 #define NRF_LOG_BACKEND_RTT_TX_RETRY_DELAY_MS       1
 #define NRF_LOG_BACKEND_RTT_TX_RETRY_CNT            3
 
@@ -115,11 +116,12 @@
 // <o> SEGGER_RTT_CONFIG_BUFFER_SIZE_UP - Size of upstream buffer. 
 // <i> Note that either @ref NRF_LOG_BACKEND_RTT_OUTPUT_BUFFER_SIZE
 // <i> or this value is actually used. It depends on which one is bigger.
-#define SEGGER_RTT_CONFIG_BUFFER_SIZE_UP		8192
-#define SEGGER_RTT_CONFIG_MAX_NUM_UP_BUFFERS	4
-#define SEGGER_RTT_CONFIG_BUFFER_SIZE_DOWN		64
+#define SEGGER_RTT_CONFIG_BUFFER_SIZE_UP		512
+#define SEGGER_RTT_CONFIG_MAX_NUM_UP_BUFFERS	2
+#define SEGGER_RTT_CONFIG_BUFFER_SIZE_DOWN		16
 #define SEGGER_RTT_CONFIG_MAX_NUM_DOWN_BUFFERS	2
 #define SEGGER_RTT_CONFIG_DEFAULT_MODE			0
+
 
 
 // <h> nRF_Drivers 
@@ -219,7 +221,7 @@
 #define NRF_PWR_MGMT_CONFIG_AUTO_SHUTDOWN_RETRY			1
 #define NRF_PWR_MGMT_CONFIG_USE_SCHEDULER				0
 #define NRF_PWR_MGMT_CONFIG_HANDLER_PRIORITY_COUNT		3
-
+ 
 
 // <e> UART_CONFIG_LOG_ENABLED - Enables logging in the module.
 //==========================================================
@@ -351,7 +353,7 @@
 
 // <e> NRFX_TWIM_CONFIG_LOG_ENABLED - Enables logging in the module.
 //==========================================================
-#define NRFX_TWIM_CONFIG_LOG_ENABLED				1
+#define NRFX_TWIM_CONFIG_LOG_ENABLED				0
 #define NRFX_TWIM_CONFIG_LOG_LEVEL					3
 #define NRFX_TWIM_CONFIG_INFO_COLOR					0
 #define NRFX_TWIM_CONFIG_DEBUG_COLOR				0
@@ -370,7 +372,7 @@
 // <e> NRFX_TWI_CONFIG_LOG_ENABLED - Enables logging in the module.
 //==========================================================
 //==========================================================
-#define NRFX_TWI_CONFIG_LOG_ENABLED					1
+#define NRFX_TWI_CONFIG_LOG_ENABLED					0
 
 #define NRFX_TWI_CONFIG_LOG_LEVEL					3
 #define NRFX_TWI_CONFIG_INFO_COLOR					0
@@ -389,7 +391,7 @@
 #define TWI1_ENABLED								1
 #define TWI1_USE_EASY_DMA							1
 
-#define TWI_CONFIG_LOG_ENABLED                                                 1
+#define TWI_CONFIG_LOG_ENABLED                                                 0
 #define TWI_CONFIG_LOG_LEVEL					               3
 
 

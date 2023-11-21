@@ -197,7 +197,7 @@ __STATIC_INLINE uint8_t nrf_log_backend_id_get(nrf_log_backend_t const * const p
 
 /**
  * @brief Function for enabling backend.
- *
+  *
  * @param[in] p_backend  Pointer to the backend instance.
  */
 __STATIC_INLINE void nrf_log_backend_enable(nrf_log_backend_t const * const p_backend);

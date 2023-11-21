@@ -10,7 +10,7 @@ NRF_LOG_MODULE_REGISTER();
 #include "app_timer.h"
 #include "gpio-board.h"
 #include "power_app.h"
-#include "ble_setup.h"
+#include "BLE_setup.h"
 #include "nvm_fs.h"
 #include "timeslot.h"
 

@@ -972,7 +972,7 @@ void nrf_log_panic(void)
 {
     nrf_log_backend_t const * p_backend = m_log_data.p_backend_head;
     m_log_data.autoflush = true;
-    while (p_backend)
+        while (p_backend)
     {
         nrf_log_backend_enable(p_backend);
         nrf_log_backend_panic_set(p_backend);

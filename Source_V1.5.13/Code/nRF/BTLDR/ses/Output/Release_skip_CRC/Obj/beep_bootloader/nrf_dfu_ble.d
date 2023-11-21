@@ -1,7 +1,7 @@
 Output/Release_skip_CRC/Obj/beep_bootloader/nrf_dfu_ble.o: \
- /media/orlo/3dcae13c-ff11-41c7-9ee7-653b113c72a1/home/orlo/beep-base-firmware/Source_V1.5.12/Code/nRF/nRF5_SDK_15.3/components/libraries/bootloader/ble_dfu/nrf_dfu_ble.c \
- /media/orlo/3dcae13c-ff11-41c7-9ee7-653b113c72a1/home/orlo/beep-base-firmware/Source_V1.5.12/Code/nRF/nRF5_SDK_15.3/components/libraries/bootloader/ble_dfu/nrf_dfu_ble.h \
- /mnt3/segger_embedded_studio_for_arm_5.64/include/stdint.h \
+ /home/orlo/beep-base-firmware/Source_V1.5.13/Code/nRF/nRF5_SDK_15.3/components/libraries/bootloader/ble_dfu/nrf_dfu_ble.c \
+ /home/orlo/beep-base-firmware/Source_V1.5.13/Code/nRF/nRF5_SDK_15.3/components/libraries/bootloader/ble_dfu/nrf_dfu_ble.h \
+ /usr/share/segger_embedded_studio_for_arm_5.42a/include/stdint.h \
  ../../nRF5_SDK_15.3/components/softdevice/s140/headers/ble_gatts.h \
  ../../nRF5_SDK_15.3/components/softdevice/s140/headers/nrf_svc.h \
  ../../nRF5_SDK_15.3/components/softdevice/s140/headers/nrf_error.h \
@@ -31,11 +31,11 @@ Output/Release_skip_CRC/Obj/beep_bootloader/nrf_dfu_ble.o: \
  ../../nRF5_SDK_15.3/components/libraries/experimental_section_vars/nrf_section.h \
  ../../nRF5_SDK_15.3/components/libraries/util/nordic_common.h \
  ../../nRF5_SDK_15.3/components/libraries/bootloader/dfu/nrf_dfu_types.h \
- /mnt3/segger_embedded_studio_for_arm_5.64/include/stddef.h \
- /mnt3/segger_embedded_studio_for_arm_5.64/include/__crossworks.h \
+ /usr/share/segger_embedded_studio_for_arm_5.42a/include/stddef.h \
+ /usr/share/segger_embedded_studio_for_arm_5.42a/include/__crossworks.h \
  ../../nRF5_SDK_15.3/components/libraries/util/sdk_common.h \
- /mnt3/segger_embedded_studio_for_arm_5.64/include/stdbool.h \
- /mnt3/segger_embedded_studio_for_arm_5.64/include/string.h \
+ /usr/share/segger_embedded_studio_for_arm_5.42a/include/stdbool.h \
+ /usr/share/segger_embedded_studio_for_arm_5.42a/include/string.h \
  ../config/sdk_config.h \
  ../../nRF5_SDK_15.3/components/libraries/util/nordic_common.h \
  ../../nRF5_SDK_15.3/modules/nrfx/mdk/compiler_abstraction.h \
@@ -52,7 +52,7 @@ Output/Release_skip_CRC/Obj/beep_bootloader/nrf_dfu_ble.o: \
  ../../nRF5_SDK_15.3/components/softdevice/s140/headers/nrf_error_soc.h \
  ../../nRF5_SDK_15.3/components/softdevice/s140/headers/nrf_nvic.h \
  ../../nRF5_SDK_15.3/components/libraries/util/app_error.h \
- /mnt3/segger_embedded_studio_for_arm_5.64/include/stdio.h \
+ /usr/share/segger_embedded_studio_for_arm_5.42a/include/stdio.h \
  ../../nRF5_SDK_15.3/components/libraries/util/app_error_weak.h \
  ../../nRF5_SDK_15.3/components/softdevice/s140/headers/ble_gap.h \
  ../../nRF5_SDK_15.3/components/libraries/bootloader/dfu/nrf_dfu_types.h \

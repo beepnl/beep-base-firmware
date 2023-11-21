@@ -6,7 +6,7 @@ NRF_LOG_MODULE_REGISTER();
 #include "nrf_log_ctrl.h"
 #include "nrf.h"
 #include "nvm_fs.h"
-#include "ble_setup.h"
+#include "BLE_setup.h"
 #include "app_timer.h"
 #include "app_util.h"
 #include "main.h"
@@ -180,7 +180,14 @@ bool flash_WriteStartUpLine(void)
 
     // Set the log time from DS3231 or from internal RTC
     memset(&prot[STARTUP_LINE_ELEMENTS_MIN], 0, sizeof(BEEP_protocol_s));
+    if(ds3231_enabled == 0)
+    {
     prot[STARTUP_LINE_ELEMENTS_MIN].command     = READ_TIME;
+    }
+    if(ds3231_enabled == 1)
+    {
+    prot[STARTUP_LINE_ELEMENTS_MIN].command     = READ_TIME_DS3231;
+    }
 
 
     prot[STARTUP_LINE_ELEMENTS_MIN].param.time  = get_logtime_value();
@@ -189,7 +196,7 @@ bool flash_WriteStartUpLine(void)
     return flash_Write_BeepProtocol(BEEP_SENSOR_ON, prot, STARTUP_LINE_ELEMENTS);
 }
 
-void flash_queWriteTimeChanged(time_t oldTime, time_t newTime)
+void flash_queWriteTimeChanged(time_t  oldTime, time_t newTime)
 {
     oldTimeStamp        = oldTime;
     newTimeStamp        = newTime;
@@ -201,11 +208,20 @@ bool flash_WriteTimeChange(time_t oldTime, time_t newTime)
     BEEP_protocol_s Time[TIME_ARRAY_LENGHT];
 
     memset(&Time, 0, sizeof(BEEP_protocol_s) * TIME_ARRAY_LENGHT);
+    if(ds3231_enabled == 1)
+    {
+    Time[0].command     = READ_TIME_DS3231;
+    Time[0].param.time  = oldTime;
+    Time[1].command     = READ_TIME_DS3231;
+    Time[1].param.time  = newTime;
+    }
+    if(ds3231_enabled == 0)
+    {
     Time[0].command     = READ_TIME;
     Time[0].param.time  = oldTime;
     Time[1].command     = READ_TIME;
     Time[1].param.time  = newTime;
-
+    }
     NRF_LOG_INFO("Flash Time changed! old:%u new:%u", oldTime, newTime);
 
     return flash_Write_BeepProtocol(BEEP_TIME_CHANGE, Time, TIME_ARRAY_LENGHT);
@@ -947,7 +963,8 @@ void beep_fileTransfer_while(void)
                    
                     if(ds3231_enabled == 1)
                     {
-                    prot[5].command = READ_TIME + 1; // 0x26 
+                    prot[5].command = READ_TIME_DS3231;
+                    prot[5].param.time = get_logtime_value(); 
                     }
                     if(ds3231_enabled == 0)
                     {

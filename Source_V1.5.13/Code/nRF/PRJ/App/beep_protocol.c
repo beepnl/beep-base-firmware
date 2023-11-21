@@ -233,6 +233,7 @@ static uint32_t beep_protocol_check_lenght(BEEP_CID cmd, uint8_t lenght, uint8_t
 		case READ_DS18B20_CONVERSION:
         case READ_HX711_CONVERSION:
         case READ_TIME:
+                case READ_TIME_DS3231:
         case READ_SQ_MIN_STATE:
         case READ_REED_STATE:
 		case READ_APPLICATION_CONFIG:
@@ -456,6 +457,8 @@ static uint32_t beep_protocol_log(BEEP_protocol_s * prot)
         //-----------------------------------------------------------------------------
         case READ_TIME:
             break;
+                    case READ_TIME_DS3231:
+                    break;
 
         case READ_REED_STATE:
         case READ_SQ_MIN_STATE:
@@ -660,6 +663,7 @@ uint32_t beep_protocol_decode(BEEP_protocol_s * prot, uint8_t * data, uint8_t ms
         case READ_ATECC_READ_ID:
         case READ_SQ_MIN_STATE:
         case READ_TIME:
+             case READ_TIME_DS3231:
         case READ_REED_STATE:
         case READ_HX711_CONVERSION:
 		case READ_HX711_STATE:
@@ -1283,8 +1287,8 @@ uint32_t beep_protocol_encode(bool cmdPrepend, BEEP_protocol_s * prot, uint8_t *
         {
             offset  += uint8_big_encode(prot->param.status.statusflag, &data[offset]);
 			break;
-        }
 
+        }
         //-----------------------------------------------------------------------------
         case READ_REED_STATE:
         case WRITE_REED_STATE:
@@ -1297,8 +1301,15 @@ uint32_t beep_protocol_encode(bool cmdPrepend, BEEP_protocol_s * prot, uint8_t *
 
         //-----------------------------------------------------------------------------
         case READ_TIME:
+        
+        offset  += uint32_big_encode(prot->param.time, &data[offset]);
+            break;
+        
+        case READ_TIME_DS3231:
+        
             offset  += uint32_big_encode(prot->param.time, &data[offset]);
             break;
+        
         case WRITE_TIME:
             break;
         

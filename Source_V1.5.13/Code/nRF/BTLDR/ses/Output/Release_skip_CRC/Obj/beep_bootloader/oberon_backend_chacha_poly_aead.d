@@ -1,10 +1,10 @@
 Output/Release_skip_CRC/Obj/beep_bootloader/oberon_backend_chacha_poly_aead.o: \
- /media/orlo/3dcae13c-ff11-41c7-9ee7-653b113c72a1/home/orlo/beep-base-firmware/Source_V1.5.12/Code/nRF/nRF5_SDK_15.3/components/libraries/crypto/backend/oberon/oberon_backend_chacha_poly_aead.c \
+ /home/orlo/beep-base-firmware/Source_V1.5.13/Code/nRF/nRF5_SDK_15.3/components/libraries/crypto/backend/oberon/oberon_backend_chacha_poly_aead.c \
  ../../nRF5_SDK_15.3/components/libraries/util/sdk_common.h \
- /mnt3/segger_embedded_studio_for_arm_5.64/include/stdint.h \
- /mnt3/segger_embedded_studio_for_arm_5.64/include/stdbool.h \
- /mnt3/segger_embedded_studio_for_arm_5.64/include/string.h \
- /mnt3/segger_embedded_studio_for_arm_5.64/include/__crossworks.h \
+ /usr/share/segger_embedded_studio_for_arm_5.42a/include/stdint.h \
+ /usr/share/segger_embedded_studio_for_arm_5.42a/include/stdbool.h \
+ /usr/share/segger_embedded_studio_for_arm_5.42a/include/string.h \
+ /usr/share/segger_embedded_studio_for_arm_5.42a/include/__crossworks.h \
  ../config/sdk_config.h \
  ../../nRF5_SDK_15.3/components/libraries/util/nordic_common.h \
  ../../nRF5_SDK_15.3/modules/nrfx/mdk/compiler_abstraction.h \
@@ -12,7 +12,7 @@ Output/Release_skip_CRC/Obj/beep_bootloader/oberon_backend_chacha_poly_aead.o: \
  ../../nRF5_SDK_15.3/components/libraries/util/sdk_errors.h \
  ../../nRF5_SDK_15.3/components/softdevice/s140/headers/nrf_error.h \
  ../../nRF5_SDK_15.3/components/libraries/util/app_util.h \
- /mnt3/segger_embedded_studio_for_arm_5.64/include/stddef.h \
+ /usr/share/segger_embedded_studio_for_arm_5.42a/include/stddef.h \
  ../../nRF5_SDK_15.3/modules/nrfx/mdk/nrf.h \
  ../../nRF5_SDK_15.3/modules/nrfx/mdk/nrf52840.h \
  ../../nRF5_SDK_15.3/components/toolchain/cmsis/include/core_cm4.h \
@@ -29,4 +29,4 @@ Output/Release_skip_CRC/Obj/beep_bootloader/oberon_backend_chacha_poly_aead.o: \
  ../../nRF5_SDK_15.3/components/softdevice/s140/headers/nrf_svc.h \
  ../../nRF5_SDK_15.3/components/libraries/util/sdk_macros.h \
  ../../nRF5_SDK_15.3/components/libraries/util/nrf_assert.h \
- /media/orlo/3dcae13c-ff11-41c7-9ee7-653b113c72a1/home/orlo/beep-base-firmware/Source_V1.5.12/Code/nRF/nRF5_SDK_15.3/components/libraries/crypto/backend/oberon/oberon_backend_chacha_poly_aead.h
+ /home/orlo/beep-base-firmware/Source_V1.5.13/Code/nRF/nRF5_SDK_15.3/components/libraries/crypto/backend/oberon/oberon_backend_chacha_poly_aead.h

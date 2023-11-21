@@ -6,7 +6,7 @@
 
 	#define FIRMWARE_MAJOR              1
     #define FIRMWARE_MINOR              5
-    #define FIRMWARE_SUB                13
+    #define FIRMWARE_SUB                14
 	#define FIRMWARE_TO_UINT32_T(major, minor, sub) ((((uint32_t)major) << 16) | (((uint32_t)minor) << 8) | (((uint32_t)sub) << 0))
 
 	#define PIN_CODE_BLE_LENGHT			6
@@ -112,7 +112,7 @@
         ALARM_STATUS_READ           = 36,   // 0x24
         READ_TIME                   = 37,   // 0x25
         WRITE_TIME                  = CID_WRITE | READ_TIME,   // 0xA5
-        READ_REED_STATE             = 38,   // 0x26
+        READ_REED_STATE             = 38,   // 0x2C
         WRITE_REED_STATE            = CID_WRITE | READ_REED_STATE,   // 0xA6
         READ_ON_STATE               = 39,	// 0x27 R/W		Current state: IO input and state machine state. Enable/Disable shutdown mode.
         WRITE_ON_STATE              = READ_ON_STATE | CID_WRITE,	// 0xA7 R/W		Current state: IO input and state machine state. Enable/Disable shutdown mode.	
@@ -121,8 +121,11 @@
         START_FILL_LOG              = 41,   // 0x29
         STOP_FILL_LOG               = 42,   // 0x2A
         RESET_REASON                = 43,   // 0x2B
+
         LORAWAN_OTAA_COMPLETE,     
 		CID_UNKNOWN,
+                        READ_TIME_DS3231            = 46,   // 0x32
+
 	}BEEP_CID; // Command Identifier
 
 

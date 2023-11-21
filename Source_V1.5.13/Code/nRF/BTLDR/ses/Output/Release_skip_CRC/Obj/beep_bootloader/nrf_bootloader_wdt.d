@@ -1,17 +1,17 @@
 Output/Release_skip_CRC/Obj/beep_bootloader/nrf_bootloader_wdt.o: \
- /media/orlo/3dcae13c-ff11-41c7-9ee7-653b113c72a1/home/orlo/beep-base-firmware/Source_V1.5.12/Code/nRF/nRF5_SDK_15.3/components/libraries/bootloader/nrf_bootloader_wdt.c \
- /media/orlo/3dcae13c-ff11-41c7-9ee7-653b113c72a1/home/orlo/beep-base-firmware/Source_V1.5.12/Code/nRF/nRF5_SDK_15.3/components/libraries/bootloader/nrf_bootloader_wdt.h \
+ /home/orlo/beep-base-firmware/Source_V1.5.13/Code/nRF/nRF5_SDK_15.3/components/libraries/bootloader/nrf_bootloader_wdt.c \
+ /home/orlo/beep-base-firmware/Source_V1.5.13/Code/nRF/nRF5_SDK_15.3/components/libraries/bootloader/nrf_bootloader_wdt.h \
  ../../nRF5_SDK_15.3/components/libraries/util/sdk_errors.h \
- /mnt3/segger_embedded_studio_for_arm_5.64/include/stdint.h \
+ /usr/share/segger_embedded_studio_for_arm_5.42a/include/stdint.h \
  ../../nRF5_SDK_15.3/components/softdevice/s140/headers/nrf_error.h \
  ../../nRF5_SDK_15.3/modules/nrfx/hal/nrf_wdt.h \
  ../../nRF5_SDK_15.3/modules/nrfx/nrfx.h \
  ../../nRF5_SDK_15.3/integration/nrfx/nrfx_config.h \
  ../config/sdk_config.h \
  ../../nRF5_SDK_15.3/modules/nrfx/drivers/nrfx_common.h \
- /mnt3/segger_embedded_studio_for_arm_5.64/include/stddef.h \
- /mnt3/segger_embedded_studio_for_arm_5.64/include/__crossworks.h \
- /mnt3/segger_embedded_studio_for_arm_5.64/include/stdbool.h \
+ /usr/share/segger_embedded_studio_for_arm_5.42a/include/stddef.h \
+ /usr/share/segger_embedded_studio_for_arm_5.42a/include/__crossworks.h \
+ /usr/share/segger_embedded_studio_for_arm_5.42a/include/stdbool.h \
  ../../nRF5_SDK_15.3/modules/nrfx/mdk/nrf.h \
  ../../nRF5_SDK_15.3/modules/nrfx/mdk/nrf52840.h \
  ../../nRF5_SDK_15.3/components/toolchain/cmsis/include/core_cm4.h \
@@ -45,7 +45,7 @@ Output/Release_skip_CRC/Obj/beep_bootloader/nrf_bootloader_wdt.o: \
  ../../nRF5_SDK_15.3/components/softdevice/s140/headers/nrf_nvic.h \
  ../../nRF5_SDK_15.3/components/libraries/util/nrf_assert.h \
  ../../nRF5_SDK_15.3/components/libraries/util/app_error.h \
- /mnt3/segger_embedded_studio_for_arm_5.64/include/stdio.h \
+ /usr/share/segger_embedded_studio_for_arm_5.42a/include/stdio.h \
  ../../nRF5_SDK_15.3/components/libraries/util/sdk_errors.h \
  ../../nRF5_SDK_15.3/components/libraries/util/app_error_weak.h \
  ../../nRF5_SDK_15.3/modules/nrfx/soc/nrfx_coredep.h \
@@ -53,12 +53,12 @@ Output/Release_skip_CRC/Obj/beep_bootloader/nrf_bootloader_wdt.o: \
  ../../nRF5_SDK_15.3/components/libraries/util/sdk_resources.h \
  ../../nRF5_SDK_15.3/components/softdevice/s140/headers/nrf_sd_def.h \
  ../../nRF5_SDK_15.3/modules/nrfx/drivers/nrfx_errors.h \
- /media/orlo/3dcae13c-ff11-41c7-9ee7-653b113c72a1/home/orlo/beep-base-firmware/Source_V1.5.12/Code/nRF/nRF5_SDK_15.3/components/libraries/bootloader/nrf_bootloader_dfu_timers.h \
+ /home/orlo/beep-base-firmware/Source_V1.5.13/Code/nRF/nRF5_SDK_15.3/components/libraries/bootloader/nrf_bootloader_dfu_timers.h \
  ../../nRF5_SDK_15.3/components/libraries/log/nrf_log_ctrl.h \
  ../../nRF5_SDK_15.3/components/libraries/log/nrf_log_types.h \
  ../../nRF5_SDK_15.3/components/libraries/log/src/nrf_log_ctrl_internal.h \
  ../../nRF5_SDK_15.3/components/libraries/util/sdk_common.h \
- /mnt3/segger_embedded_studio_for_arm_5.64/include/string.h \
+ /usr/share/segger_embedded_studio_for_arm_5.42a/include/string.h \
  ../../nRF5_SDK_15.3/components/libraries/util/sdk_os.h \
  ../../nRF5_SDK_15.3/components/libraries/util/app_util.h \
  ../../nRF5_SDK_15.3/components/libraries/util/sdk_macros.h \

@@ -1,11 +1,11 @@
 Output/Release_skip_CRC/Obj/beep_bootloader/SEGGER_RTT_Syscalls_SES.o: \
- /media/orlo/3dcae13c-ff11-41c7-9ee7-653b113c72a1/home/orlo/beep-base-firmware/Source_V1.5.12/Code/nRF/nRF5_SDK_15.3/external/segger_rtt/SEGGER_RTT_Syscalls_SES.c \
+ /home/orlo/beep-base-firmware/Source_V1.5.13/Code/nRF/nRF5_SDK_15.3/external/segger_rtt/SEGGER_RTT_Syscalls_SES.c \
  ../config/sdk_config.h \
- /media/orlo/3dcae13c-ff11-41c7-9ee7-653b113c72a1/home/orlo/beep-base-firmware/Source_V1.5.12/Code/nRF/nRF5_SDK_15.3/external/segger_rtt/SEGGER_RTT.h \
- /media/orlo/3dcae13c-ff11-41c7-9ee7-653b113c72a1/home/orlo/beep-base-firmware/Source_V1.5.12/Code/nRF/nRF5_SDK_15.3/external/segger_rtt/SEGGER_RTT_Conf.h \
+ /home/orlo/beep-base-firmware/Source_V1.5.13/Code/nRF/nRF5_SDK_15.3/external/segger_rtt/SEGGER_RTT.h \
+ /home/orlo/beep-base-firmware/Source_V1.5.13/Code/nRF/nRF5_SDK_15.3/external/segger_rtt/SEGGER_RTT_Conf.h \
  ../../nRF5_SDK_15.3/components/libraries/util/nordic_common.h \
  ../../nRF5_SDK_15.3/components/libraries/util/app_util_platform.h \
- /mnt3/segger_embedded_studio_for_arm_5.64/include/stdint.h \
+ /usr/share/segger_embedded_studio_for_arm_5.42a/include/stdint.h \
  ../../nRF5_SDK_15.3/modules/nrfx/mdk/compiler_abstraction.h \
  ../../nRF5_SDK_15.3/modules/nrfx/mdk/nrf.h \
  ../../nRF5_SDK_15.3/modules/nrfx/mdk/nrf52840.h \
@@ -26,15 +26,15 @@ Output/Release_skip_CRC/Obj/beep_bootloader/SEGGER_RTT_Syscalls_SES.o: \
  ../../nRF5_SDK_15.3/components/softdevice/s140/headers/nrf_nvic.h \
  ../../nRF5_SDK_15.3/components/libraries/util/nrf_assert.h \
  ../../nRF5_SDK_15.3/components/libraries/util/app_error.h \
- /mnt3/segger_embedded_studio_for_arm_5.64/include/stdio.h \
- /mnt3/segger_embedded_studio_for_arm_5.64/include/__crossworks.h \
- /mnt3/segger_embedded_studio_for_arm_5.64/include/stdbool.h \
+ /usr/share/segger_embedded_studio_for_arm_5.42a/include/stdio.h \
+ /usr/share/segger_embedded_studio_for_arm_5.42a/include/__crossworks.h \
+ /usr/share/segger_embedded_studio_for_arm_5.42a/include/stdbool.h \
  ../../nRF5_SDK_15.3/components/libraries/util/sdk_errors.h \
  ../../nRF5_SDK_15.3/components/softdevice/s140/headers/nrf_error.h \
  ../../nRF5_SDK_15.3/components/libraries/util/nordic_common.h \
  ../../nRF5_SDK_15.3/components/libraries/util/app_error_weak.h \
- /mnt3/segger_embedded_studio_for_arm_5.64/include/stdarg.h \
- /mnt3/segger_embedded_studio_for_arm_5.64/include/limits.h \
- /mnt3/segger_embedded_studio_for_arm_5.64/include/__libc.h \
- /mnt3/segger_embedded_studio_for_arm_5.64/include/__vfprintf.h \
- /mnt3/segger_embedded_studio_for_arm_5.64/include/__argtype.h
+ /usr/share/segger_embedded_studio_for_arm_5.42a/include/stdarg.h \
+ /usr/share/segger_embedded_studio_for_arm_5.42a/include/limits.h \
+ /usr/share/segger_embedded_studio_for_arm_5.42a/include/__libc.h \
+ /usr/share/segger_embedded_studio_for_arm_5.42a/include/__vfprintf.h \
+ /usr/share/segger_embedded_studio_for_arm_5.42a/include/__argtype.h
