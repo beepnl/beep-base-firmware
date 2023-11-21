@@ -1,16 +1,8 @@
 {
     "manifest": {
         "application": {
-            "bin_file": "Beepbase.bin",
-            "dat_file": "Beepbase.dat"
-        },
-        "softdevice_bootloader": {
-            "bin_file": "sd_bl.bin",
-            "dat_file": "sd_bl.dat",
-            "info_read_only_metadata": {
-                "bl_size": 25876,
-                "sd_size": 151016
-            }
+            "bin_file": "BeepBase.bin",
+            "dat_file": "BeepBase.dat"
         }
     }
 }
