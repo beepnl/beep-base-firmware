@@ -24,7 +24,7 @@
 	#define APP_TX_DUTYCYCLE                            (1 * 60 * 1000)
 	#define APP_JOIN_DUTYCYCLE                          (1 * 60 * 1000)
 #endif
-#define PAYLOAD_SIZE_MAX    52
+#define PAYLOAD_SIZE_MAX    222
 /*!
  * Defines a random delay for application data transmission duty cycle. 10s,
  * value in [ms].

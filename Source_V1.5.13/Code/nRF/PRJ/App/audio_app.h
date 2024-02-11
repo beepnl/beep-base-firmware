@@ -30,8 +30,9 @@
         uint32_t                timestampStateChanged;
         uint16_t volatile       blocksTransferred;
         uint16_t                blocksOffset;       // The number of I2S results that are discarded before processing with the FFT
-        bool                    loop;
-        measurement_callback    callback;
+	uint16_t 		sample_length_ms;
+	bool                    loop;
+	measurement_callback    callback;
         CONTROL_SOURCE          source;
     }AUDIO_APPLICATIONs;
 

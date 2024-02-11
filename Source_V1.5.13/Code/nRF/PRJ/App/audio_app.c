@@ -263,12 +263,14 @@ void audio_app_while(void)
             {
                 I2C_init();
                 I2S_init(config->channel, data_handler);
-                retval = I2S_start(&m_buffer_rx[0][0], I2S_DATA_BLOCK_WORDS);
+                retval = I2S_start(&m_buffer_x[0][0], I2S_DATA_BLOCK_WORDS);
             }
             else if(TLV_init(config->channel, config->volume, config->gain, config->min6dB))
             {
-                audioFFT_init();
-                audio_app_nextState(AUDIO_SAMPLING);
+                
+		audioFFT_init();
+                app_timer_start(audio_timer, APP_TIMER_TICKS(sample_length_ms), NULL);
+		audio_app_nextState(AUDIO_SAMPLING);
                 audio.blocksTransferred = 0;
                 fftIsBusy = false;
             }
@@ -431,10 +433,20 @@ uint32_t audio_app_start(const bool en, CONTROL_SOURCE source)
     #endif
 }
 
+static void audio_app_stop_sampling(void * p_context)
+{
+	audio.loop = false;
+}
+
 void audio_app_init(measurement_callback measurement_handler)
 {
+    sampling_length_ms = 1000 * 60; // total sampling time in milliseconds
+
+    APP_TIMER_DEF(audio_timer);
+    app_timer_create(&audio_timer, APP_TIMER_MODE_SINGLE_SHOT, audio_app_stop_sampling);
+    
     audio_app_nextState(AUDIO_IDLE);
-    audio.loop          = false; // For testing purposes set to true
+    audio.loop          = true; // keep sampling until audio_timer expires
     audio.callback      = measurement_handler;
     audio.blocksOffset  = BLOCKS_TO_TRANSFER;
     /*

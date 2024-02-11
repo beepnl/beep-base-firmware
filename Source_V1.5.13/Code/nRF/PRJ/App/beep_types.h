@@ -6,7 +6,7 @@
 
 	#define FIRMWARE_MAJOR              1
     #define FIRMWARE_MINOR              5
-    #define FIRMWARE_SUB                14
+    #define FIRMWARE_SUB                15
 	#define FIRMWARE_TO_UINT32_T(major, minor, sub) ((((uint32_t)major) << 16) | (((uint32_t)minor) << 8) | (((uint32_t)sub) << 0))
 
 	#define PIN_CODE_BLE_LENGHT			6
@@ -21,13 +21,13 @@
 	#define MAX_TEMP_SENSORS			10
 	#define CID_WRITE					0x80
     #define CID_READ					0x00
-    #define BEEP_MAX_LENGHT				30
-    #define BEEP_LORAWAN_MAX_LENGHT		52
+    #define BEEP_MAX_LENGHT				200
+    #define BEEP_LORAWAN_MAX_LENGHT		222
 	#define BEEP_MIN_LENGHT				1
 	#define ATECC_ID_LENGHT				9
 
 	#define SAMPLE_INTERVAL_MIN_MAX		1440
-    #define FFT_MAX_BINS                12
+    #define FFT_MAX_BINS                128
 
     #define HX711_N_CHANNELS            3
 
@@ -121,10 +121,10 @@
         START_FILL_LOG              = 41,   // 0x29
         STOP_FILL_LOG               = 42,   // 0x2A
         RESET_REASON                = 43,   // 0x2B
-
+	
         LORAWAN_OTAA_COMPLETE,     
 		CID_UNKNOWN,
-                        READ_TIME_DS3231            = 46,   // 0x32
+		READ_TIME_DS3231            = 46,   
 
 	}BEEP_CID; // Command Identifier
 
