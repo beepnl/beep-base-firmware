@@ -24,6 +24,9 @@ static uint32_t     fftSamples[I2S_DATA_BLOCK_WORDS] = {0};
 BEEP_protocol_s     fft_result;
 BEEP_protocol_s     settings;
 
+APP_TIMER_DEF(audio_timer);
+
+
 AUDIO_APPLICATIONs audio = 
 {
     .state = AUDIO_IDLE,
@@ -263,13 +266,13 @@ void audio_app_while(void)
             {
                 I2C_init();
                 I2S_init(config->channel, data_handler);
-                retval = I2S_start(&m_buffer_x[0][0], I2S_DATA_BLOCK_WORDS);
+                retval = I2S_start(&m_buffer_rx[0][0], I2S_DATA_BLOCK_WORDS);
             }
             else if(TLV_init(config->channel, config->volume, config->gain, config->min6dB))
             {
                 
 		audioFFT_init();
-                app_timer_start(audio_timer, APP_TIMER_TICKS(sample_length_ms), NULL);
+        app_timer_start(audio_timer, APP_TIMER_TICKS(audio.sample_length_ms), NULL);
 		audio_app_nextState(AUDIO_SAMPLING);
                 audio.blocksTransferred = 0;
                 fftIsBusy = false;
@@ -440,11 +443,9 @@ static void audio_app_stop_sampling(void * p_context)
 
 void audio_app_init(measurement_callback measurement_handler)
 {
-    sampling_length_ms = 1000 * 60; // total sampling time in milliseconds
-
-    APP_TIMER_DEF(audio_timer);
+    audio.sample_length_ms = 1000 * 60; // total sampling time in milliseconds
     app_timer_create(&audio_timer, APP_TIMER_MODE_SINGLE_SHOT, audio_app_stop_sampling);
-    
+
     audio_app_nextState(AUDIO_IDLE);
     audio.loop          = true; // keep sampling until audio_timer expires
     audio.callback      = measurement_handler;

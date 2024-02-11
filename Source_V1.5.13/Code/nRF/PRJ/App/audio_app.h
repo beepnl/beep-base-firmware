@@ -6,7 +6,7 @@
     #include "beep_types.h"
     #include "beep_protocol.h"
 
-    #define AUDIO_APP_LOG_ENABLED               0
+    #define AUDIO_APP_LOG_ENABLED               1
     #define BLOCKS_TO_TRANSFER                  2
     #define I2S_DATA_BLOCK_WORDS                1024UL
     #define FFT_COMPLEX_INPUT                   (I2S_DATA_BLOCK_WORDS * 2UL)
