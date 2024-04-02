@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "*.embeddedhtml": "html",
+        "nvm_fs.h": "c",
+        "beep_protocol.h": "c"
+    }
+}

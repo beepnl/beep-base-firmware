@@ -1,0 +1,51 @@
+<!DOCTYPE CrossStudio_Session_File>
+<session>
+ <Bookmarks>
+  <BookmarkItem objectName="" line="207" column="0" path="/media/orlo/3dcae13c-ff11-41c7-9ee7-653b113c72a1/home/orlo/beep-base-firmware/Source_V1.5.12/Code/nRF/nRF5_SDK_15.3/components/libraries/queue/nrf_queue.c" number="1" extra="return status;" color="5"/>
+ </Bookmarks>
+ <Breakpoints groups="" active_group="Breakpoints">
+  <Exceptions set="MemManage;UsageFault_Coprocessor;UsageFault_CheckingError;UsageFault_StateError;BusFault;ExceptionEntryReturnFault;HardFault"/>
+ </Breakpoints>
+ <ExecutionProfileWindow/>
+ <FrameBufferWindow>
+  <FrameBufferWindow bufferHeight="-1" addressSpace="" addressText="" bufferWidth="-1"/>
+ </FrameBufferWindow>
+ <Memory1/>
+ <Memory2/>
+ <Memory3/>
+ <Memory4/>
+ <Project>
+  <ProjectSessionItem path="beep_bootloader"/>
+  <ProjectSessionItem path="beep_bootloader;beep_bootloader"/>
+  <ProjectSessionItem path="beep_bootloader;beep_bootloader;Application"/>
+  <ProjectSessionItem path="beep_bootloader;beep_bootloader;nRF_DFU"/>
+ </Project>
+ <Register1/>
+ <Register2/>
+ <Register3/>
+ <Register4/>
+ <Threads>
+  <ThreadsWindow showLists=""/>
+ </Threads>
+ <TraceWindow>
+  <Trace enabled="Yes"/>
+ </TraceWindow>
+ <Watch1>
+  <Watches active="1" update="Twice a Second"/>
+ </Watch1>
+ <Watch2>
+  <Watches active="0" update="Never"/>
+ </Watch2>
+ <Watch3>
+  <Watches active="0" update="Never"/>
+ </Watch3>
+ <Watch4>
+  <Watches active="0" update="Never"/>
+ </Watch4>
+ <Files>
+  <SessionOpenFile windowGroup="DockEditLeft" x="4" y="1128" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../config/sdk_config.h" selected="1" top="1126" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="334" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../../nRF5_SDK_15.3/components/libraries/bootloader/dfu/nrf_dfu_validation.c" selected="0" top="306" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../../Key/public_key.c" selected="0" top="0" codecName="Default"/>
+ </Files>
+ <ARMCrossStudioWindow activeProject="beep_bootloader" fileDialogDefaultFilter="*.asm;*.s;*.inc" autoConnectTarget="J-Link" buildConfiguration="Release_skip_CRC" sessionSettings="" debugSearchFileMap="" fileDialogInitialDirectory="/mnt2/segger_embedded_studio_for_arm_5.64/source" debugSearchPath="" autoConnectCapabilities="3199"/>
+</session>
