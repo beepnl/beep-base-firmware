@@ -90,13 +90,13 @@
 
 // Allows skipping the crc check for debugging an application with the bootloader present.
 #ifndef SKIP_CRC_CHECK
-#define SKIP_CRC_CHECK 0
+#define SKIP_CRC_CHECK 1
 #endif
 
 
 #if 0 //def NDEBUG
     #define NRF_SDH_BLE_SERVICE_CHANGED 1
-    #define NRF_DFU_BLE_REQUIRES_BONDS  1
+    #define NRF_DFU_BLE_REQUIRES_BONDS  0
 #else
     #define NRF_SDH_BLE_SERVICE_CHANGED 0
     #define NRF_DFU_BLE_REQUIRES_BONDS  0
@@ -1126,9 +1126,9 @@
 
 // <q> NRF_DFU_REQUIRE_SIGNED_APP_UPDATE  - Require a valid signature to update the application or SoftDevice.
  
-
-#ifndef NRF_DFU_REQUIRE_SIGNED_APP_UPDATE
-#define NRF_DFU_REQUIRE_SIGNED_APP_UPDATE 1
+    
+#ifndef NRF_DFU_REQUIRE_SIGNED_APP_UPDATE     
+#define NRF_DFU_REQUIRE_SIGNED_APP_UPDATE 0
 #endif
 
 // <q> NRF_DFU_SINGLE_BANK_APP_UPDATES  - Place the application and the SoftDevice directly where they are supposed to be.
