@@ -79,7 +79,7 @@
 	#define NRF_LOG_ENABLED                                 1
         #define NRF_LOG_BACKEND_UART_ENABLED			0
     #define NRF_LOG_BACKEND_RTT_ENABLED				1
-    #define NRF_LOG_USES_TIMESTAMP					0
+    #define NRF_LOG_USES_TIMESTAMP					1
 	#define	NRF_LOG_HIGH_ACCURACY_TIMESTAMP			0
 #else
 	#define NRF_LOG_ENABLED							0
@@ -91,7 +91,7 @@
 
 
 
-#define NRF_LOG_BACKEND_RTT_TEMP_BUFFER_SIZE        8192
+#define NRF_LOG_BACKEND_RTT_TEMP_BUFFER_SIZE        256
 #define NRF_LOG_BACKEND_RTT_TX_RETRY_DELAY_MS       1
 #define NRF_LOG_BACKEND_RTT_TX_RETRY_CNT            3
 
@@ -115,9 +115,9 @@
 // <o> SEGGER_RTT_CONFIG_BUFFER_SIZE_UP - Size of upstream buffer. 
 // <i> Note that either @ref NRF_LOG_BACKEND_RTT_OUTPUT_BUFFER_SIZE
 // <i> or this value is actually used. It depends on which one is bigger.
-#define SEGGER_RTT_CONFIG_BUFFER_SIZE_UP		8192
-#define SEGGER_RTT_CONFIG_MAX_NUM_UP_BUFFERS	4
-#define SEGGER_RTT_CONFIG_BUFFER_SIZE_DOWN		64
+#define SEGGER_RTT_CONFIG_BUFFER_SIZE_UP		2048
+#define SEGGER_RTT_CONFIG_MAX_NUM_UP_BUFFERS	2
+#define SEGGER_RTT_CONFIG_BUFFER_SIZE_DOWN		16
 #define SEGGER_RTT_CONFIG_MAX_NUM_DOWN_BUFFERS	2
 #define SEGGER_RTT_CONFIG_DEFAULT_MODE			0
 
@@ -132,7 +132,7 @@
 #define CLOCK_CONFIG_IRQ_PRIORITY				6
 
 #define APP_TIMER_ENABLED						1
-#define APP_TIMER_CONFIG_RTC_FREQUENCY			0 // 32768 Hza
+#define APP_TIMER_CONFIG_RTC_FREQUENCY			0 // 32768 Hz
 #define APP_TIMER_CONFIG_IRQ_PRIORITY			6
 #define APP_TIMER_CONFIG_OP_QUEUE_SIZE			10
 #define APP_TIMER_CONFIG_USE_SCHEDULER			0
@@ -351,7 +351,7 @@
 
 // <e> NRFX_TWIM_CONFIG_LOG_ENABLED - Enables logging in the module.
 //==========================================================
-#define NRFX_TWIM_CONFIG_LOG_ENABLED				1
+#define NRFX_TWIM_CONFIG_LOG_ENABLED				0
 #define NRFX_TWIM_CONFIG_LOG_LEVEL					3
 #define NRFX_TWIM_CONFIG_INFO_COLOR					0
 #define NRFX_TWIM_CONFIG_DEBUG_COLOR				0
@@ -3737,7 +3737,7 @@
 // <e> RTC_CONFIG_LOG_ENABLED - Enables logging in the module.
 //==========================================================
 #ifndef RTC_CONFIG_LOG_ENABLED
-#define RTC_CONFIG_LOG_ENABLED 0
+#define RTC_CONFIG_LOG_ENABLED 1
 #endif
 // <o> RTC_CONFIG_LOG_LEVEL  - Default Severity level
  
@@ -5764,7 +5764,7 @@
  
 
 #ifndef NRF_LOG_STR_FORMATTER_TIMESTAMP_FORMAT_ENABLED
-#define NRF_LOG_STR_FORMATTER_TIMESTAMP_FORMAT_ENABLED 0
+#define NRF_LOG_STR_FORMATTER_TIMESTAMP_FORMAT_ENABLED 1
 #endif
 
 // </h> 
