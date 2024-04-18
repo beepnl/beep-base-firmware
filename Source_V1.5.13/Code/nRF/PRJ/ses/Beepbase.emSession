@@ -37,14 +37,13 @@
   <ProjectSessionItem path="BeepBase;BeepBase;LoRaWAN;system"/>
   <ProjectSessionItem path="BeepBase;BeepBase;LoRaWAN_nRF"/>
   <ProjectSessionItem path="BeepBase;BeepBase;None"/>
-  <ProjectSessionItem path="BeepBase;BeepBase;Segger Startup Files"/>
-  <ProjectSessionItem path="BeepBase;BeepBase;Sensors"/>
-  <ProjectSessionItem path="BeepBase;BeepBase;Third Parties"/>
   <ProjectSessionItem path="BeepBase;BeepBase;nRF_Drivers"/>
   <ProjectSessionItem path="BeepBase;BeepBase;nRF_Libraries"/>
   <ProjectSessionItem path="BeepBase;BeepBase;nRF_Log"/>
   <ProjectSessionItem path="BeepBase;BeepBase;nRF_Log;RTT"/>
-  <SourceCodeControlLogin password="F9BB6682F5D56822" user=""/>
+  <ProjectSessionItem path="BeepBase;BeepBase;Segger Startup Files"/>
+  <ProjectSessionItem path="BeepBase;BeepBase;Sensors"/>
+  <ProjectSessionItem path="BeepBase;BeepBase;Third Parties"/>
  </Project>
  <Register1>
   <RegisterWindow visibleNodes="CPU - Current Context/r0;CPU - Current Context/r1;CPU - Current Context/r2;CPU - Current Context/r3;CPU - Current Context/r4;CPU - Current Context/r5;CPU - Current Context/r6;CPU - Current Context/r7;CPU - Current Context/r8;CPU - Current Context/r9;CPU - Current Context/r10;CPU - Current Context/r11;CPU - Current Context/r12;CPU - Current Context/sp(r13);CPU - Current Context/lr(r14);CPU - Current Context/pc(r15);CPU - Current Context/apsr;CPU/r0;CPU/r1;CPU/r2;CPU/r3;CPU/r4;CPU/r5;CPU/r6;CPU/r7;CPU/r8;CPU/r9;CPU/r10;CPU/r11;CPU/r12;CPU/sp(r13);CPU/lr(r14);CPU/pc(r15);CPU/xpsr;CPU/MSP;CPU/PSP;CPU/PRIMASK;CPU/BASEPRI;CPU/FAULTMASK;CPU/CONTROL;CPU/internal" binaryNodes="" asciiNodes="" openNodes="CPU - Current Context;CPU" name="BeepBase" decimalNodes="" octalNodes="" unsignedNodes=""/>
@@ -117,7 +116,7 @@
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="31" useTextEdit="1" openedFrom="/mnt6/beepfw/beep-base-firmware/Source_V1.5.12/Code/nRF/PRJ/main.c" useBinaryEdit="0" left="0" path="../Sensors/reedswitch.c" selected="0" top="31" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="48" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../Sensors/nRF_ADC.c" selected="0" top="26" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="12" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../App/DS18B20_app.c" selected="0" top="12" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="20" y="974" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../App/mx_flash_app.c" selected="0" top="965" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="974" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../App/mx_flash_app.c" selected="0" top="965" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="15" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../App/log_time.h" selected="0" top="9" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="236" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../App/audio_app.c" selected="0" top="214" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../Sensors/timeslot.c" selected="0" top="0" codecName="Default"/>
@@ -196,7 +195,7 @@
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="127" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="nrf_block_dev_ram.c" selected="0" top="119" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="974" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../../nRF5_SDK_15.3/components/libraries/log/src/nrf_log_frontend.c" selected="0" top="954" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="216" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../../nRF5_SDK_15.3/components/libraries/log/nrf_log_backend_interface.h" selected="0" top="196" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="22" y="1660" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../main.c" selected="1" top="1639" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="1660" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../main.c" selected="1" top="1642" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="285" useTextEdit="1" openedFrom="/home/orlo/beep-base-firmware/Source_V1.5.13/Code/nRF/PRJ/main.c" useBinaryEdit="0" left="0" path="../../cryptoauthlib-20190903/lib/atca_execution.c" selected="0" top="265" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="353" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="nvm_fs.c" selected="0" top="350" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../App/bme_app.c" selected="0" top="0" codecName="Default"/>
@@ -204,5 +203,5 @@
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="316" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../App/beep_types.h" selected="0" top="313" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="1311" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../App/beep_protocol.c" selected="0" top="1291" codecName="Default"/>
  </Files>
- <ARMCrossStudioWindow activeProject="BeepBase" fileDialogDefaultFilter="*.c;*.cpp;*.cxx;*.cc;*.h;*.hpp;*.hxx" autoConnectTarget="J-Link" buildConfiguration="Release" sessionSettings="" debugSearchFileMap="" fileDialogInitialDirectory="" debugSearchPath="" autoConnectCapabilities="3711"/>
+ <ARMCrossStudioWindow activeProject="BeepBase" fileDialogDefaultFilter="*.c;*.cpp;*.cxx;*.cc;*.h;*.hpp;*.hxx" autoConnectTarget="J-Link" buildConfiguration="Release" sessionSettings="" debugSearchFileMap="" fileDialogInitialDirectory="" debugSearchPath="" autoConnectCapabilities="3199"/>
 </session>
