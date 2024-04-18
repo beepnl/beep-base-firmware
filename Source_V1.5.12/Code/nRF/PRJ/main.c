@@ -725,51 +725,63 @@ void beep_ctrlpt_event_handler(CONTROL_SOURCE source, BEEP_protocol_s * prot)
         //-----------------------------------------------------------------------------
         case READ_TIME:
             
-           #ifdef DS3231_ENABLE
-            reply.param.time = nvm_getLastTime();
-           #else
-            reply.param.time = get_logtime_value(); 
-           #endif
-             
-           break;
+           if(ds3231_enabled)
+           {
+           reply.param.time = nvm_getLastTime();
+           }
+           if(!ds3231_enabled)
+           {
+             reply.param.time = get_logtime_value();
+           }
+         break;
 
         //-----------------------------------------------------------------------------
         case WRITE_TIME:
         {
-          #ifdef DS3231_ENABLE 
-              //const time_t oldTime = get_logtime_value();
-              //flash_queWriteTimeChanged(oldTime, prot->param.time);
+          if(ds3231_enabled) 
+              {
               // store the new time in the DS3231 
               struct tm *ble_time_tm;
               time_t ble_timestamp;
 
               ble_timestamp = prot->param.time;
-              ble_time_tm = gmtime(&ble_timestamp); 
-              NRF_LOG_INFO("### NEWTIME from bluetooth: %2d:%02d\n", (ble_time_tm->tm_hour)%24, ble_time_tm->tm_min);
-              NRF_LOG_FLUSH();
+              ble_time_tm = localtime(&ble_timestamp); 
+              ble_time_tm->tm_isdst = 0;
 
-              ds3231_setTime(ble_time_tm);     
+              #ifdef DEBUG
+                NRF_LOG_FLUSH();
+                NRF_LOG_INFO("### NEWTIME from bluetooth: %2d:%02d\n", (ble_time_tm->tm_hour)%24, ble_time_tm->tm_min);
+                NRF_LOG_FLUSH();
+              #endif
 
-              // Store the new time in flash.
-              nvm_setLastTime(prot->param.time);
-              nvm_fds_changed();
+                ds3231_setTime(ble_time_tm);     
+
+                // Store the new time in flash.
+                nvm_setLastTime(prot->param.time);
+                nvm_fds_changed();
+ 
+                ret = NRF_SUCCESS;
+                sendResponse(source, prot->command, ret);
+
+              return;
+              }
+
+              if(!ds3231_enabled)
+              {
+              const time_t oldTime = nvm_getLastTime();
+
+                logtime_set_long(prot->param.time);
+                flash_queWriteTimeChanged(oldTime, prot->param.time);
+
+                // Store the new time in flash.
+                nvm_setLastTime(prot->param.time);
 
               ret = NRF_SUCCESS;
               sendResponse(source, prot->command, ret);
 
-            #else
-              const time_t oldTime = get_logtime_value();
-              logtime_set_long(prot->param.time);
-              flash_queWriteTimeChanged(oldTime, prot->param.time);
-              // Store the new time in flash.
-              nvm_setLastTime(prot->param.time);
-
-               ret = NRF_SUCCESS;
-              sendResponse(source, prot->command, ret);
-            #endif
-
-          return;
-          break;
+              return;
+              }
+            break;
         }
 
         //-----------------------------------------------------------------------------
@@ -1615,10 +1627,8 @@ int main(void)
     APP_ERROR_CHECK(ret);
     NRF_LOG_DEFAULT_BACKENDS_INIT();
 
-      #ifndef DEBUG
-        // skip bootloader CRC check in debug
-        bootloader_setupSVCI();
-      #endif
+    // skip bootloader CRC check in debug
+    //bootloader_setupSVCI();
 
     BoardInitPeriph(); 
 
@@ -1637,8 +1647,8 @@ int main(void)
     // Init the OWI bus and search for DS18B20 devices
     DS18B20_App_init(300, TEMP_12BIT_RESOLUTION, measurement_handler);
     
-    // Buzzer initialization
-    Buzzer_init(0);
+    // Buzzer initialization 
+    Buzzer_init(0); 
 
     ret = app_timer_create(&sampleTimer, APP_TIMER_MODE_REPEATED, sampleTimerCallback);
     APP_ERROR_CHECK(ret);
@@ -1670,63 +1680,32 @@ int main(void)
 
     bme_app_init(measurement_handler);
 
-    #ifndef DS3231_ENABLE
-    logtime_init(logtime_callback, nvm_getLastTime()); 
-    #endif
-
     // Check whether the reedswitch and or the tilt switch have to be enabled
     on_off_enable();
 
     if(ds3231_detected())
       {
-               #ifdef DEBUG 
-                  Buzzer_sound(50, 1800, 500, 200, 2);
-               #endif
-                 
+        ds3231_enabled = 1;
+        ds3231_start_clock_osc();
+
              // retrieve last known time from flash
-             time_t lastTime;
-             lastTime = nvm_getLastTime();   
-             nrf_delay_ms(2);
-
-               #ifdef DEBUG  
-                NRF_LOG_INFO("### LAST KNOWN FLASH TIME: %s, %u/0x%04X", get_logtime_string(lastTime), lastTime, lastTime);
-                NRF_LOG_FLUSH();
-               #endif
-
-             struct tm *lastTime_tm;
-             lastTime_tm = gmtime(&lastTime);
+            time_t lastTime;
+            lastTime = nvm_getLastTime();   
 
              // get time from DS3231
              time_t ds3231_time;
              ds3231_time = ds3231_getTime();
-             //struct tm *ds3231_time_s;
-             //ds3231_time_s = gmtime(&ds3231_time);
 
-                // initialize DS3231 to 00:00 01-06-2023 if it's still in the 1970s
-                /*if(ds3231_time_s->tm_year == 0)
-                  {
-                    if (lastTime_tm->tm_year == 0)
-                    {
-                      time_t initTime;
-                      struct tm *initTime_tm;
-                      initTime = 1685577600;
-                      initTime_tm = gmtime(&initTime);
-                      ds3231_setTime(initTime_tm);
+             // set time in flash
+             nvm_setLastTime(ds3231_time); 
+             nvm_fds_changed();    
+      }
 
-                        #ifdef DEBUG 
-                          Buzzer_sound(50, 1200, 500, 30, 2);
-                        #endif
-                    }
-                    else 
-                      {
-                      ds3231_setTime(lastTime_tm);  
-                      }
-                    } */                
+      else
+      {
+      logtime_init(logtime_callback, nvm_getLastTime()); 
+      }
 
-                nvm_setLastTime(ds3231_time); 
-                ds3231_start_clock_osc();
-        }
-      
 
     while (1)
     {
