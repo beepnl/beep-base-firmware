@@ -1,0 +1,110 @@
+<!DOCTYPE CrossStudio_Session_File>
+<session>
+ <Bookmarks>
+  <BookmarkItem objectName="" line="207" column="0" path="/media/orlo/3dcae13c-ff11-41c7-9ee7-653b113c72a1/home/orlo/beep-base-firmware/Source_V1.5.12/Code/nRF/nRF5_SDK_15.3/components/libraries/queue/nrf_queue.c" number="1" extra="return status;" color="5"/>
+ </Bookmarks>
+ <Breakpoints groups="Breakpoints" active_group="Breakpoints">
+  <Exceptions set="MemManage;UsageFault_Coprocessor;UsageFault_CheckingError;UsageFault_StateError;BusFault;ExceptionEntryReturnFault;HardFault"/>
+ </Breakpoints>
+ <ExecutionProfileWindow/>
+ <FrameBufferWindow>
+  <FrameBufferWindow bufferHeight="-1" addressSpace="" addressText="" bufferWidth="-1"/>
+ </FrameBufferWindow>
+ <Memory1>
+  <MemoryWindow addressSpace="" dataSize="4" autoEvaluate="0" viewMode="2" addressOrder="0" columnsText="" refreshPeriod="0" name="BeepBase" radix="10" sizeText="sizeof ds3231_enabled" addressText="0x200"/>
+ </Memory1>
+ <Memory2>
+  <MemoryWindow addressSpace="" dataSize="1" autoEvaluate="0" viewMode="0" addressOrder="0" columnsText="" refreshPeriod="0" name="BeepBase" radix="16" sizeText="" addressText=""/>
+ </Memory2>
+ <Memory3>
+  <MemoryWindow addressSpace="" dataSize="1" autoEvaluate="0" viewMode="0" addressOrder="0" columnsText="" refreshPeriod="0" name="BeepBase" radix="16" sizeText="" addressText=""/>
+ </Memory3>
+ <Memory4>
+  <MemoryWindow addressSpace="" dataSize="1" autoEvaluate="0" viewMode="0" addressOrder="0" columnsText="" refreshPeriod="0" name="BeepBase" radix="16" sizeText="" addressText=""/>
+ </Memory4>
+ <Project>
+  <ProjectSessionItem path="BeepBase"/>
+  <ProjectSessionItem path="BeepBase;BeepBase"/>
+  <ProjectSessionItem path="BeepBase;BeepBase;Application"/>
+  <ProjectSessionItem path="BeepBase;BeepBase;Board Definition"/>
+  <ProjectSessionItem path="BeepBase;BeepBase;FATFS"/>
+  <ProjectSessionItem path="BeepBase;BeepBase;LoRaWAN_nRF"/>
+  <ProjectSessionItem path="BeepBase;BeepBase;None"/>
+  <ProjectSessionItem path="BeepBase;BeepBase;nRF_Crypto backend nRF HW"/>
+  <ProjectSessionItem path="BeepBase;BeepBase;nRF_Crypto backend nRF HW;nRF_Crypto"/>
+  <ProjectSessionItem path="BeepBase;BeepBase;nRF_Crypto backend nRF HW;nRF_TLS"/>
+  <ProjectSessionItem path="BeepBase;BeepBase;nRF_Drivers"/>
+  <ProjectSessionItem path="BeepBase;BeepBase;nRF_Libraries"/>
+  <ProjectSessionItem path="BeepBase;BeepBase;nRF_Log"/>
+  <ProjectSessionItem path="BeepBase;BeepBase;Segger Startup Files"/>
+  <ProjectSessionItem path="BeepBase;BeepBase;Third Parties"/>
+  <SourceCodeControlLogin password="F9BB6682F5D56822" user=""/>
+ </Project>
+ <Register1>
+  <RegisterWindow visibleNodes="CPU - Current Context/r0;CPU - Current Context/r1;CPU - Current Context/r2;CPU - Current Context/r3;CPU - Current Context/r4;CPU - Current Context/r5;CPU - Current Context/r6;CPU - Current Context/r7;CPU - Current Context/r8;CPU - Current Context/r9;CPU - Current Context/r10;CPU - Current Context/r11;CPU - Current Context/r12;CPU - Current Context/sp(r13);CPU - Current Context/lr(r14);CPU - Current Context/pc(r15);CPU - Current Context/apsr;CPU/r0;CPU/r1;CPU/r2;CPU/r3;CPU/r4;CPU/r5;CPU/r6;CPU/r7;CPU/r8;CPU/r9;CPU/r10;CPU/r11;CPU/r12;CPU/sp(r13);CPU/lr(r14);CPU/pc(r15);CPU/xpsr;CPU/MSP;CPU/PSP;CPU/PRIMASK;CPU/BASEPRI;CPU/FAULTMASK;CPU/CONTROL;CPU/internal" binaryNodes="" asciiNodes="" openNodes="CPU - Current Context;CPU" name="BeepBase" decimalNodes="" octalNodes="" unsignedNodes=""/>
+ </Register1>
+ <Register2>
+  <RegisterWindow visibleNodes="CPU - Current Context/r0;CPU - Current Context/r1;CPU - Current Context/r2;CPU - Current Context/r3;CPU - Current Context/r4;CPU - Current Context/r5;CPU - Current Context/r6;CPU - Current Context/r7;CPU - Current Context/r8;CPU - Current Context/r9;CPU - Current Context/r10;CPU - Current Context/r11;CPU - Current Context/r12;CPU - Current Context/sp(r13);CPU - Current Context/lr(r14);CPU - Current Context/pc(r15);CPU - Current Context/apsr;CPU/r0;CPU/r1;CPU/r2;CPU/r3;CPU/r4;CPU/r5;CPU/r6;CPU/r7;CPU/r8;CPU/r9;CPU/r10;CPU/r11;CPU/r12;CPU/sp(r13);CPU/lr(r14);CPU/pc(r15);CPU/xpsr;CPU/MSP;CPU/PSP;CPU/PRIMASK;CPU/BASEPRI;CPU/FAULTMASK;CPU/CONTROL;CPU/internal" binaryNodes="" asciiNodes="" openNodes="CPU - Current Context" name="BeepBase" decimalNodes="" octalNodes="" unsignedNodes=""/>
+ </Register2>
+ <Register3>
+  <RegisterWindow visibleNodes="CPU - Current Context/r0;CPU - Current Context/r1;CPU - Current Context/r2;CPU - Current Context/r3;CPU - Current Context/r4;CPU - Current Context/r5;CPU - Current Context/r6;CPU - Current Context/r7;CPU - Current Context/r8;CPU - Current Context/r9;CPU - Current Context/r10;CPU - Current Context/r11;CPU - Current Context/r12;CPU - Current Context/sp(r13);CPU - Current Context/lr(r14);CPU - Current Context/pc(r15);CPU - Current Context/apsr;CPU/r0;CPU/r1;CPU/r2;CPU/r3;CPU/r4;CPU/r5;CPU/r6;CPU/r7;CPU/r8;CPU/r9;CPU/r10;CPU/r11;CPU/r12;CPU/sp(r13);CPU/lr(r14);CPU/pc(r15);CPU/xpsr;CPU/MSP;CPU/PSP;CPU/PRIMASK;CPU/BASEPRI;CPU/FAULTMASK;CPU/CONTROL;CPU/internal" binaryNodes="" asciiNodes="" openNodes="CPU - Current Context" name="BeepBase" decimalNodes="" octalNodes="" unsignedNodes=""/>
+ </Register3>
+ <Register4>
+  <RegisterWindow visibleNodes="CPU - Current Context/r0;CPU - Current Context/r1;CPU - Current Context/r2;CPU - Current Context/r3;CPU - Current Context/r4;CPU - Current Context/r5;CPU - Current Context/r6;CPU - Current Context/r7;CPU - Current Context/r8;CPU - Current Context/r9;CPU - Current Context/r10;CPU - Current Context/r11;CPU - Current Context/r12;CPU - Current Context/sp(r13);CPU - Current Context/lr(r14);CPU - Current Context/pc(r15);CPU - Current Context/apsr;CPU/r0;CPU/r1;CPU/r2;CPU/r3;CPU/r4;CPU/r5;CPU/r6;CPU/r7;CPU/r8;CPU/r9;CPU/r10;CPU/r11;CPU/r12;CPU/sp(r13);CPU/lr(r14);CPU/pc(r15);CPU/xpsr;CPU/MSP;CPU/PSP;CPU/PRIMASK;CPU/BASEPRI;CPU/FAULTMASK;CPU/CONTROL;CPU/internal" binaryNodes="" asciiNodes="" openNodes="CPU - Current Context" name="BeepBase" decimalNodes="" octalNodes="" unsignedNodes=""/>
+ </Register4>
+ <Threads>
+  <ThreadsWindow showLists=""/>
+ </Threads>
+ <TraceWindow>
+  <Trace enabled="Yes"/>
+ </TraceWindow>
+ <Watch1>
+  <Watches active="1" update="Twice a Second">
+   <Watchpoint expression="ds3231_enabled" name="ds3231_enabled" radix="-1" linenumber="15" filename="../App/ds3231_app.h"/>
+   <Watchpoint expression="ds3231_detected" name="ds3231_detected" radix="-1" linenumber="364" filename="../App/ds3231_app.c"/>
+   <Watchpoint expression="m_xfer_nack" name="m_xfer_nack" radix="-1" linenumber="393" filename="../App/ds3231_app.c"/>
+   <Watchpoint expression="m_xfer_done" name="m_xfer_done" radix="-1" linenumber="393" filename="../App/ds3231_app.c"/>
+   <Watchpoint expression="err_code" name="err_code" radix="16" linenumber="391" filename="../App/ds3231_app.c"/>
+   <Watchpoint expression="nrf_drv_twi_rx" name="nrf_drv_twi_rx" radix="-1" linenumber="391" filename="../App/ds3231_app.c"/>
+   <Watchpoint expression="NRFX_DRV_STATE_POWERED_ON" name="NRFX_DRV_STATE_POWERED_ON" radix="-1" linenumber="366" filename="../App/ds3231_app.c"/>
+   <Watchpoint expression="main_app.current_state" name="main_app.current_state" radix="-1" linenumber="1319" filename="../main.c"/>
+   <Watchpoint expression="main_app.sample_state" name="main_app.sample_state" radix="-1" linenumber="1307" filename="../main.c"/>
+   <Watchpoint expression="reply.param.time" name="reply.param.time" radix="16" linenumber="731" filename="../main.c"/>
+   <Watchpoint expression="ble_timestamp" name="ble_timestamp" radix="16" linenumber="741" filename="../main.c"/>
+   <Watchpoint expression="ble_time_tm" name="ble_time_tm" radix="16" linenumber="746" filename="../main.c"/>
+   <Watchpoint expression="reply.command" name="reply.command" radix="16" linenumber="358" filename="../main.c"/>
+   <Watchpoint expression="prot->command" name="prot->command" radix="16" linenumber="358" filename="../main.c"/>
+   <Watchpoint expression="reply" name="reply" radix="16" linenumber="355" filename="../main.c"/>
+   <Watchpoint expression="ds3231_time" name="ds3231_time" radix="16" linenumber="1701" filename="../main.c"/>
+   <Watchpoint expression="lastTime" name="lastTime" radix="16" linenumber="1695" filename="../main.c"/>
+   <Watchpoint expression="newtime" name="newtime" radix="16" linenumber="119" filename="../App/log_time.c"/>
+   <Watchpoint expression="minute_app_timer" name="minute_app_timer" radix="-1" linenumber="90" filename="../App/log_time.c"/>
+   <Watchpoint expression="callback" name="callback" radix="16" linenumber="160" filename="../App/log_time.c"/>
+   <Watchpoint expression="main_cb" name="main_cb" radix="-1" linenumber="164" filename="../App/log_time.c"/>
+   <Watchpoint expression="logtimeAppTimerCallback" name="logtimeAppTimerCallback" radix="-1" linenumber="167" filename="../App/log_time.c"/>
+   <Watchpoint expression="lastKnownTime" name="lastKnownTime" radix="-1" linenumber="171" filename="../App/log_time.c"/>
+   <Watchpoint expression="return_time" name="return_time" radix="-1" linenumber="153" filename="../App/log_time.c"/>
+   <Watchpoint expression="nvm_setLastTime" name="nvm_setLastTime" radix="-1" linenumber="1705" filename="../main.c"/>
+   <Watchpoint expression="NRF_DRV_TWI_EVT_DONE" name="NRF_DRV_TWI_EVT_DONE" radix="-1" linenumber="39" filename="../App/ds3231_app.c"/>
+   <Watchpoint expression="NRF_DRV_TWI_XFER_TX" name="NRF_DRV_TWI_XFER_TX" radix="-1" linenumber="43" filename="../App/ds3231_app.c"/>
+   <Watchpoint expression="ble_time_tm_s" name="ble_time_tm_s" radix="-1" linenumber="753" filename="../main.c"/>
+  </Watches>
+ </Watch1>
+ <Watch2>
+  <Watches active="0" update="Never"/>
+ </Watch2>
+ <Watch3>
+  <Watches active="0" update="Never"/>
+ </Watch3>
+ <Watch4>
+  <Watches active="0" update="Never"/>
+ </Watch4>
+ <Files>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="1619" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../main.c" selected="0" top="1601" codecName=""/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="115" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../../nRF5_SDK_15.3/components/libraries/log/src/nrf_log_backend_rtt.c" selected="0" top="97" codecName=""/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="249" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../../nRF5_SDK_15.3/components/libraries/log/nrf_log_backend_interface.h" selected="0" top="214" codecName=""/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="898" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="../../nRF5_SDK_15.3/components/libraries/log/src/nrf_log_frontend.c" selected="0" top="880" codecName=""/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="99" useTextEdit="1" openedFrom="" useBinaryEdit="0" left="0" path="app_error_weak.c" selected="1" top="81" codecName=""/>
+ </Files>
+ <ARMCrossStudioWindow activeProject="BeepBase" fileDialogDefaultFilter="*.asm;*.s;*.inc" autoConnectTarget="J-Link" buildConfiguration="DebugRelease" sessionSettings="" debugSearchFileMap="../TransformFunctions/arm_cfft_radix8_f32.c&#xa;&#xa;/home/orlo/Source_V1.5.12/Code/nRF/nRF5_SDK_15.3/modules/nrfx/mdk/ses_startup_nrf52840.s&#xa;/home/orlo/Source_V1.5.13/Code/nRF/nRF5_SDK_15.3/modules/nrfx/mdk/ses_startup_nrf52840.s&#xa;/mnt3/segger_embedded_studio_for_arm_5.64/source/thumb_crt0.s&#xa;/mnt2/segger_embedded_studio_for_arm_5.64/source/thumb_crt0.s" fileDialogInitialDirectory="/mnt2/segger_embedded_studio_for_arm_5.64/source" debugSearchPath="" autoConnectCapabilities="3711"/>
+</session>

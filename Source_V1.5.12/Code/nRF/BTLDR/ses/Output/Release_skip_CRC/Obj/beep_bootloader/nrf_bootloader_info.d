@@ -1,0 +1,30 @@
+Output/Release_skip_CRC/Obj/beep_bootloader/nrf_bootloader_info.o: \
+ /home/orlo/beep-base-firmware/Source_V1.5.12/Code/nRF/nRF5_SDK_15.3/components/libraries/bootloader/nrf_bootloader_info.c \
+ /home/orlo/beep-base-firmware/Source_V1.5.12/Code/nRF/nRF5_SDK_15.3/components/libraries/bootloader/nrf_bootloader_info.h \
+ ../../nRF5_SDK_15.3/components/libraries/util/app_util.h \
+ /usr/share/segger_embedded_studio_for_arm_5.42a/include/stdint.h \
+ /usr/share/segger_embedded_studio_for_arm_5.42a/include/stdbool.h \
+ /usr/share/segger_embedded_studio_for_arm_5.42a/include/stddef.h \
+ /usr/share/segger_embedded_studio_for_arm_5.42a/include/__crossworks.h \
+ ../../nRF5_SDK_15.3/modules/nrfx/mdk/compiler_abstraction.h \
+ ../../nRF5_SDK_15.3/components/libraries/util/nordic_common.h \
+ ../../nRF5_SDK_15.3/modules/nrfx/mdk/nrf.h \
+ ../../nRF5_SDK_15.3/modules/nrfx/mdk/nrf52840.h \
+ ../../nRF5_SDK_15.3/components/toolchain/cmsis/include/core_cm4.h \
+ ../../nRF5_SDK_15.3/components/toolchain/cmsis/include/core_cmInstr.h \
+ ../../nRF5_SDK_15.3/components/toolchain/cmsis/include/cmsis_gcc.h \
+ ../../nRF5_SDK_15.3/components/toolchain/cmsis/include/core_cmFunc.h \
+ ../../nRF5_SDK_15.3/components/toolchain/cmsis/include/core_cmSimd.h \
+ ../../nRF5_SDK_15.3/modules/nrfx/mdk/system_nrf52840.h \
+ ../../nRF5_SDK_15.3/modules/nrfx/mdk/nrf52840_bitfields.h \
+ ../../nRF5_SDK_15.3/modules/nrfx/mdk/nrf51_to_nrf52840.h \
+ ../../nRF5_SDK_15.3/modules/nrfx/mdk/nrf52_to_nrf52840.h \
+ ../../nRF5_SDK_15.3/modules/nrfx/mdk/compiler_abstraction.h \
+ ../../nRF5_SDK_15.3/components/softdevice/s140/headers/nrf52/nrf_mbr.h \
+ ../../nRF5_SDK_15.3/components/softdevice/s140/headers/nrf_svc.h \
+ ../../nRF5_SDK_15.3/components/softdevice/s140/headers/nrf_sdm.h \
+ ../../nRF5_SDK_15.3/components/softdevice/s140/headers/nrf_svc.h \
+ ../../nRF5_SDK_15.3/components/softdevice/s140/headers/nrf_error.h \
+ ../../nRF5_SDK_15.3/components/softdevice/s140/headers/nrf_error_sdm.h \
+ ../../nRF5_SDK_15.3/components/softdevice/s140/headers/nrf_soc.h \
+ ../../nRF5_SDK_15.3/components/softdevice/s140/headers/nrf_error_soc.h
