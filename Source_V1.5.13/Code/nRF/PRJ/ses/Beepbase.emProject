@@ -30,7 +30,7 @@
     debug_restrict_memory_access="No"
     debug_start_from_entry_point_symbol="Yes"
     debug_target_connection="J-Link"
-    gcc_debugging_level="None"
+    gcc_debugging_level="Level 3"
     gcc_optimization_level="None"
     gdb_server_autostart_server="Yes"
     showLog="No"
