@@ -1,0 +1,8 @@
+{
+    "C_Cpp.default.compilerPath": "/usr/bin/gcc",
+    "files.associations": {
+        "ds3231_app.h": "c",
+        "nrf_fstorage.h": "c"
+    },
+    "C_Cpp.configurationWarnings": "disabled"
+}
