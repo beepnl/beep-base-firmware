@@ -636,7 +636,7 @@ static void ble_evt_handler(ble_evt_t const * p_ble_evt, void * p_context)
                           p_ble_evt->evt.gap_evt.params.auth_status.bonded,
                           p_ble_evt->evt.gap_evt.params.auth_status.sm1_levels.lv4,
                           *((uint8_t *)&p_ble_evt->evt.gap_evt.params.auth_status.kdist_own),
-                          *((uint8_t *)&p_ble_evt->evt.gap_evt.params.auth_status.kdist_peer));
+                          *((uint8_t *)&p_ble_evt->evt.gap_evt.params.auth_status.kdist_peer);
             break;
 
         default:

@@ -575,7 +575,7 @@ void TestTempCalc(void)
 		// NRF_LOG_INFO("TempTest[%u]: 0x%04X = "NRF_LOG_FLOAT_MARKER, 
 			i,
 			test[i],
-			NRF_LOG_FLOAT(DS18B20_CalculateTemperature(test[i])));
+			NRF_LOG_FLOAT(DS18B20_CalculateTemperature(test[i]));
 		NRF_LOG_FLUSH();
 	}
 }

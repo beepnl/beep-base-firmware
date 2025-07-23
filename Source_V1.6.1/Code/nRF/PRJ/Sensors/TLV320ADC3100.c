@@ -251,12 +251,12 @@ static uint8_t TLV_readADCflags(void)
         // NRF_LOG_INFO("\tL-ADC gain ok: %s, powered: %s, saturated: %s", 
 						bool_to_str(retval & (1<<7)),
 						bool_to_str(retval & (1<<6)),
-						bool_to_str(retval & (1<<5)));
+						bool_to_str(retval & (1<<5));
 		NRF_LOG_FLUSH();
 		// NRF_LOG_INFO("\tR-ADC gain ok: %s, powered: %s, saturated: %s", 
 				bool_to_str(retval & (1<<3)),
 				bool_to_str(retval & (1<<2)),
-				bool_to_str(retval & (1<<1)));
+				bool_to_str(retval & (1<<1));
         NRF_LOG_FLUSH();
     #endif
 }
@@ -299,7 +299,7 @@ static uint8_t TLV_readSettings(void)
 
     I2C_read(TLV_ADDRESS, 59, &retval);
     // NRF_LOG_INFO("p1, reg=59, Left Analog PGA = 0x%02X, L-PGA muted: %u, volume %u.%u", retval, retval & (1<<7) ? 1 : 0, ((retval & 0x7F) / 2),
-		(((retval & 0x7F) % 2) == 0 ? 0 : 5));
+		(((retval & 0x7F) % 2) == 0 ? 0 : 5);
     NRF_LOG_FLUSH();
     nrf_delay_ms(100);
 
@@ -340,7 +340,7 @@ static uint8_t TLV_readPGAflags(void)
         // NRF_LOG_INFO("Page 1, reg=62, 0x%02X, L_ADC_PGA gain ok: %s, R_ADC_PGA gain ok: %s",
 					retval,
                     bool_to_str(retval & (1<<1)),
-                    bool_to_str(retval & (1<<0)));
+                    bool_to_str(retval & (1<<0));
         NRF_LOG_FLUSH();
     #endif
 }

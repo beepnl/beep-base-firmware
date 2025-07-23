@@ -1149,7 +1149,7 @@ static void sample_statemachine(void)
                 // NRF_LOG_INFO("Sampling timed-out! Busy: DS18B20: %u,  Hx711 %u, BME280: %u",
 						DS18B20_App_busy(),
 						HX711_app_busy(),
-						bme_app_busy());
+						bme_app_busy();
 
                 // Shutdown the DS18B20 statemachine when still busy
                 if(DS18B20_App_busy())
@@ -1343,7 +1343,7 @@ void main_application_while(void)
                                 vbatOk ? "ok" : "nok",
                                 (uint32_t) adcStartupDone,
                                 (uint32_t) reedSwitchEnabled,
-                                (uint32_t) tiltSwitchEnabled);
+                                (uint32_t) tiltSwitchEnabled;
 
                 // The system woke-up from a vibration and the reedswitch is not activated, power down without any indications
                 if(!on)

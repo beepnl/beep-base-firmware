@@ -378,7 +378,7 @@ static uint32_t beep_protocol_log(BEEP_protocol_s * prot)
                 beep_protocol_cmd_strget(err->ErrorCmd),
 				err->errorCode,
 				err->errorCode,
-				nrf_strerror_get(err->errorCode));
+				nrf_strerror_get(err->errorCode);
 		}
 			break;
 
@@ -390,7 +390,7 @@ static uint32_t beep_protocol_log(BEEP_protocol_s * prot)
 					beep_protocol_cmd_strget(prot->command),
                     version->major,
                     version->minor,
-                    version->sub);
+                    version->sub;
 			break;
 		}
 
@@ -402,7 +402,7 @@ static uint32_t beep_protocol_log(BEEP_protocol_s * prot)
 					beep_protocol_cmd_strget(prot->command),
                     version->major,
                     version->minor,
-                    version->id);
+                    version->id;
 			break;
 		}
 
@@ -529,7 +529,7 @@ static uint32_t beep_protocol_log(BEEP_protocol_s * prot)
 							buzz->freq_100Hz,
 							buzz->off_time_ms,
 							buzz->on_time_ms,
-							buzz->repeatCount);
+							buzz->repeatCount;
 			break;
 		}
 
@@ -551,7 +551,7 @@ static uint32_t beep_protocol_log(BEEP_protocol_s * prot)
 			// NRF_LOG_INFO("%s %s, lenght: %u", 
 				((prot->command & BEEP_WRITE) ? "Write" : "Read"),
                 beep_protocol_cmd_strget(prot->command),
-				key->lenght);
+				key->lenght;
 			if(key->lenght != 0)
 			{
 				// // NRF_LOG_HEXDUMP_INFO(key->data, key->lenght);
@@ -569,7 +569,7 @@ static uint32_t beep_protocol_log(BEEP_protocol_s * prot)
                 bool_to_str(prot->param.status.statusflag & BITMASK_JOINED),
                 bool_to_str(prot->param.status.statusflag & BITMASK_DUTYCYCLE),
                 bool_to_str(prot->param.status.statusflag & BITMASK_ADR),
-				prot->param.status.statusflag);
+				prot->param.status.statusflag;
 			break;
 
         //-----------------------------------------------------------------------------

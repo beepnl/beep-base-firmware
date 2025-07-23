@@ -475,7 +475,7 @@ void DS18B20_App_while(void)
 							dev->resolution,
                             p_res,
 							dev->Thigh,
-							dev->Tlow);
+							dev->Tlow;
 					#endif
 				}
 				else
