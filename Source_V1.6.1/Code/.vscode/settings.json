@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "mx_flash_app.h": "c",
+        "mx_flash_fs.h": "c",
+        "audio_app.h": "c"
+    },
+    "cmake.sourceDirectory": "/home/orlo/beep-base-firmware-2/Code/nRF/LoRaMac-node-feature-5.0.0"
+}
