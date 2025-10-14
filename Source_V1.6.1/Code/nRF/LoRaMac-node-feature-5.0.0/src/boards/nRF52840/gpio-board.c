@@ -355,24 +355,33 @@ void GpioMcuInit( void )
 
 void GPIO_switchOFF(void)
 {
-	// I2C extern: BME280
-	nrf_gpio_cfg_output_state(SCL_EXT,		0);
-    nrf_gpio_cfg_output_state(SDA_EXT,		0);
+	// Put all off-rail signals into high-Z to avoid sinking external pull-ups
+	// External I2C: BME280
+	nrf_gpio_cfg_input(SCL_EXT, NRF_GPIO_PIN_NOPULL);
+    nrf_gpio_cfg_input(SDA_EXT, NRF_GPIO_PIN_NOPULL);
 
-    // I2C intern: TLV320ADC3100, ATEC6088A
-	nrf_gpio_cfg_output_state(SCL_INT,		0);
-    nrf_gpio_cfg_output_state(SDA_INT,		0);
+    // Internal I2C: TLV320ADC3100, ATEC6088A
+	nrf_gpio_cfg_input(SCL_INT, NRF_GPIO_PIN_NOPULL);
+    nrf_gpio_cfg_input(SDA_INT, NRF_GPIO_PIN_NOPULL);
 
-	// I2S: TLV320ADC3100
-    nrf_gpio_cfg_output_state(ADC_RST,		0);
+	// I2S reset for TLV320ADC3100
+    nrf_gpio_cfg_input(ADC_RST, NRF_GPIO_PIN_NOPULL);
 
-    // DS18B20
-	nrf_gpio_cfg_output_state(OWI_PIN,		0);
+    // DS18B20 1-Wire
+	nrf_gpio_cfg_input(OWI_PIN, NRF_GPIO_PIN_NOPULL);
 
-	// HX711
-    nrf_gpio_cfg_output_state(HX711_DOUT,	0);
-	nrf_gpio_cfg_output_state(HX711_PD_SCK,	0);
-    nrf_gpio_cfg_output_state(HX711_RATE,	0);
+	// HX711 lines
+    nrf_gpio_cfg_input(HX711_DOUT, NRF_GPIO_PIN_NOPULL);
+	nrf_gpio_cfg_input(HX711_PD_SCK, NRF_GPIO_PIN_NOPULL);
+    nrf_gpio_cfg_input(HX711_RATE, NRF_GPIO_PIN_NOPULL);
+
+    // QSPI flash pins (after putting flash in deep power-down)
+    nrf_gpio_cfg_input(BSP_QSPI_SCK_PIN, NRF_GPIO_PIN_NOPULL);
+    nrf_gpio_cfg_input(BSP_QSPI_CSN_PIN, NRF_GPIO_PIN_NOPULL);
+    nrf_gpio_cfg_input(BSP_QSPI_IO0_PIN, NRF_GPIO_PIN_NOPULL);
+    nrf_gpio_cfg_input(BSP_QSPI_IO1_PIN, NRF_GPIO_PIN_NOPULL);
+    nrf_gpio_cfg_input(BSP_QSPI_IO2_PIN, NRF_GPIO_PIN_NOPULL);
+    nrf_gpio_cfg_input(BSP_QSPI_IO3_PIN, NRF_GPIO_PIN_NOPULL);
 }
 
 void GPIO_TLVreset(void)
